@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0f1115">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>刷题</title>
+<style>
+:root{--bg:#0f1115;--card:#171a21;--line:#262b36;--fg:#e8ecf3;--dim:#98a2b3;--ok:#35c47f;--bad:#ff6b6b;--acc:#4c8dff;--warn:#ffcc66}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,"PingFang SC","Noto Sans SC",system-ui,sans-serif}
+body{padding:0 12px 40px;max-width:760px;margin:0 auto}
+header{position:sticky;top:0;background:var(--bg);padding:8px 0 6px;z-index:9;border-bottom:1px solid var(--line)}
+.h1{display:flex;justify-content:space-between;gap:8px;font-size:15px;font-weight:600;align-items:baseline}
+.sub{font-size:12px;color:var(--dim)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;margin:12px 0}
+.stem{font-size:17px;line-height:1.85;white-space:pre-wrap}
+.tags{font-size:12px;color:var(--dim);margin-bottom:8px;display:flex;justify-content:space-between}
+.opt{display:block;width:100%;text-align:left;background:#1d222c;border:1px solid var(--line);color:var(--fg);border-radius:12px;padding:13px 14px;margin:8px 0;font-size:16px;line-height:1.5;font-family:inherit}
+.opt.sel{border-color:var(--acc);background:#1b2740}
+.opt.right{border-color:var(--ok);background:#132a20}
+.opt.wrong{border-color:var(--bad);background:#2c1618}
+input[type=text]{width:100%;background:#1d222c;border:1px solid var(--line);color:var(--fg);border-radius:12px;padding:14px;font-size:18px;margin:6px 0;font-family:inherit}
+.btn{display:inline-block;background:var(--acc);color:#fff;border:none;border-radius:12px;padding:14px 18px;font-size:16px;font-weight:600;margin:8px 8px 0 0;font-family:inherit}
+.btn.ghost{background:#242a36;color:var(--fg)}
+.btn.wide{display:block;width:100%;margin:8px 0}
+.link{display:block;width:100%;background:none;border:none;color:var(--dim);font-size:14px;padding:12px 0;text-decoration:underline;font-family:inherit}
+.res{margin-top:12px;padding-top:10px;border-top:1px dashed var(--line);font-size:15px;line-height:1.8}
+.ok{color:var(--ok)}.bad{color:var(--bad)}.dim{color:var(--dim)}.warn{color:var(--warn)}
+.mono{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;background:#0b0d11;border-radius:8px;padding:8px;word-break:break-all;max-height:220px;overflow:auto;white-space:pre-wrap;width:100%}
+#toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%);background:#2a3242;color:#fff;padding:10px 16px;border-radius:999px;font-size:14px;opacity:0;transition:opacity .25s;pointer-events:none;z-index:99}
+#toast.on{opacity:1}
+</style>
+</head>
+<body>
+<header>
+  <div class="h1"><span id="bk">题库</span><span class="sub" id="bd"></span></div>
+  <div class="sub" id="st">载入中…</div>
+</header>
+<main id="app"></main>
+<div id="toast"></div>
+<script src="bank.js" onerror="window.__noBank=1"></script>
+<script>
+'use strict';
+/* ---------- 工具 ---------- */
+function $(id){return document.getElementById(id)}
+function p2(n){return (n<10?'0':'')+n}
+function ymd(d){return d.getFullYear()+'-'+p2(d.getMonth()+1)+'-'+p2(d.getDate())}
+function nowIso(){var d=new Date();return ymd(d)+'T'+p2(d.getHours())+':'+p2(d.getMinutes())+':'+p2(d.getSeconds())+'+08:00'}
+function uid(){return 'q'+Date.now().toString(36)+Math.random().toString(36).slice(2,8)}
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function mmss(ms){var s=Math.round(ms/1000);if(s<60)return s+'秒';return Math.floor(s/60)+'分'+(s%60?(s%60)+'秒':'')}
+var toastT=null;
+function toast(msg){var t=$('toast');t.textContent=msg;t.classList.add('on');clearTimeout(toastT);toastT=setTimeout(function(){t.classList.remove('on')},1800)}
+
+/* ---------- 存储 ---------- */
+var RKEY='qz_rec_v1', HKEY='qz_hist_v1', storeOK=true;
+function recsRaw(){try{var v=localStorage.getItem(RKEY);return v?JSON.parse(v):[]}catch(e){storeOK=false;return []}}
+function recsSet(a){try{localStorage.setItem(RKEY,JSON.stringify(a));return true}catch(e){storeOK=false;return false}}
+function histRaw(){try{var v=localStorage.getItem(HKEY);return v?JSON.parse(v):{}}catch(e){storeOK=false;return {}}}
+function histSet(o){try{localStorage.setItem(HKEY,JSON.stringify(o));return true}catch(e){storeOK=false;return false}}
+function lastExp(){try{return localStorage.getItem('qz_last_exp')||''}catch(e){return ''}}
+function pending(){var a=recsRaw(),w=lastExp(),n=0;for(var i=0;i<a.length;i++)if(!w||a[i].ts>w)n++;return n}
+
+/* ---------- 归一化（只用于选择题字母比对）---------- */
+function norm(s){s=String(s==null?'':s);try{s=s.normalize('NFKC')}catch(e){}return s.replace(/\s+/g,'').toUpperCase()}
+function judgeChoice(q,mine){
+  var A=norm(q.answer).split('').sort().join('');
+  var B=norm(mine).split('').sort().join('');
+  return A.length>0&&A===B;
+}
+
+/* ---------- 题库 ---------- */
+var DEMO={id:'demo',title:'题库未加载',questions:[{id:'demo-1',sub:'数学',topic:'极限',type:'choice',stem:'占位题：请把 题库.js 放到同目录。',options:['A. 好','B. 收到'],answer:'A'}]};
+var BANK=(window.QBANK&&window.QBANK.questions&&window.QBANK.questions.length)?window.QBANK:DEMO;
+var ALL=BANK.questions.slice();
+var TD=ymd(new Date());
+var H=histRaw();
+
+/* ---------- 队列：到期优先，其后按题库顺序 ---------- */
+function buildQueue(){
+  var due=[],later=[];
+  ALL.forEach(function(q){var h=H[q.id];if(!h||!h.due||h.due<=TD)due.push(q);else later.push(q)});
+  return due.concat(later);
+}
+var S={set:buildQueue(),qi:0,judged:false,t0:Date.now(),mine:'',mult:[],res:[],done:false};
+
+/* ---------- 顶部 ---------- */
+function refreshBar(){
+  $('bk').textContent=BANK.title||'题库';
+  var due=0;ALL.forEach(function(q){var h=H[q.id];if(!h||!h.due||h.due<=TD)due++});
+  $('bd').textContent=BANK.id+' · 题库 '+ALL.length+' 题 · 到期 '+due;
+  var okn=0,ch=0;
+  for(var i=0;i<S.res.length;i++){var r=S.res[i];if(r.type!=='fill'){ch++;if(r.ok)okn++}}
+  var pd=pending();
+  $('st').innerHTML='本次已刷 '+S.res.length+' 题 · 选择 '+okn+'/'+ch+
+    ' · <b class="'+(pd?'warn':'ok')+'" id="pend" onclick="renderRecords()">待导出 '+pd+'</b>'+
+    (storeOK?'':' · <span class="bad">本地存储不可用</span>');
+}
+
+/* ---------- 渲染题 ---------- */
+function renderQ(){
+  var q=S.set[S.qi];
+  if(!q){renderDone();return}
+  S.judged=false;S.mine='';S.mult=[];S.t0=Date.now();
+  var h=H[q.id]||{};
+  var type=q.type||'choice';
+  var opts=q.options||['A','B','C','D'];
+  var html='<div class="card">';
+  html+='<div class="tags"><span>'+esc(q.sub||'')+' · '+(type==='fill'?'填空':(type==='multi'?'多选':'单选'))+
+        '</span><span>'+esc(q.id)+' · 第 '+(S.qi+1)+'/'+S.set.length+'</span></div>';
+  html+='<div class="stem">'+esc(q.stem)+'</div>';
+  html+='<div id="ansbox" style="margin-top:10px">';
+  if(type==='choice'||type==='multi'){
+    for(var i=0;i<opts.length;i++){
+      html+='<button class="opt" data-i="'+i+'" onclick="pick('+i+')">'+esc(opts[i])+'</button>';
+    }
+    if(type==='multi')html+='<div class="sub" style="margin:4px 0 0">多选：选完点提交</div>';
+    html+='<button class="btn wide" style="margin-top:12px" onclick="submitChoice()">提交</button>';
+  }else{
+    html+='<input id="fill" type="text" autocomplete="off" spellcheck="false" placeholder="填答案；符号打不出就写文字（如「二分之根号三」）" oninput="S.mine=this.value">';
+    html+='<button class="btn wide" style="margin-top:6px" onclick="submitFill()">提交</button>';
+  }
+  html+='<button class="link" onclick="skipQ()">不会，直接看答案</button>';
+  html+='</div></div>';
+  $('app').innerHTML=html;
+  refreshBar();
+  var f=$('fill');if(f)f.focus();
+  window.scrollTo(0,0);
+}
+
+function pick(i){
+  if(S.judged)return;
+  var q=S.set[S.qi],type=q.type||'choice';
+  var L='ABCDEFGH'[i];
+  if(type==='multi'){
+    var k=S.mult.indexOf(L);
+    if(k<0)S.mult.push(L);else S.mult.splice(k,1);
+    S.mult.sort();S.mine=S.mult.join('');
+    var bs=document.querySelectorAll('.opt');
+    for(var j=0;j<bs.length;j++)bs[j].classList.toggle('sel',S.mult.indexOf('ABCDEFGH'[j])>=0);
+  }else{
+    S.mine=L;
+    var b2=document.querySelectorAll('.opt');
+    for(var t=0;t<b2.length;t++)b2[t].classList.toggle('sel',t===i);
+    submitChoice();
+  }
+}
+
+/* ---------- 记录 ---------- */
+function saveRecord(q,skip){
+  var ms=Date.now()-S.t0;
+  var type=q.type||'choice';
+  var mine=skip?'':S.mine;
+  var ok=null,judged=false;
+  if(!skip&&(type==='choice'||type==='multi')){ok=judgeChoice(q,mine);judged=true}
+  var h=H[q.id]||{n:0,streak:0};
+  var attempt=(h.n||0)+1;
+  var rec={id:uid(),ts:nowIso(),bank:BANK.id,qid:q.id,type:type,sub:q.sub||'',topic:q.topic||'',
+           mine:mine,ans:q.answer,ok:ok,judged:judged,ms:ms,blank:!!skip,attempt:attempt,ve:1};
+  var arr=recsRaw();arr.push(rec);recsSet(arr);
+  var nd=new Date();
+  if(judged&&ok===false){h.streak=0;nd.setDate(nd.getDate()+1)}
+  else if(judged&&ok===true){h.streak=(h.streak||0)+1;var dl=[7,15,22,29,36,43][Math.min(h.streak-1,5)];nd.setDate(nd.getDate()+dl)}
+  else {h.streak=h.streak||0;nd.setDate(nd.getDate()+3)}
+  h.n=attempt;h.due=ymd(nd);h.last=nowIso();h.ok=(ok===null?null:ok);
+  H[q.id]=h;histSet(H);
+  S.res.push(rec);S.judged=true;
+  return {rec:rec,h:h};
+}
+
+function submitChoice(){
+  if(S.judged)return;
+  if(!S.mine){toast('先选一个');return}
+  var q=S.set[S.qi];
+  var r=saveRecord(q,false);
+  maybeAutoExport();
+  renderResult(q,r.rec,r.h);
+}
+function submitFill(){
+  if(S.judged)return;
+  var q=S.set[S.qi];
+  if(!String(S.mine||'').trim()){toast('写点东西再提交，或点「不会」');return}
+  var r=saveRecord(q,false);
+  maybeAutoExport();
+  renderResult(q,r.rec,r.h);
+}
+function skipQ(){
+  if(S.judged)return;
+  var q=S.set[S.qi];
+  var r=saveRecord(q,true);
+  maybeAutoExport();
+  renderResult(q,r.rec,r.h);
+}
+
+function renderResult(q,rec,h){
+  var type=q.type||'choice';
+  var html='<div class="res">';
+  if(rec.blank){
+    html+='<div class="dim">记一笔：这题空着了</div>';
+  }else if(rec.judged){
+    html+='<div class="'+(rec.ok?'ok':'bad')+'">'+(rec.ok?'✓ 对':'✗ 错')+'　用时 '+mmss(rec.ms)+'</div>';
+  }else{
+    html+='<div class="dim">已交（用时 '+mmss(rec.ms)+'）· 填空对错由电脑上的 agent 判</div>';
+  }
+  html+='<div>正确答案：<b class="ok">'+esc(q.answer)+'</b></div>';
+  if(!rec.blank&&!rec.judged)html+='<div class="dim">你写的：'+(esc(rec.mine)||'（空）')+'</div>';
+  if(q.key)html+='<div style="margin-top:6px">'+esc(q.key)+'</div>';
+  if(rec.blank&&q.hook)html+='<div style="margin-top:8px;border-left:3px solid #4c8dff;padding-left:10px">起手句：'+esc(q.hook)+'</div>';
+  if(rec.judged&&rec.ok===false&&q.fix)html+='<div style="margin-top:8px;border-left:3px solid #ff6b6b;padding-left:10px">'+esc(q.fix)+'</div>';
+  html+='<div class="dim" style="font-size:12px;margin-top:6px">下次出现：'+(h&&h.due?h.due:'')+'</div>';
+  html+='<button class="btn wide" style="margin-top:12px" onclick="nextQ()">下一题</button>';
+  html+='</div>';
+  document.querySelector('.card').insertAdjacentHTML('beforeend',html);
+  var f=$('fill');if(f){f.disabled=true}
+  var bs=document.querySelectorAll('.opt');
+  for(var i=0;i<bs.length;i++){
+    var L='ABCDEFGH'[i];
+    bs[i].disabled=true;
+    if(norm(rec.ans).indexOf(L)>=0)bs[i].classList.add('right');
+    else if((rec.mine||'').indexOf(L)>=0)bs[i].classList.add('wrong');
+  }
+  var sb=document.querySelector('#ansbox .btn');if(sb)sb.style.display='none';
+  window.scrollTo(0,document.body.scrollHeight);
+  refreshBar();
+}
+
+function nextQ(){
+  S.qi++;
+  if(S.qi>=S.set.length)S.set=buildQueue(),S.qi=0,S.rounds=(S.rounds||0)+1;
+  renderQ();
+}
+
+/* ---------- 刷完 ---------- */
+function renderDone(){
+  $('app').innerHTML='<div class="card"><div class="stem">今天的题库过完了（'+ALL.length+' 题）</div>'+
+   '<div class="dim" style="margin-top:8px">本次已刷 '+S.res.length+' 题，答题记录已在本机，等同步。</div>'+
+   '<button class="btn wide" style="margin-top:14px" onclick="restart()">再从头刷一遍</button>'+
+   '<button class="btn ghost wide" onclick="renderRecords()">看记录 / 导出</button></div>';
+  refreshBar();
+}
+function restart(){S.qi=0;S.set=buildQueue();renderQ()}
+
+/* ---------- 自动导出（每满 10 条，下一次点击时静默存一份）---------- */
+var AUTO_N=parseInt((location.search.match(/[?&]auto=(\d+)/)||[])[1]||"10",10);
+function maybeAutoExport(){
+  if(pending()>=AUTO_N)doExport(true,true);
+}
+// 切走/锁屏时也存一份（浏览器可能拦，不报错）
+var pauseAt=0;
+document.addEventListener('visibilitychange',function(){
+  if(document.hidden){
+    pauseAt=Date.now();
+    if(pending()>0){try{doExport(true,true)}catch(e){}}
+  }else if(pauseAt){
+    if(S&&S.t0)S.t0+=Date.now()-pauseAt;   // 切走的时间不算答题用时
+    pauseAt=0;
+  }
+});
+function jsonl(list){
+  return list.map(function(r){
+    var o={};for(var k in r){if(k!=='exp')o[k]=r[k]}
+    return JSON.stringify(o);
+  }).join('\n')+'\n';
+}
+function doExport(all,silent){
+  var arr=recsRaw();
+  var list=all?arr:arr.filter(function(r){return !lastExp()||r.ts>lastExp()});
+  if(!list.length){if(!silent)toast('没有待导出的记录');return}
+  var txt=jsonl(list);
+  var d=new Date();
+  var name='quizrec-'+ymd(d).replace(/-/g,'')+'-'+p2(d.getHours())+p2(d.getMinutes())+'-'+list.length+'.jsonl';
+  try{
+    var blob=new Blob([txt],{type:'application/json;charset=utf-8'});
+    var a=document.createElement('a');
+    a.href=URL.createObjectURL(blob);a.download=name;
+    document.body.appendChild(a);a.click();
+    setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},2000);
+  }catch(e){toast('下载失败，用「复制文本」');return}
+  try{localStorage.setItem("qz_last_exp",nowIso())}catch(e){}
+  toast('已自动存一份：'+list.length+' 条（Download）');
+  refreshBar();
+}
+
+/* ---------- 记录页 ---------- */
+function renderRecords(){
+  var arr=recsRaw();
+  var un=arr.filter(function(r){return !lastExp()||r.ts>lastExp()});
+  var html='<div class="card"><div class="stem">本机记录 '+arr.length+' 条 · 待导出 '+un.length+' 条</div>';
+  html+='<div class="dim" style="margin-top:6px">导出后文件在 Download，手机连电脑时自动并进答题台账。</div>';
+  html+='<button class="btn wide" style="margin-top:12px" onclick="doExport(false)">导出待导出（'+un.length+'）</button>';
+  html+='<button class="btn ghost wide" onclick="doExport(true)">导出全部（'+arr.length+'）</button>';
+  html+='<button class="btn ghost wide" onclick="showText()">显示 / 复制 JSONL 文本</button>';
+  html+='<div id="txt"></div>';
+  html+='<button class="btn ghost wide" style="margin-top:20px" onclick="clearRecs()">清空本机记录</button>';
+  html+='<button class="btn ghost wide" onclick="S.qi=0;S.set=buildQueue();renderQ()">回到刷题</button></div>';
+  $('app').innerHTML=html;refreshBar();
+}
+function showText(){
+  $('txt').innerHTML='<textarea id="cp" class="mono" style="height:200px;margin-top:10px">'+esc(jsonl(recsRaw()))+'</textarea>'+
+   '<button class="btn ghost wide" onclick="copyText()">复制全部</button>';
+}
+function copyText(){var t=$('cp');t.select();try{document.execCommand('copy');toast('已复制')}catch(e){toast('请长按手动复制')}}
+function clearRecs(){
+  if(!confirm('清空本机答题记录？复习进度会保留。'))return;
+  recsSet([]);renderRecords();
+}
+
+/* ---------- PWA ---------- */
+if("serviceWorker" in navigator){navigator.serviceWorker.register("sw.js").catch(function(e){})}
+/* ---------- 启动 ---------- */
+renderQ();
+if(/[?&]export=1/.test(location.search)){setTimeout(function(){doExport(true,true)},900)}
+</script>
+</body>
+</html>
