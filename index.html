@@ -80,10 +80,15 @@ var TD=ymd(new Date());
 var H=histRaw();
 
 /* ---------- 队列：到期优先，其后按题库顺序 ---------- */
+/* 【2026-10-29 用户口径】备用机只做数学诊断题；顺序随机；每天目标 30–60 题 */
+var DAILY_MIN=30, DAILY_MAX=60;
+function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
 function buildQueue(){
+  var pool=ALL.filter(function(q){return (q.sub||'')==='数学'});
+  if(!pool.length)pool=ALL.slice();
   var due=[],later=[];
-  ALL.forEach(function(q){var h=H[q.id];if(!h||!h.due||h.due<=TD)due.push(q);else later.push(q)});
-  return due.concat(later);
+  pool.forEach(function(q){var h=H[q.id];if(!h||!h.due||h.due<=TD)due.push(q);else later.push(q)});
+  return shuffle(due).concat(shuffle(later));
 }
 var S={set:buildQueue(),qi:0,judged:false,t0:Date.now(),mine:'',mult:[],res:[],done:false};
 
@@ -95,7 +100,7 @@ function refreshBar(){
   var okn=0,ch=0;
   for(var i=0;i<S.res.length;i++){var r=S.res[i];if(r.type!=='fill'){ch++;if(r.ok)okn++}}
   var pd=pending();
-  $('st').innerHTML='本次已刷 '+S.res.length+' 题 · 选择 '+okn+'/'+ch+
+  $('st').innerHTML='本次已刷 '+S.res.length+' / 目标 '+DAILY_MIN+'–'+DAILY_MAX+' 题 · 选择 '+okn+'/'+ch+
     ' · <b class="'+(pd?'warn':'ok')+'" id="pend" onclick="renderRecords()">待导出 '+pd+'</b>'+
     (storeOK?'':' · <span class="bad">本地存储不可用</span>');
 }
