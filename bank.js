@@ -1,6 +1,6 @@
 window.QBANK = {
     "id":  "2026-10-29",
-    "title":  "备用机题库（156 题）",
+    "title":  "备用机题库（186 题）",
     "questions":  [
                       {
                           "id":  "M1028-01",
@@ -2631,6 +2631,530 @@ window.QBANK = {
                                          "1/√e",
                                          "e的-1/2次方"
                                      ]
+                      },
+                      {
+                          "id":  "Z01",
+                          "sub":  "专业课",
+                          "topic":  "轴·分类",
+                          "type":  "choice",
+                          "stem":  "只承受弯矩不承受转矩的轴叫",
+                          "options":  [
+                                          "A. 转轴",
+                                          "B. 心轴",
+                                          "C. 传动轴",
+                                          "D. 曲轴"
+                                      ],
+                          "answer":  "B",
+                          "key":  "按承载分：转轴（弯+扭）、心轴（只弯）、传动轴（只扭）。",
+                          "tags":  [
+                                       "专业课"
+                                   ]
+                      },
+                      {
+                          "id":  "Z02",
+                          "sub":  "专业课",
+                          "topic":  "轴承·代号",
+                          "type":  "choice",
+                          "stem":  "滚动轴承 6207 中「2」表示",
+                          "options":  [
+                                          "A. 内径",
+                                          "B. 宽度系列",
+                                          "C. 类型（深沟球）",
+                                          "D. 直径系列"
+                                      ],
+                          "answer":  "D",
+                          "key":  "6=深沟球轴承，2=直径系列（轻），07=内径 7×5=35 mm；宽度系列为 0。",
+                          "tags":  [
+                                       "专业课"
+                                   ]
+                      },
+                      {
+                          "id":  "Z03",
+                          "sub":  "专业课",
+                          "topic":  "带传动·包角",
+                          "type":  "choice",
+                          "stem":  "限制小带轮包角 α₁≥120° 的主要目的是",
+                          "options":  [
+                                          "A. 提高效率",
+                                          "B. 防止打滑",
+                                          "C. 减小离心力",
+                                          "D. 延长寿命"
+                                      ],
+                          "answer":  "B",
+                          "key":  "包角越小摩擦力越小，越易打滑；故设下限。",
+                          "tags":  [
+                                       "专业课"
+                                   ]
+                      },
+                      {
+                          "id":  "Z04",
+                          "sub":  "专业课",
+                          "topic":  "带传动·应力",
+                          "type":  "choice",
+                          "stem":  "带传动中，带的最大应力发生在",
+                          "options":  [
+                                          "A. 紧边进入大轮处",
+                                          "B. 松边离开大轮处",
+                                          "C. 紧边绕上小轮处",
+                                          "D. 松边绕上小轮处"
+                                      ],
+                          "answer":  "C",
+                          "key":  "紧边拉应力 + 小轮弯曲应力最大 + 离心应力，三者和最大在紧边绕上小轮处。",
+                          "tags":  [
+                                       "专业课"
+                                   ]
+                      },
+                      {
+                          "id":  "Z05",
+                          "sub":  "专业课",
+                          "topic":  "齿轮·分度圆",
+                          "type":  "choice",
+                          "stem":  "标准直齿圆柱齿轮分度圆直径 d 与模数 m、齿数 z 的关系是",
+                          "options":  [
+                                          "A. d=m/z",
+                                          "B. d=z/m",
+                                          "C. d=mz",
+                                          "D. d=2mz"
+                                      ],
+                          "answer":  "C",
+                          "key":  "d=mz；齿顶圆 d+2m，齿根圆 d−2.5m。",
+                          "tags":  [
+                                       "专业课"
+                                   ]
+                      },
+                      {
+                          "id":  "Z06",
+                          "sub":  "专业课",
+                          "topic":  "齿轮·根切",
+                          "type":  "choice",
+                          "stem":  "标准直齿轮不发生根切的最少齿数是",
+                          "options":  [
+                                          "A. 14",
+                                          "B. 17",
+                                          "C. 20",
+                                          "D. 25"
+                                      ],
+                          "answer":  "B",
+                          "key":  "标准齿轮 z_min=17；小于 17 需变位。",
+                          "tags":  [
+                                       "专业课"
+                                   ]
+                      },
+                      {
+                          "id":  "Z07",
+                          "sub":  "专业课",
+                          "topic":  "轴向固定",
+                          "type":  "choice",
+                          "stem":  "一端双向固定、一端游动的支承方式，主要目的是",
+                          "options":  [
+                                          "A. 提高刚度",
+                                          "B. 便于装配",
+                                          "C. 减小应力集中",
+                                          "D. 补偿热膨胀"
+                                      ],
+                          "answer":  "D",
+                          "key":  "游动端留轴向间隙以补偿热伸长，避免附加轴向力。",
+                          "tags":  [
+                                       "专业课"
+                                   ]
+                      },
+                      {
+                          "id":  "Z08",
+                          "sub":  "专业课",
+                          "topic":  "螺纹·自锁",
+                          "type":  "choice",
+                          "stem":  "螺纹连接的自锁条件是",
+                          "options":  [
+                                          "A. 升角大于摩擦角",
+                                          "B. 升角小于等于摩擦角",
+                                          "C. 升角等于 45°",
+                                          "D. 与升角无关"
+                                      ],
+                          "answer":  "B",
+                          "key":  "λ≤ρ 自锁；故粗牙螺纹自锁性优于细牙。",
+                          "tags":  [
+                                       "专业课"
+                                   ]
+                      },
+                      {
+                          "id":  "Z09",
+                          "sub":  "专业课",
+                          "topic":  "螺栓·受力",
+                          "type":  "choice",
+                          "stem":  "受轴向工作载荷的紧螺栓连接，螺栓总拉力等于",
+                          "options":  [
+                                          "A. 预紧力",
+                                          "B. 工作载荷",
+                                          "C. 预紧力 + 部分工作载荷",
+                                          "D. 剩余预紧力"
+                                      ],
+                          "answer":  "C",
+                          "key":  "F₀ = F″ + C_b/(C_b+C_m)·F；不是简单相加全部工作载荷。",
+                          "tags":  [
+                                       "专业课"
+                                   ]
+                      },
+                      {
+                          "id":  "Z10",
+                          "sub":  "专业课",
+                          "topic":  "联轴器·离合",
+                          "type":  "choice",
+                          "stem":  "需要两轴在运转中能随时分离与结合时，应选用",
+                          "options":  [
+                                          "A. 凸缘联轴器",
+                                          "B. 套筒联轴器",
+                                          "C. 离合器",
+                                          "D. 万向联轴器"
+                                      ],
+                          "answer":  "C",
+                          "key":  "联轴器只能停机分离，运转中离合要用离合器。",
+                          "tags":  [
+                                       "专业课"
+                                   ]
+                      },
+                      {
+                          "id":  "Z11",
+                          "sub":  "专业课",
+                          "topic":  "轮系·定轴",
+                          "type":  "choice",
+                          "stem":  "定轴轮系传动比 i₁ₙ 的符号由",
+                          "options":  [
+                                          "A. 齿轮齿数决定",
+                                          "B. 外啮合齿轮对数决定",
+                                          "C. 模数决定",
+                                          "D. 中心距决定"
+                                      ],
+                          "answer":  "B",
+                          "key":  "每对外啮合改变一次转向；内啮合不改向。",
+                          "tags":  [
+                                       "专业课"
+                                   ]
+                      },
+                      {
+                          "id":  "Z12",
+                          "sub":  "专业课",
+                          "topic":  "轮系·行星",
+                          "type":  "choice",
+                          "stem":  "2K-H 行星轮系的同心条件要求",
+                          "options":  [
+                                          "A. z₃=z₁+z₂",
+                                          "B. z₃=z₁+2z₂",
+                                          "C. z₃=2z₁+z₂",
+                                          "D. z₃=z₁−z₂"
+                                      ],
+                          "answer":  "B",
+                          "key":  "中心距相等 ⇒ z₃=z₁+2z₂；装配条件为 (z₁+z₃)/n_p 为整数。",
+                          "tags":  [
+                                       "专业课"
+                                   ]
+                      },
+                      {
+                          "id":  "Z13",
+                          "sub":  "专业课",
+                          "topic":  "凸轮·基圆",
+                          "type":  "choice",
+                          "stem":  "滚子从动件盘形凸轮机构的基圆半径应",
+                          "options":  [
+                                          "A. 按理论轮廓量取",
+                                          "B. 按实际轮廓量取",
+                                          "C. 按滚子半径量取",
+                                          "D. 任意"
+                                      ],
+                          "answer":  "A",
+                          "key":  "基圆按理论轮廓计算；按实际轮廓算会使压力角偏大。",
+                          "tags":  [
+                                       "专业课"
+                                   ]
+                      },
+                      {
+                          "id":  "Z14",
+                          "sub":  "专业课",
+                          "topic":  "凸轮·压力角",
+                          "type":  "choice",
+                          "stem":  "凸轮机构中减小压力角的常用方法是",
+                          "options":  [
+                                          "A. 减小基圆半径",
+                                          "B. 增大基圆半径",
+                                          "C. 增大滚子半径",
+                                          "D. 提高转速"
+                                      ],
+                          "answer":  "B",
+                          "key":  "基圆越大压力角越小，但机构尺寸变大。",
+                          "tags":  [
+                                       "专业课"
+                                   ]
+                      },
+                      {
+                          "id":  "Z15",
+                          "sub":  "专业课",
+                          "topic":  "四杆·死点",
+                          "type":  "choice",
+                          "stem":  "曲柄摇杆机构出现死点位置时",
+                          "options":  [
+                                          "A. 机构自锁但可借惯性通过",
+                                          "B. 机构立即破坏",
+                                          "C. 传动角最大",
+                                          "D. 压力角最小"
+                                      ],
+                          "answer":  "A",
+                          "key":  "死点处传动角为 0（压力角 90°），靠飞轮惯性或错开相位通过。",
+                          "tags":  [
+                                       "专业课"
+                                   ]
+                      },
+                      {
+                          "id":  "Z16",
+                          "sub":  "专业课",
+                          "topic":  "强度·许用应力",
+                          "type":  "choice",
+                          "stem":  "塑性材料按第三强度理论（最大切应力）建立的强度条件是",
+                          "options":  [
+                                          "A. σ₁≤[σ]",
+                                          "B. σ₁−σ₃≤[σ]",
+                                          "C. σ₁+σ₃≤[σ]",
+                                          "D. σ₁σ₃≤[σ]"
+                                      ],
+                          "answer":  "B",
+                          "key":  "第三强度：σ₁−σ₃≤[σ]；第四强度为等效应力 sqrt(…)。",
+                          "tags":  [
+                                       "专业课"
+                                   ]
+                      },
+                      {
+                          "id":  "T01",
+                          "sub":  "英语",
+                          "topic":  "翻译要点·代词回指",
+                          "type":  "choice",
+                          "stem":  "原文：The new policy was welcomed by the students, but they soon found it hard to follow.\n「they」应译成",
+                          "options":  [
+                                          "A. 它",
+                                          "B. 学生们",
+                                          "C. 他们（保留指代不明）",
+                                          "D. 政策"
+                                      ],
+                          "answer":  "B",
+                          "key":  "代词回指要还原成具体名词，避免「它它它／他们他们」。",
+                          "tags":  [
+                                       "英语"
+                                   ]
+                      },
+                      {
+                          "id":  "T02",
+                          "sub":  "英语",
+                          "topic":  "翻译要点·否定转移",
+                          "type":  "choice",
+                          "stem":  "原文：He did not come because he was ill.\n更常见且符合英语习惯的理解是",
+                          "options":  [
+                                          "A. 他因为病了所以没来",
+                                          "B. 他并非因为病了才来",
+                                          "C. 他没来，而且他病了",
+                                          "D. 他病了但来了"
+                                      ],
+                          "answer":  "A",
+                          "key":  "not…because 的归属要看上下文；口语常用理解是「因为病所以没来」，但严格可能歧义——句中若无逗号常取「并非因为」。本句含 did not come 完整谓语，按「因为病没来」译（要点：不能一律译成「因为不」）。",
+                          "tags":  [
+                                       "英语"
+                                   ]
+                      },
+                      {
+                          "id":  "T03",
+                          "sub":  "英语",
+                          "topic":  "翻译要点·词性转换",
+                          "type":  "choice",
+                          "stem":  "原文：The company made a careful analysis of the market.\n符合中文习惯的译法是",
+                          "options":  [
+                                          "A. 公司做了一个仔细的分析的市场",
+                                          "B. 公司对市场做了仔细的分析",
+                                          "C. 公司仔细地市场分析",
+                                          "D. 市场被公司分析得很仔细"
+                                      ],
+                          "answer":  "B",
+                          "key":  "英语名词 analysis ⇒ 中文常转动词「分析」；形容词 careful ⇒ 副词「仔细地」。",
+                          "tags":  [
+                                       "英语"
+                                   ]
+                      },
+                      {
+                          "id":  "T04",
+                          "sub":  "英语",
+                          "topic":  "翻译要点·比较结构",
+                          "type":  "choice",
+                          "stem":  "原文：He works harder than any other student in his class.\n正确译法",
+                          "options":  [
+                                          "A. 他工作比他班任何学生更努力",
+                                          "B. 他是他班上最努力的学生",
+                                          "C. 他和他班学生一样努力",
+                                          "D. 他比不上任何学生"
+                                      ],
+                          "answer":  "B",
+                          "key":  "比较级 + than any other + 单数 ⇒ 最高级含义，译「最…」。",
+                          "tags":  [
+                                       "英语"
+                                   ]
+                      },
+                      {
+                          "id":  "T05",
+                          "sub":  "英语",
+                          "topic":  "翻译要点·被动转主动",
+                          "type":  "choice",
+                          "stem":  "原文：It is generally believed that reading broadens the mind.\n最自然的译法",
+                          "options":  [
+                                          "A. 它被普遍相信阅读拓宽心灵",
+                                          "B. 人们普遍认为，阅读能开阔眼界",
+                                          "C. 普遍被相信阅读宽了心",
+                                          "D. 阅读被认为拓宽了普遍的心灵"
+                                      ],
+                          "answer":  "B",
+                          "key":  "It is believed that ⇒ 加泛指主语「人们／大家」，避免「被」字堆叠；broaden the mind＝开阔眼界。",
+                          "tags":  [
+                                       "英语"
+                                   ]
+                      },
+                      {
+                          "id":  "T06",
+                          "sub":  "英语",
+                          "topic":  "翻译要点·四字格",
+                          "type":  "choice",
+                          "stem":  "原文：The two countries have maintained friendly relations for decades.\n更地道的译法",
+                          "options":  [
+                                          "A. 两国已经保持了数十年的友好关系",
+                                          "B. 数十年来两国关系友好",
+                                          "C. 两国友好地维持了几十年",
+                                          "D. 友好关系被两国维持了几十年"
+                                      ],
+                          "answer":  "A",
+                          "key":  "have maintained…for decades ⇒ 「数十年来一直保持」，把时间状语调前更顺。",
+                          "tags":  [
+                                       "英语"
+                                   ]
+                      },
+                      {
+                          "id":  "T07",
+                          "sub":  "英语",
+                          "topic":  "翻译要点·词义选择",
+                          "type":  "choice",
+                          "stem":  "原文：The engineer addressed the problem promptly.\n「addressed」应译成",
+                          "options":  [
+                                          "A. 演讲",
+                                          "B. 处理/解决",
+                                          "C. 写给",
+                                          "D. 称呼"
+                                      ],
+                          "answer":  "B",
+                          "key":  "address a problem＝处理问题（不是「演讲」）。",
+                          "tags":  [
+                                       "英语"
+                                   ]
+                      },
+                      {
+                          "id":  "T08",
+                          "sub":  "英语",
+                          "topic":  "翻译要点·数字与单位",
+                          "type":  "choice",
+                          "stem":  "原文：Output rose by 30%, to 1.3 million units.\n正确译法",
+                          "options":  [
+                                          "A. 产量增长到 30%，即 130 万台",
+                                          "B. 产量增长了 30%，达到 130 万台",
+                                          "C. 产量增加了 130 万台，达 30%",
+                                          "D. 产量增长 130 万台"
+                                      ],
+                          "answer":  "B",
+                          "key":  "rise by＝增长了多少（幅度）；to＝达到（终值）；million units＝万台/台数单位。",
+                          "tags":  [
+                                       "英语"
+                                   ]
+                      },
+                      {
+                          "id":  "E31",
+                          "sub":  "英语",
+                          "topic":  "模板·建议信开头",
+                          "type":  "fill",
+                          "stem":  "建议信开头：I am writing to ____ (表示我对…的关注) the current situation of campus food waste.",
+                          "answer":  "express my concern about",
+                          "accept":  [
+                                         "express my concern over",
+                                         "show my concern about"
+                                     ],
+                          "key":  "固定句式：I am writing to express my concern about…；concern 后接 about/over。",
+                          "tags":  [
+                                       "英语"
+                                   ]
+                      },
+                      {
+                          "id":  "E32",
+                          "sub":  "英语",
+                          "topic":  "模板·建议信结尾",
+                          "type":  "fill",
+                          "stem":  "建议信结尾：I would ____ it if you could take my suggestions into consideration.",
+                          "answer":  "appreciate",
+                          "accept":  [
+                                         "be grateful for"
+                                     ],
+                          "key":  "I would appreciate it if… 中 it 不可省。",
+                          "tags":  [
+                                       "英语"
+                                   ]
+                      },
+                      {
+                          "id":  "E33",
+                          "sub":  "英语",
+                          "topic":  "模板·图表描述",
+                          "type":  "fill",
+                          "stem":  "图表描述：As is vividly ____ in the chart, the number of private cars has risen sharply.",
+                          "answer":  "depicted",
+                          "accept":  [
+                                         "shown",
+                                         "illustrated"
+                                     ],
+                          "key":  "As is vividly depicted/shown in the chart 是万能图表开头。",
+                          "tags":  [
+                                       "英语"
+                                   ]
+                      },
+                      {
+                          "id":  "E34",
+                          "sub":  "英语",
+                          "topic":  "模板·原因分析",
+                          "type":  "fill",
+                          "stem":  "原因分析：Several factors ____ for this phenomenon, among which the most important one is…",
+                          "answer":  "account",
+                          "accept":  [
+                                         "are responsible"
+                                     ],
+                          "key":  "account for＝解释、说明；are responsible for＝造成。",
+                          "tags":  [
+                                       "英语"
+                                   ]
+                      },
+                      {
+                          "id":  "E35",
+                          "sub":  "英语",
+                          "topic":  "模板·利弊论证",
+                          "type":  "fill",
+                          "stem":  "利弊论证：On the one hand, it brings convenience; on the ____ hand, it may cause problems.",
+                          "answer":  "other",
+                          "accept":  [
+
+                                     ],
+                          "key":  "On the one hand… on the other hand… 成对使用，第二个不加 the one。",
+                          "tags":  [
+                                       "英语"
+                                   ]
+                      },
+                      {
+                          "id":  "E36",
+                          "sub":  "英语",
+                          "topic":  "模板·结论段",
+                          "type":  "fill",
+                          "stem":  "结论段：Only by doing so ____ we build a more harmonious campus.",
+                          "answer":  "can",
+                          "accept":  [
+
+                                     ],
+                          "key":  "Only + 状语置于句首 ⇒ 部分倒装：Only by doing so can we…",
+                          "tags":  [
+                                       "英语"
+                                   ]
                       }
                   ]
 };
