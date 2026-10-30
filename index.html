@@ -41,7 +41,7 @@ input[type=text]{width:100%;background:#1d222c;border:1px solid var(--line);colo
 </header>
 <main id="app"></main>
 <div id="toast"></div>
-<script src="bank.js?v=1793268478" onerror="window.__noBank=1"></script>
+<script src="bank.js?v=1793357090" onerror="window.__noBank=1"></script>
 <script>
 'use strict';
 /* ---------- 工具 ---------- */
@@ -63,6 +63,16 @@ function histRaw(){try{var v=localStorage.getItem(HKEY);return v?JSON.parse(v):{
 function histSet(o){try{localStorage.setItem(HKEY,JSON.stringify(o));return true}catch(e){storeOK=false;return false}}
 function lastExp(){try{return localStorage.getItem('qz_last_exp')||''}catch(e){return ''}}
 function pending(){var a=recsRaw(),w=lastExp(),n=0;for(var i=0;i<a.length;i++)if(!w||a[i].ts>w)n++;return n}
+/* 【2026-10-30 新增】今日统计：今日已答 / 今日正确率（只算已判的题） */
+function todayStat(){
+  var a=recsRaw(),n=0,judged=0,ok=0;
+  for(var i=0;i<a.length;i++){var r=a[i];if(String(r.ts||'').slice(0,10)!==TD)continue;
+    n++; if(r.judged){judged++; if(r.ok)ok++}}
+  return {n:n,judged:judged,ok:ok};
+}
+function todayRecs(){
+  return recsRaw().filter(function(r){return String(r.ts||'').slice(0,10)===TD});
+}
 
 /* ---------- 归一化（只用于选择题字母比对）---------- */
 function norm(s){s=String(s==null?'':s);try{s=s.normalize('NFKC')}catch(e){}return s.replace(/\s+/g,'').toUpperCase()}
@@ -83,12 +93,19 @@ var H=histRaw();
 /* 【2026-10-29 用户口径】备用机只做数学诊断题；顺序随机；每天目标 30–60 题 */
 var DAILY_MIN=30, DAILY_MAX=60;
 function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
-function buildQueue(){
-  var pool=ALL.filter(function(q){return (q.sub||'')==='数学'});
-  if(!pool.length)pool=ALL.slice();
+/* 【2026-10-30 用户口径】前 30 题必为数学；第 31 题起三科（数学/政治/英语）混放 */
+var MATH_FIRST=30;
+function ord(list){
   var due=[],later=[];
-  pool.forEach(function(q){var h=H[q.id];if(!h||!h.due||h.due<=TD)due.push(q);else later.push(q)});
+  list.forEach(function(q){var h=H[q.id];if(!h||!h.due||h.due<=TD)due.push(q);else later.push(q)});
   return shuffle(due).concat(shuffle(later));
+}
+function buildQueue(){
+  var M=ord(ALL.filter(function(q){return (q.sub||'')==='数学'}));
+  var O=ord(ALL.filter(function(q){return (q.sub||'')!=='数学'}));
+  var head=M.slice(0,MATH_FIRST);
+  var tail=shuffle(M.slice(MATH_FIRST).concat(O));
+  return head.concat(tail);
 }
 var S={set:buildQueue(),qi:0,judged:false,t0:Date.now(),mine:'',mult:[],res:[],done:false};
 
@@ -100,7 +117,10 @@ function refreshBar(){
   var okn=0,ch=0;
   for(var i=0;i<S.res.length;i++){var r=S.res[i];if(r.type!=='fill'){ch++;if(r.ok)okn++}}
   var pd=pending();
+  var t=todayStat();
   $('st').innerHTML='本次已刷 '+S.res.length+' / 目标 '+DAILY_MIN+'–'+DAILY_MAX+' 题 · 选择 '+okn+'/'+ch+
+    '<br><b>今日已答 '+t.n+' 题 · 正确率 '+(t.judged? (Math.round(100*t.ok/t.judged)+'%') : '—')+
+    '</b>（判过 '+t.judged+' 题，对 '+t.ok+'）'+
     ' · <b class="'+(pd?'warn':'ok')+'" id="pend" onclick="renderRecords()">待导出 '+pd+'</b>'+
     (storeOK?'':' · <span class="bad">本地存储不可用</span>');
 }
@@ -288,6 +308,33 @@ function doExport(all,silent){
   toast('已自动存一份：'+list.length+' 条（Download）');
   refreshBar();
 }
+/* 【2026-10-30 新增】只导今天；可选导完清零今天的记录（复习历史 histRaw 不动） */
+function saveList(list,label){
+  if(!list.length){toast('今天还没有记录');return false}
+  var txt=jsonl(list), d=new Date();
+  var name='quizrec-'+ymd(d).replace(/-/g,'')+'-'+p2(d.getHours())+p2(d.getMinutes())+'-'+list.length+'.jsonl';
+  try{
+    var blob=new Blob([txt],{type:'application/json;charset=utf-8'});
+    var a=document.createElement('a');
+    a.href=URL.createObjectURL(blob);a.download=name;
+    document.body.appendChild(a);a.click();
+    setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},2000);
+  }catch(e){toast('下载失败，用「显示/复制 JSONL」');return false}
+  toast(label+'：'+list.length+' 条');
+  return true;
+}
+function exportToday(){ saveList(todayRecs(),'已导出今日'); refreshBar(); }
+function exportTodayClear(){
+  var list=todayRecs();
+  if(!list.length){toast('今天还没有记录');return}
+  if(!confirm('导出今日 '+list.length+' 条，然后清零今天的记录？（复习进度保留）'))return;
+  if(!saveList(list,'已导出今日'))return;
+  var keep=recsRaw().filter(function(r){return String(r.ts||'').slice(0,10)!==TD});
+  recsSet(keep);
+  S.res=[];S.qi=0;S.judged=false;S.set=buildQueue();
+  toast('今日已清零，可继续刷');
+  renderRecords();
+}
 
 /* ---------- 记录页 ---------- */
 function renderRecords(){
@@ -295,7 +342,10 @@ function renderRecords(){
   var un=arr.filter(function(r){return !lastExp()||r.ts>lastExp()});
   var html='<div class="card"><div class="stem">本机记录 '+arr.length+' 条 · 待导出 '+un.length+' 条</div>';
   html+='<div class="dim" style="margin-top:6px">导出后文件在 Download，手机连电脑时自动并进答题台账。</div>';
+  var tn=todayRecs().length;
   html+='<button class="btn wide" style="margin-top:12px" onclick="doExport(false)">导出待导出（'+un.length+'）</button>';
+  html+='<button class="btn wide" style="margin-top:8px" onclick="exportToday()">导出今日（'+tn+' 条）</button>';
+  html+='<button class="btn ghost wide" onclick="exportTodayClear()">导出今日并清零（'+tn+' 条）</button>';
   html+='<button class="btn ghost wide" onclick="doExport(true)">导出全部（'+arr.length+'）</button>';
   html+='<button class="btn ghost wide" onclick="showText()">显示 / 复制 JSONL 文本</button>';
   html+='<div id="txt"></div>';
