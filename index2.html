@@ -41,7 +41,7 @@ input[type=text]{width:100%;background:#1d222c;border:1px solid var(--line);colo
 </header>
 <main id="app"></main>
 <div id="toast"></div>
-<script src="bank.js?v=1793357866" onerror="window.__noBank=1"></script>
+<script src="bank.js?v=1793357903" onerror="window.__noBank=1"></script>
 <script>
 'use strict';
 /* ---------- 工具 ---------- */
@@ -101,10 +101,15 @@ function ord(list){
   return shuffle(due).concat(shuffle(later));
 }
 function buildQueue(){
-  var M=ord(ALL.filter(function(q){return (q.sub||'')==='数学'}));
-  var O=ord(ALL.filter(function(q){return (q.sub||'')!=='数学'}));
+  /* 【2026-10-30 用户口径】数学选填**同一题只出现一次**（做过就不再推，除非点名的重点题）；
+     英语/政治/专业课仍按到期重复。数学新题不足时，尾部自动让位给其他三科。 */
+  var answered={};
+  try{recsRaw().forEach(function(r){if(r.qid)answered[r.qid]=1})}catch(e){}
+  var M=ord(ALL.filter(function(q){return (q.sub||'')==='数学' && !answered[q.id] && !q.pin}));
+  var P=ord(ALL.filter(function(q){return (q.sub||'')!=='数学'}));
+  var PIN=ord(ALL.filter(function(q){return q.pin}));
   var head=M.slice(0,MATH_FIRST);
-  var tail=shuffle(M.slice(MATH_FIRST).concat(O));
+  var tail=shuffle(M.slice(MATH_FIRST).concat(PIN).concat(P));
   return head.concat(tail);
 }
 var S={set:buildQueue(),qi:0,judged:false,t0:Date.now(),mine:'',mult:[],res:[],done:false};
