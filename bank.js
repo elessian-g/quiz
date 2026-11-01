@@ -1711,7 +1711,7 @@ window.QBANK = {
                       {
                           "id":  "Q1029-34",
                           "sub":  "数学",
-                          "topic":  "行列式与逆",
+                          "topic":  "行列式·数乘与逆",
                           "type":  "choice",
                           "stem":  "A 为 3 阶矩阵、|A|=2，则 |2A⁻¹| = ____",
                           "options":  [
@@ -1722,7 +1722,7 @@ window.QBANK = {
                                       ],
                           "answer":  "A",
                           "key":  "|kA⁻¹|=k³/|A|=8/2=4（3 阶用三次方）",
-                          "kp":  "#41",
+                          "kp":  "#40",
                           "level":  "S",
                           "tags":  [
                                        "线代"
