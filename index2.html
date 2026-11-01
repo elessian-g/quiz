@@ -44,7 +44,7 @@ input[type=text]{width:100%;background:#1d222c;border:1px solid var(--line);colo
 </header>
 <main id="app"></main>
 <div id="toast"></div>
-<script src="bank.js?v=1793542541" onerror="window.__noBank=1"></script>
+<script src="bank.js?v=1793544678" onerror="window.__noBank=1"></script>
 <script>
 'use strict';
 /* ---------- 工具 ---------- */
@@ -114,7 +114,7 @@ function buildQueue(){
   try{recsRaw().forEach(function(r){if(r.qid)answered[r.qid]=1})}catch(e){}
   var M=ord(ALL.filter(function(q){return (q.sub||'')==='数学' && !answered[q.id] && !q.pin}));
   var P=ord(ALL.filter(function(q){return (q.sub||'')!=='数学'}));
-  var PIN=ord(ALL.filter(function(q){return q.pin}));
+  var PIN=ALL.filter(function(q){return q.pin}); /* 题组保序：不能过 ord()，ord 里面有 shuffle */
   /* 四科配额：数学取未做前 20 道，政治 5 / 专业课 3 / 英语 2 从各自的到期队列里取 */
   var used={}, mathHead=M.slice(0, QUOTA['数学']||20);
   mathHead.forEach(function(q){used[q.id]=1});
@@ -145,7 +145,13 @@ function buildQueue(){
   var rest=[];
   M.forEach(function(q){if(!used[q.id])rest.push(q)});
   P.forEach(function(q){if(!used[q.id])rest.push(q)});
-  var tail=shuffle(PIN.concat(rest));
+  /* 【2026-11-01 用户口径】带 pin 的「计算题组」必须**整组连着出**，不许被洗散：
+     组顺序按 pin 值首次出现排，组内保持题库原序（M1102-101→105 这样） */
+  var pg={}, pgOrder=[];
+  PIN.forEach(function(q){var g=q.pin||'_';if(!pg[g]){pg[g]=[];pgOrder.push(g);}pg[g].push(q);});
+  var pinBlock=[];
+  pgOrder.forEach(function(g){pinBlock=pinBlock.concat(pg[g]);});
+  var tail=pinBlock.concat(shuffle(rest));
   return head.concat(tail);
 }
 var S={set:buildQueue(),qi:0,judged:false,t0:Date.now(),mine:'',mult:[],res:[],done:false};
