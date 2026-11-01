@@ -41,7 +41,7 @@ input[type=text]{width:100%;background:#1d222c;border:1px solid var(--line);colo
 </header>
 <main id="app"></main>
 <div id="toast"></div>
-<script src="bank.js?v=1793453216" onerror="window.__noBank=1"></script>
+<script src="bank.js?v=1793502450" onerror="window.__noBank=1"></script>
 <script>
 'use strict';
 /* ---------- 工具 ---------- */
@@ -150,6 +150,7 @@ function renderQ(){
     if(type==='multi')html+='<div class="sub" style="margin:4px 0 0">多选：选完点提交</div>';
     html+='<button class="btn wide" style="margin-top:12px" onclick="submitChoice()">提交</button>';
   }else{
+    html+='<div class="sub" style="margin:2px 0 4px;color:var(--warn)">⚠ 填空不计分，只作练习 · 对错由电脑端另行判</div>';
     html+='<input id="fill" type="text" autocomplete="off" spellcheck="false" placeholder="填答案；符号打不出就写文字（如「二分之根号三」）" oninput="S.mine=this.value">';
     html+='<button class="btn wide" style="margin-top:6px" onclick="submitFill()">提交</button>';
   }
