@@ -44,7 +44,7 @@ input[type=text]{width:100%;background:#1d222c;border:1px solid var(--line);colo
 </header>
 <main id="app"></main>
 <div id="toast"></div>
-<script src="bank.js?v=1793538665" onerror="window.__noBank=1"></script>
+<script src="bank.js?v=1793542541" onerror="window.__noBank=1"></script>
 <script>
 'use strict';
 /* ---------- 工具 ---------- */
@@ -97,8 +97,11 @@ var H=histRaw();
 /* 【2026-10-29 用户口径】备用机只做数学诊断题；顺序随机；每天目标 30–60 题 */
 var DAILY_MIN=30, DAILY_MAX=60;
 function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
-/* 【2026-10-30 用户口径】前 30 题必为数学；第 31 题起三科（数学/政治/英语）混放 */
-var MATH_FIRST=30;
+/* 【2026-11-01 改 · 哈尼签字 A】配额置顶，取代「前 30 题必为数学」
+   旧规则 head=M.slice(0,30)：队首整段被数学占满，第 31 位起才是其他三科。
+   用户每天做 20 题 ⇒ 政治/专业课永远轮不到（结构性饿死，非偶发）。
+   新规则：四科按配额交错占最前 30 位，做到第 20 题时政治/专业课/英语都已出现。 */
+var QUOTA={'数学':20,'政治':5,'专业课':3,'英语':2};
 function ord(list){
   var due=[],later=[];
   list.forEach(function(q){var h=H[q.id];if(!h||!h.due||h.due<=TD)due.push(q);else later.push(q)});
@@ -112,8 +115,37 @@ function buildQueue(){
   var M=ord(ALL.filter(function(q){return (q.sub||'')==='数学' && !answered[q.id] && !q.pin}));
   var P=ord(ALL.filter(function(q){return (q.sub||'')!=='数学'}));
   var PIN=ord(ALL.filter(function(q){return q.pin}));
-  var head=M.slice(0,MATH_FIRST);
-  var tail=shuffle(M.slice(MATH_FIRST).concat(PIN).concat(P));
+  /* 四科配额：数学取未做前 20 道，政治 5 / 专业课 3 / 英语 2 从各自的到期队列里取 */
+  var used={}, mathHead=M.slice(0, QUOTA['数学']||20);
+  mathHead.forEach(function(q){used[q.id]=1});
+  var others=[], pools={};
+  ['政治','专业课','英语'].forEach(function(sub){
+    var n=QUOTA[sub]||0, got=0, arr=[];
+    for(var i=0;i<P.length && got<n;i++){
+      if((P[i].sub||'')===sub && !used[P[i].id]){ arr.push(P[i]); used[P[i].id]=1; got++; }
+    }
+    pools[sub]=arr;
+  });
+  /* 非数学三科轮转排列（政/专/英/政/专/英…），避免英语 2 道全被推到 20 位之后 */
+  var more=true;
+  while(more){
+    more=false;
+    ['政治','专业课','英语'].forEach(function(sub){
+      if(pools[sub] && pools[sub].length){ others.push(pools[sub].shift()); more=true; }
+    });
+  }
+  /* 均匀交错，而不是整体洗牌：洗牌有可能把政治全推到 21 位以后，等于问题没解决 */
+  var head=[], mi=0, oi=0;
+  var step=others.length ? ((QUOTA['数学']||20)+others.length)/others.length : 1e9;
+  var nextAt=Math.max(1, Math.round(step*0.6));
+  while(mi<mathHead.length || oi<others.length){
+    if(oi<others.length && (mi>=mathHead.length || head.length+1>=nextAt)){ head.push(others[oi++]); nextAt+=step; }
+    else head.push(mathHead[mi++]);
+  }
+  var rest=[];
+  M.forEach(function(q){if(!used[q.id])rest.push(q)});
+  P.forEach(function(q){if(!used[q.id])rest.push(q)});
+  var tail=shuffle(PIN.concat(rest));
   return head.concat(tail);
 }
 var S={set:buildQueue(),qi:0,judged:false,t0:Date.now(),mine:'',mult:[],res:[],done:false};
