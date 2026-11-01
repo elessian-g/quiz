@@ -44,7 +44,7 @@ input[type=text]{width:100%;background:#1d222c;border:1px solid var(--line);colo
 </header>
 <main id="app"></main>
 <div id="toast"></div>
-<script src="bank.js?v=1793528395" onerror="window.__noBank=1"></script>
+<script src="bank.js?v=1793528947" onerror="window.__noBank=1"></script>
 <script>
 'use strict';
 /* ---------- 工具 ---------- */
@@ -139,9 +139,14 @@ function refreshBar(){
 function wbStale(){return String((window.QBANK&&window.QBANK.id)||'')!==WB_BUILD}
 function wbFresh(){
   var bar=$('wbf');if(!bar)return;
+  if(!window.QBANK||!window.QBANK.id){
+    bar.style.display='block';
+    bar.innerHTML='<b>⚠ 题库没载入</b>（离线或缓存异常）→ <b>点这里重新载入</b>';
+    bar.onclick=wbHardReset;return;
+  }
   if(!wbStale()){bar.style.display='none';return}
   bar.style.display='block';
-  bar.innerHTML='<b>⚠ 显示的是旧缓存题库</b>（'+esc(String((window.QBANK&&window.QBANK.id)||'?'))+'／'+ALL.length+
+  bar.innerHTML='<b>⚠ 显示的是旧缓存题库</b>（'+esc(String(QBANK.id))+'／'+ALL.length+
     ' 题，应为 '+WB_BUILD+'）→ <b>点这里清掉缓存并重新载入</b>';
   bar.onclick=wbHardReset;
 }
