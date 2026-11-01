@@ -423,7 +423,7 @@ window.QBANK = {
                           "topic":  "分部积分",
                           "type":  "choice",
                           "stem":  "∫ x eˣ dx = ____（填结果，含 +C）",
-                          "key":  "∫xe^x dx = xe^x − e^x + C = (x−1)e^x + C｜也可写作：(x−1)e^x+C、(x-1)e^x＋C 【错因】分部：xeˣ−eˣ+C=(x−1)eˣ+C；x eˣ 是漏第二项；eˣ(x+1) 是符号反；最后一项是把 eˣ 当 x",
+                          "key":  "∫xe^x dx = xe^x − e^x + C = (x−1)e^x + C｜也可写作：(x-1)e^x＋C 【错因】分部：xeˣ−eˣ+C=(x−1)eˣ+C；x eˣ 是漏第二项；eˣ(x+1) 是符号反；最后一项是把 eˣ 当 x",
                           "answer":  "B",
                           "accept":  [
                                          "(x−1)e^x+C",
@@ -548,7 +548,7 @@ window.QBANK = {
                           "topic":  "旋转体（柱壳法）",
                           "type":  "choice",
                           "stem":  "y=f(x)≥0 绕 y 轴旋转，V=2π∫ₐᵇ ____ dx（填被积函数）",
-                          "key":  "柱壳法被积是 x·f(x)；绕 x 轴才是 f²｜也可写作：xf(x)、x*f(x) 【错因】柱壳法被积是 x·f(x)；f² 是绕 x 轴（圆盘法）；x²f(x) 是多乘一个 x",
+                          "key":  "柱壳法被积是 x·f(x)；绕 x 轴才是 f²｜也可写作：xf(x) 【错因】柱壳法被积是 x·f(x)；f² 是绕 x 轴（圆盘法）；x²f(x) 是多乘一个 x",
                           "answer":  "B",
                           "accept":  [
                                          "xf(x)",
@@ -654,7 +654,7 @@ window.QBANK = {
                           "topic":  "极坐标面积元",
                           "type":  "choice",
                           "stem":  "极坐标下 dσ = ____（填 r dr dθ 形式）",
-                          "key":  "漏 r 是最常见错误（2018 选 6）｜也可写作：r drdθ 【错因】dσ = r dr dθ；漏 r 是最常见错误（2018 选 6）；r dθ 少 dr；r² 多一次",
+                          "key":  "漏 r 是最常见错误（2018 选 6） 【错因】dσ = r dr dθ；漏 r 是最常见错误（2018 选 6）；r dθ 少 dr；r² 多一次",
                           "answer":  "D",
                           "accept":  [
                                          "r dr dθ",
@@ -675,7 +675,7 @@ window.QBANK = {
                           "topic":  "可分离变量",
                           "type":  "choice",
                           "stem":  "y′=2xy 的通解 y = ____（填 C 表达式）",
-                          "key":  "dy/y=2x dx ⇒ ln|y|=x²+C ⇒ y=Ce^{x²}｜也可写作：Ce^{x²} 【错因】dy/y=2x dx ⇒ ln|y|=x²+C；Ce^(2x) 是把 2x 当指数；C e^x² 同义但排版错；C ln x 完全错",
+                          "key":  "dy/y=2x dx ⇒ ln|y|=x²+C ⇒ y=Ce^{x²} 【错因】dy/y=2x dx ⇒ ln|y|=x²+C；Ce^(2x) 是把 2x 当指数；Ce^(x²/2) 是把 2x 积成 x²/2（漏乘 2）；C ln x 完全错",
                           "answer":  "C",
                           "accept":  [
                                          "Ce^{x²}"
@@ -1465,7 +1465,7 @@ window.QBANK = {
                                           "x²·f(x)"
                                       ],
                           "answer":  "C",
-                          "key":  "柱壳法被积是 x·f(x)；绕 x 轴才是 f²｜也可写作：xf(x)、x*f(x) 【错因】同 M1028-32",
+                          "key":  "柱壳法被积是 x·f(x)；绕 x 轴才是 f²｜也可写作：xf(x) 【错因】同 M1028-32",
                           "kp":  "#21",
                           "level":  "S",
                           "tags":  [
@@ -2929,7 +2929,7 @@ window.QBANK = {
                           "type":  "choice",
                           "stem":  "lim(x→0) (cos x)^(1/x²) = ____（可填 e^(−1/2)）",
                           "answer":  "A",
-                          "key":  "取对数：ln cos x ≈ −x²/2 ⇒ 指数 → −1/2 ⇒ e^(−1/2)。｜也可写作：e^{−1/2}、1/√e、e的-1/2次方 【错因】取对数 (ln cos x)/x² → −1/2 ⇒ e^(−1/2)；1 是漏极限；e^(−1) 是把系数当 −1",
+                          "key":  "取对数：ln cos x ≈ −x²/2 ⇒ 指数 → −1/2 ⇒ e^(−1/2)。｜也可写作：1/√e、e的-1/2次方 【错因】取对数 (ln cos x)/x² → −1/2 ⇒ e^(−1/2)；1 是漏极限；e^(−1) 是把系数当 −1",
                           "tags":  [
                                        "错题本"
                                    ],
