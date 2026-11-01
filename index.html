@@ -30,6 +30,8 @@ input[type=text]{width:100%;background:#1d222c;border:1px solid var(--line);colo
 .res{margin-top:12px;padding-top:10px;border-top:1px dashed var(--line);font-size:15px;line-height:1.8}
 .ok{color:var(--ok)}.bad{color:var(--bad)}.dim{color:var(--dim)}.warn{color:var(--warn)}
 .mono{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;background:#0b0d11;border-radius:8px;padding:8px;word-break:break-all;max-height:220px;overflow:auto;white-space:pre-wrap;width:100%}
+.stalebar{display:none;margin:8px 0 2px;padding:9px 12px;border-radius:10px;background:#3a2213;border:1px solid #8a5320;color:#ffcea1;font-size:14px;line-height:1.6;cursor:pointer}
+.stalebar b{color:#ffb26b}
 #toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%);background:#2a3242;color:#fff;padding:10px 16px;border-radius:999px;font-size:14px;opacity:0;transition:opacity .25s;pointer-events:none;z-index:99}
 #toast.on{opacity:1}
 </style>
@@ -38,10 +40,11 @@ input[type=text]{width:100%;background:#1d222c;border:1px solid var(--line);colo
 <header>
   <div class="h1"><span id="bk">题库</span><span class="sub" id="bd"></span></div>
   <div class="sub" id="st">载入中…</div>
+  <div class="stalebar" id="wbf"></div>
 </header>
 <main id="app"></main>
 <div id="toast"></div>
-<script src="bank.js?v=1793502624" onerror="window.__noBank=1"></script>
+<script src="bank.js?v=1793528395" onerror="window.__noBank=1"></script>
 <script>
 'use strict';
 /* ---------- 工具 ---------- */
@@ -84,6 +87,7 @@ function judgeChoice(q,mine){
 
 /* ---------- 题库 ---------- */
 var DEMO={id:'demo',title:'题库未加载',questions:[{id:'demo-1',sub:'数学',topic:'极限',type:'choice',stem:'占位题：请把 题库.js 放到同目录。',options:['A. 好','B. 收到'],answer:'A'}]};
+var WB_BUILD='2026-11-02';   /* 与 bank_src.json 的 id 对齐；不一致即判定为旧缓存 */
 var BANK=(window.QBANK&&window.QBANK.questions&&window.QBANK.questions.length)?window.QBANK:DEMO;
 var ALL=BANK.questions.slice();
 var TD=ymd(new Date());
@@ -128,6 +132,27 @@ function refreshBar(){
     '</b>（判过 '+t.judged+' 题，对 '+t.ok+'）'+
     ' · <b class="'+(pd?'warn':'ok')+'" id="pend" onclick="renderRecords()">待导出 '+pd+'</b>'+
     (storeOK?'':' · <span class="bad">本地存储不可用</span>');
+  wbFresh();
+}
+
+/* ---------- 旧缓存自检：题库日期与页面版本不一致就提示一键清缓存 ---------- */
+function wbStale(){return String((window.QBANK&&window.QBANK.id)||'')!==WB_BUILD}
+function wbFresh(){
+  var bar=$('wbf');if(!bar)return;
+  if(!wbStale()){bar.style.display='none';return}
+  bar.style.display='block';
+  bar.innerHTML='<b>⚠ 显示的是旧缓存题库</b>（'+esc(String((window.QBANK&&window.QBANK.id)||'?'))+'／'+ALL.length+
+    ' 题，应为 '+WB_BUILD+'）→ <b>点这里清掉缓存并重新载入</b>';
+  bar.onclick=wbHardReset;
+}
+function wbHardReset(){
+  if(!confirm('将清空本站缓存并重新载入，答题记录不受影响。继续？'))return;
+  toast('正在清缓存…');
+  var jobs=[];
+  if(window.caches&&caches.keys)jobs.push(caches.keys().then(function(ks){return Promise.all(ks.map(function(k){return caches.delete(k)}))}));
+  if(navigator.serviceWorker&&navigator.serviceWorker.getRegistrations)jobs.push(navigator.serviceWorker.getRegistrations().then(function(rs){return Promise.all(rs.map(function(r){return r.unregister()}))}));
+  var go=function(){location.replace(location.pathname+'?fresh='+Date.now())};
+  try{Promise.all(jobs).then(go,go)}catch(e){go()}
 }
 
 /* ---------- 渲染题 ---------- */
@@ -370,7 +395,18 @@ function clearRecs(){
 }
 
 /* ---------- PWA ---------- */
-if("serviceWorker" in navigator){navigator.serviceWorker.register("sw.js").catch(function(e){})}
+if("serviceWorker" in navigator){
+  navigator.serviceWorker.register("sw.js").then(function(reg){
+    try{reg.update()}catch(e){}
+    document.addEventListener("visibilitychange",function(){if(!document.hidden){try{reg.update()}catch(e){}}});
+  }).catch(function(e){});
+  navigator.serviceWorker.addEventListener("controllerchange",function(){
+    var once=false;try{once=!!sessionStorage.getItem("wb_sw_reload")}catch(e){}
+    if(once)return;
+    try{sessionStorage.setItem("wb_sw_reload","1")}catch(e){}
+    setTimeout(function(){location.reload()},120);
+  });
+}
 /* ---------- 启动 ---------- */
 renderQ();
 if(/[?&]export=1/.test(location.search)){setTimeout(function(){doExport(true,true)},900)}
