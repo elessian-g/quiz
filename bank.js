@@ -18,7 +18,11 @@ window.QBANK = {
                           "key":  "物质唯一特性是客观实在性；运动、可知性是属性但不是「唯一特性」。",
                           "tags":  [
                                        "政治"
-                                   ]
+                                   ],
+                          "_cond":  2,
+                          "_simp":  0,
+                          "df_src":  "baseline",
+                          "df":  60
                       },
                       {
                           "id":  "P03",
@@ -36,7 +40,11 @@ window.QBANK = {
                           "key":  "量变是质变的必要准备、质变是量变的必然结果；但「必然引起」需度被突破。",
                           "tags":  [
                                        "政治"
-                                   ]
+                                   ],
+                          "_cond":  2,
+                          "_simp":  0,
+                          "df_src":  "baseline",
+                          "df":  60
                       },
                       {
                           "id":  "P04",
@@ -54,7 +62,11 @@ window.QBANK = {
                           "key":  "共性寓于个性之中（普遍性寓于特殊性）。",
                           "tags":  [
                                        "政治"
-                                   ]
+                                   ],
+                          "_cond":  1,
+                          "_simp":  0,
+                          "df_src":  "baseline",
+                          "df":  60
                       },
                       {
                           "id":  "P05",
@@ -72,7 +84,11 @@ window.QBANK = {
                           "key":  "意识能动性有条件和范围，不能直接创造物质，也不能决定物质。",
                           "tags":  [
                                        "政治"
-                                   ]
+                                   ],
+                          "_cond":  1,
+                          "_simp":  0,
+                          "df_src":  "baseline",
+                          "df":  60
                       },
                       {
                           "id":  "P06",
@@ -90,7 +106,11 @@ window.QBANK = {
                           "key":  "使用价值与价值是商品二因素；具体/抽象劳动是劳动二重性。",
                           "tags":  [
                                        "政治"
-                                   ]
+                                   ],
+                          "_cond":  1,
+                          "_simp":  0,
+                          "df_src":  "baseline",
+                          "df":  60
                       },
                       {
                           "id":  "P07",
@@ -108,7 +128,11 @@ window.QBANK = {
                           "key":  "剩余价值在生产中由雇佣工人的剩余劳动创造。",
                           "tags":  [
                                        "政治"
-                                   ]
+                                   ],
+                          "_cond":  1,
+                          "_simp":  0,
+                          "df_src":  "baseline",
+                          "df":  60
                       },
                       {
                           "id":  "P08",
@@ -126,7 +150,11 @@ window.QBANK = {
                           "key":  "是「生产相对过剩」——相对于劳动群众有支付能力的需求而言。",
                           "tags":  [
                                        "政治"
-                                   ]
+                                   ],
+                          "_cond":  1,
+                          "_simp":  0,
+                          "df_src":  "baseline",
+                          "df":  60
                       },
                       {
                           "id":  "P09",
@@ -144,7 +172,11 @@ window.QBANK = {
                           "key":  "活的灵魂三项：实事求是、群众路线、独立自主。",
                           "tags":  [
                                        "政治"
-                                   ]
+                                   ],
+                          "_cond":  1,
+                          "_simp":  0,
+                          "df_src":  "baseline",
+                          "df":  60
                       },
                       {
                           "id":  "P11",
@@ -162,7 +194,11 @@ window.QBANK = {
                           "key":  "十九大表述；旧的「物质文化需要／落后社会生产」已作废。",
                           "tags":  [
                                        "政治"
-                                   ]
+                                   ],
+                          "_cond":  2,
+                          "_simp":  0,
+                          "df_src":  "baseline",
+                          "df":  60
                       },
                       {
                           "id":  "P15",
@@ -180,7 +216,11 @@ window.QBANK = {
                           "key":  "注意是「两句话」整体表述，缺一不可。",
                           "tags":  [
                                        "政治"
-                                   ]
+                                   ],
+                          "_cond":  1,
+                          "_simp":  0,
+                          "df_src":  "baseline",
+                          "df":  60
                       },
                       {
                           "id":  "P16",
@@ -198,7 +238,11 @@ window.QBANK = {
                           "key":  "1840 年鸦片战争使中国开始沦为半殖民地半封建社会。",
                           "tags":  [
                                        "政治"
-                                   ]
+                                   ],
+                          "_cond":  1,
+                          "_simp":  0,
+                          "df_src":  "baseline",
+                          "df":  60
                       },
                       {
                           "id":  "P17",
@@ -216,7 +260,11 @@ window.QBANK = {
                           "key":  "推翻帝制、建立共和；但没有改变半殖民地半封建社会性质。",
                           "tags":  [
                                        "政治"
-                                   ]
+                                   ],
+                          "_cond":  1,
+                          "_simp":  0,
+                          "df_src":  "baseline",
+                          "df":  60
                       },
                       {
                           "id":  "E01",
@@ -235,7 +283,11 @@ window.QBANK = {
                           "tags":  [
                                        "英语",
                                        "翻译"
-                                   ]
+                                   ],
+                          "_cond":  1,
+                          "_simp":  0,
+                          "df_src":  "baseline",
+                          "df":  72
                       },
                       {
                           "id":  "Z01",
@@ -253,7 +305,11 @@ window.QBANK = {
                           "key":  "按承载分：转轴（弯+扭）、心轴（只弯）、传动轴（只扭）。",
                           "tags":  [
                                        "专业课"
-                                   ]
+                                   ],
+                          "_cond":  1,
+                          "_simp":  0,
+                          "df_src":  "baseline",
+                          "df":  62
                       },
                       {
                           "id":  "Z02",
@@ -271,7 +327,11 @@ window.QBANK = {
                           "key":  "6=深沟球轴承，2=直径系列（轻），07=内径 7×5=35 mm；宽度系列为 0。",
                           "tags":  [
                                        "专业课"
-                                   ]
+                                   ],
+                          "_cond":  1,
+                          "_simp":  0,
+                          "df_src":  "baseline",
+                          "df":  62
                       },
                       {
                           "id":  "Z03",
@@ -289,7 +349,11 @@ window.QBANK = {
                           "key":  "包角越小摩擦力越小，越易打滑；故设下限。",
                           "tags":  [
                                        "专业课"
-                                   ]
+                                   ],
+                          "_cond":  1,
+                          "_simp":  0,
+                          "df_src":  "baseline",
+                          "df":  62
                       },
                       {
                           "id":  "Z06",
@@ -307,7 +371,11 @@ window.QBANK = {
                           "key":  "标准齿轮 z_min=17；小于 17 需变位。",
                           "tags":  [
                                        "专业课"
-                                   ]
+                                   ],
+                          "_cond":  1,
+                          "_simp":  4,
+                          "df_src":  "baseline",
+                          "df":  62
                       },
                       {
                           "id":  "Z07",
@@ -325,7 +393,11 @@ window.QBANK = {
                           "key":  "游动端留轴向间隙以补偿热伸长，避免附加轴向力。",
                           "tags":  [
                                        "专业课"
-                                   ]
+                                   ],
+                          "_cond":  2,
+                          "_simp":  0,
+                          "df_src":  "baseline",
+                          "df":  62
                       },
                       {
                           "id":  "Z08",
@@ -343,7 +415,11 @@ window.QBANK = {
                           "key":  "λ≤ρ 自锁；故粗牙螺纹自锁性优于细牙。",
                           "tags":  [
                                        "专业课"
-                                   ]
+                                   ],
+                          "_cond":  1,
+                          "_simp":  0,
+                          "df_src":  "baseline",
+                          "df":  62
                       },
                       {
                           "id":  "Z10",
@@ -361,7 +437,11 @@ window.QBANK = {
                           "key":  "联轴器只能停机分离，运转中离合要用离合器。",
                           "tags":  [
                                        "专业课"
-                                   ]
+                                   ],
+                          "_cond":  2,
+                          "_simp":  0,
+                          "df_src":  "baseline",
+                          "df":  62
                       },
                       {
                           "id":  "M1102-06",
@@ -382,7 +462,11 @@ window.QBANK = {
                           "level":  "S",
                           "tags":  [
                                        "第二重要极限"
-                                   ]
+                                   ],
+                          "_cond":  1,
+                          "_simp":  4,
+                          "df_src":  "manual",
+                          "df":  40
                       },
                       {
                           "id":  "M1102-07",
@@ -403,7 +487,11 @@ window.QBANK = {
                           "level":  "S",
                           "tags":  [
                                        "第二重要极限"
-                                   ]
+                                   ],
+                          "_cond":  1,
+                          "_simp":  4,
+                          "df_src":  "manual",
+                          "df":  40
                       },
                       {
                           "id":  "M1102-32",
@@ -424,7 +512,11 @@ window.QBANK = {
                           "level":  "S",
                           "tags":  [
                                        "极限"
-                                   ]
+                                   ],
+                          "_cond":  1,
+                          "_simp":  4,
+                          "df_src":  "manual",
+                          "df":  35
                       },
                       {
                           "id":  "M1102-35",
@@ -445,7 +537,11 @@ window.QBANK = {
                           "level":  "S",
                           "tags":  [
                                        "极限"
-                                   ]
+                                   ],
+                          "_cond":  1,
+                          "_simp":  4,
+                          "df_src":  "manual",
+                          "df":  30
                       },
                       {
                           "id":  "M1102-25",
@@ -466,7 +562,11 @@ window.QBANK = {
                           "level":  "S",
                           "tags":  [
                                        "极坐标"
-                                   ]
+                                   ],
+                          "_cond":  2,
+                          "_simp":  4,
+                          "df_src":  "manual",
+                          "df":  65
                       },
                       {
                           "id":  "M1102-101",
@@ -489,7 +589,11 @@ window.QBANK = {
                                        "偏导",
                                        "计算组"
                                    ],
-                          "pin":  "calc-pd"
+                          "pin":  "calc-pd",
+                          "_cond":  2,
+                          "_simp":  4,
+                          "df_src":  "manual",
+                          "df":  62
                       },
                       {
                           "id":  "M1102-102",
@@ -512,7 +616,11 @@ window.QBANK = {
                                        "偏导",
                                        "计算组"
                                    ],
-                          "pin":  "calc-pd"
+                          "pin":  "calc-pd",
+                          "_cond":  2,
+                          "_simp":  4,
+                          "df_src":  "manual",
+                          "df":  68
                       },
                       {
                           "id":  "M1102-103",
@@ -536,7 +644,11 @@ window.QBANK = {
                                        "计算组",
                                        "二阶"
                                    ],
-                          "pin":  "calc-pd"
+                          "pin":  "calc-pd",
+                          "_cond":  2,
+                          "_simp":  4,
+                          "df_src":  "manual",
+                          "df":  70
                       },
                       {
                           "id":  "M1102-104",
@@ -560,7 +672,11 @@ window.QBANK = {
                                        "计算组",
                                        "全微分"
                                    ],
-                          "pin":  "calc-pd"
+                          "pin":  "calc-pd",
+                          "_cond":  2,
+                          "_simp":  4,
+                          "df_src":  "manual",
+                          "df":  58
                       },
                       {
                           "id":  "M1102-105",
@@ -584,7 +700,11 @@ window.QBANK = {
                                        "计算组",
                                        "链式"
                                    ],
-                          "pin":  "calc-pd"
+                          "pin":  "calc-pd",
+                          "_cond":  2,
+                          "_simp":  4,
+                          "df_src":  "manual",
+                          "df":  72
                       },
                       {
                           "id":  "M1102-106",
@@ -607,7 +727,11 @@ window.QBANK = {
                                        "参数方程",
                                        "计算组"
                                    ],
-                          "pin":  "calc-par"
+                          "pin":  "calc-par",
+                          "_cond":  2,
+                          "_simp":  4,
+                          "df_src":  "manual",
+                          "df":  68
                       },
                       {
                           "id":  "M1102-107",
@@ -630,7 +754,11 @@ window.QBANK = {
                                        "参数方程",
                                        "计算组"
                                    ],
-                          "pin":  "calc-par"
+                          "pin":  "calc-par",
+                          "_cond":  2,
+                          "_simp":  4,
+                          "df_src":  "manual",
+                          "df":  60
                       },
                       {
                           "id":  "M1102-108",
@@ -653,7 +781,11 @@ window.QBANK = {
                                        "参数方程",
                                        "计算组"
                                    ],
-                          "pin":  "calc-par"
+                          "pin":  "calc-par",
+                          "_cond":  2,
+                          "_simp":  4,
+                          "df_src":  "manual",
+                          "df":  68
                       },
                       {
                           "id":  "M1102-109",
@@ -676,7 +808,11 @@ window.QBANK = {
                                        "参数方程",
                                        "计算组"
                                    ],
-                          "pin":  "calc-par"
+                          "pin":  "calc-par",
+                          "_cond":  2,
+                          "_simp":  4,
+                          "df_src":  "manual",
+                          "df":  65
                       },
                       {
                           "id":  "M1102-110",
@@ -699,7 +835,11 @@ window.QBANK = {
                                        "参数方程",
                                        "计算组"
                                    ],
-                          "pin":  "calc-par"
+                          "pin":  "calc-par",
+                          "_cond":  2,
+                          "_simp":  4,
+                          "df_src":  "manual",
+                          "df":  65
                       },
                       {
                           "id":  "M1102-12",
@@ -720,7 +860,11 @@ window.QBANK = {
                           "level":  "S",
                           "tags":  [
                                        "参数方程"
-                                   ]
+                                   ],
+                          "_cond":  2,
+                          "_simp":  4,
+                          "df_src":  "manual",
+                          "df":  68
                       },
                       {
                           "id":  "M1102-41",
@@ -741,7 +885,11 @@ window.QBANK = {
                           "level":  "S",
                           "tags":  [
                                        "无条件极值"
-                                   ]
+                                   ],
+                          "_cond":  1,
+                          "_simp":  4,
+                          "df_src":  "manual",
+                          "df":  88
                       },
                       {
                           "id":  "M1102-52",
@@ -762,7 +910,11 @@ window.QBANK = {
                           "level":  "S",
                           "tags":  [
                                        "特征值"
-                                   ]
+                                   ],
+                          "_cond":  2,
+                          "_simp":  4,
+                          "df_src":  "manual",
+                          "df":  30
                       },
                       {
                           "id":  "M1102-53",
@@ -783,7 +935,11 @@ window.QBANK = {
                           "level":  "S",
                           "tags":  [
                                        "特征值"
-                                   ]
+                                   ],
+                          "_cond":  2,
+                          "_simp":  4,
+                          "df_src":  "manual",
+                          "df":  30
                       },
                       {
                           "id":  "M1102-54",
@@ -804,7 +960,11 @@ window.QBANK = {
                           "level":  "S",
                           "tags":  [
                                        "特征值"
-                                   ]
+                                   ],
+                          "_cond":  2,
+                          "_simp":  4,
+                          "df_src":  "manual",
+                          "df":  35
                       },
                       {
                           "id":  "M1102-56",
@@ -825,7 +985,11 @@ window.QBANK = {
                           "level":  "S",
                           "tags":  [
                                        "特征值"
-                                   ]
+                                   ],
+                          "_cond":  2,
+                          "_simp":  4,
+                          "df_src":  "manual",
+                          "df":  30
                       },
                       {
                           "id":  "M1102-19",
@@ -846,7 +1010,11 @@ window.QBANK = {
                           "level":  "S",
                           "tags":  [
                                        "旋转体体积"
-                                   ]
+                                   ],
+                          "_cond":  1,
+                          "_simp":  4,
+                          "df_src":  "manual",
+                          "df":  60
                       },
                       {
                           "id":  "M1102-20",
@@ -867,7 +1035,11 @@ window.QBANK = {
                           "level":  "S",
                           "tags":  [
                                        "旋转体体积"
-                                   ]
+                                   ],
+                          "_cond":  1,
+                          "_simp":  4,
+                          "df_src":  "manual",
+                          "df":  55
                       },
                       {
                           "id":  "M1102-90",
@@ -888,7 +1060,11 @@ window.QBANK = {
                           "level":  "S",
                           "tags":  [
                                        "旋转体体积"
-                                   ]
+                                   ],
+                          "_cond":  1,
+                          "_simp":  4,
+                          "df_src":  "manual",
+                          "df":  55
                       },
                       {
                           "id":  "M1102-18",
@@ -909,7 +1085,11 @@ window.QBANK = {
                           "level":  "S",
                           "tags":  [
                                        "华里士公式"
-                                   ]
+                                   ],
+                          "_cond":  1,
+                          "_simp":  4,
+                          "df_src":  "manual",
+                          "df":  45
                       },
                       {
                           "id":  "M1102-88",
@@ -930,7 +1110,11 @@ window.QBANK = {
                           "level":  "S",
                           "tags":  [
                                        "定积分"
-                                   ]
+                                   ],
+                          "_cond":  1,
+                          "_simp":  4,
+                          "df_src":  "manual",
+                          "df":  50
                       },
                       {
                           "id":  "M1102-17",
@@ -951,7 +1135,11 @@ window.QBANK = {
                           "level":  "S",
                           "tags":  [
                                        "行列式"
-                                   ]
+                                   ],
+                          "_cond":  3,
+                          "_simp":  4,
+                          "df_src":  "manual",
+                          "df":  30
                       },
                       {
                           "id":  "M1028-03",
@@ -969,7 +1157,11 @@ window.QBANK = {
                                           "8"
                                       ],
                           "answer_text":  "16",
-                          "kp":  "#40"
+                          "kp":  "#40",
+                          "_cond":  3,
+                          "_simp":  4,
+                          "df_src":  "manual",
+                          "df":  30
                       },
                       {
                           "id":  "Q1029-16",
@@ -993,7 +1185,11 @@ window.QBANK = {
                           "accept":  [
                                          "x ln x − x + C"
                                      ],
-                          "answer_text":  "x ln x − x + C"
+                          "answer_text":  "x ln x − x + C",
+                          "_cond":  1,
+                          "_simp":  4,
+                          "df_src":  "manual",
+                          "df":  50
                       },
                       {
                           "id":  "Q1029-35",
@@ -1013,7 +1209,11 @@ window.QBANK = {
                           "level":  "S",
                           "tags":  [
                                        "线代"
-                                   ]
+                                   ],
+                          "_cond":  2,
+                          "_simp":  4,
+                          "df_src":  "manual",
+                          "df":  40
                       },
                       {
                           "id":  "Q1102-03",
@@ -1036,7 +1236,11 @@ window.QBANK = {
                                        "线代",
                                        "特征值",
                                        "反求"
-                                   ]
+                                   ],
+                          "_cond":  3,
+                          "_simp":  0,
+                          "df_src":  "manual",
+                          "df":  92
                       },
                       {
                           "id":  "M1102-211",
@@ -1058,7 +1262,11 @@ window.QBANK = {
                           "tags":  [
                                        "极坐标",
                                        "二重积分"
-                                   ]
+                                   ],
+                          "_cond":  2,
+                          "_simp":  4,
+                          "df_src":  "manual",
+                          "df":  82
                       },
                       {
                           "id":  "M1102-213",
@@ -1080,7 +1288,11 @@ window.QBANK = {
                           "tags":  [
                                        "极坐标",
                                        "面积"
-                                   ]
+                                   ],
+                          "_cond":  2,
+                          "_simp":  4,
+                          "df_src":  "manual",
+                          "df":  80
                       },
                       {
                           "id":  "M1102-214",
@@ -1102,7 +1314,11 @@ window.QBANK = {
                           "tags":  [
                                        "极坐标",
                                        "对称性"
-                                   ]
+                                   ],
+                          "_cond":  2,
+                          "_simp":  4,
+                          "df_src":  "manual",
+                          "df":  85
                       },
                       {
                           "id":  "M1102-301",
@@ -1124,7 +1340,11 @@ window.QBANK = {
                                        "极值",
                                        "拆小问",
                                        "#28"
-                                   ]
+                                   ],
+                          "_cond":  3,
+                          "_simp":  0,
+                          "df_src":  "manual",
+                          "df":  78
                       },
                       {
                           "id":  "M1102-302",
@@ -1146,7 +1366,11 @@ window.QBANK = {
                                        "极值",
                                        "拆小问",
                                        "#28"
-                                   ]
+                                   ],
+                          "_cond":  2,
+                          "_simp":  0,
+                          "df_src":  "manual",
+                          "df":  65
                       },
                       {
                           "id":  "M1102-303",
@@ -1168,7 +1392,11 @@ window.QBANK = {
                                        "极值",
                                        "拆小问",
                                        "#28"
-                                   ]
+                                   ],
+                          "_cond":  2,
+                          "_simp":  0,
+                          "df_src":  "manual",
+                          "df":  72
                       },
                       {
                           "id":  "M1102-304",
@@ -1190,7 +1418,11 @@ window.QBANK = {
                                        "极值",
                                        "拆小问",
                                        "#28"
-                                   ]
+                                   ],
+                          "_cond":  2,
+                          "_simp":  4,
+                          "df_src":  "manual",
+                          "df":  85
                       },
                       {
                           "id":  "M1102-305",
@@ -1212,7 +1444,11 @@ window.QBANK = {
                                        "极值",
                                        "拆小问",
                                        "#28"
-                                   ]
+                                   ],
+                          "_cond":  2,
+                          "_simp":  0,
+                          "df_src":  "manual",
+                          "df":  80
                       },
                       {
                           "id":  "M1102-306",
@@ -1234,7 +1470,11 @@ window.QBANK = {
                                        "极值",
                                        "拆小问",
                                        "#28"
-                                   ]
+                                   ],
+                          "_cond":  2,
+                          "_simp":  0,
+                          "df_src":  "manual",
+                          "df":  63
                       },
                       {
                           "id":  "M1102-307",
@@ -1256,7 +1496,11 @@ window.QBANK = {
                                        "极值",
                                        "拆小问",
                                        "#28"
-                                   ]
+                                   ],
+                          "_cond":  2,
+                          "_simp":  0,
+                          "df_src":  "manual",
+                          "df":  70
                       },
                       {
                           "id":  "M1102-308",
@@ -1278,7 +1522,11 @@ window.QBANK = {
                                        "极值",
                                        "拆小问",
                                        "#28"
-                                   ]
+                                   ],
+                          "_cond":  2,
+                          "_simp":  4,
+                          "df_src":  "manual",
+                          "df":  86
                       },
                       {
                           "id":  "M1102-309",
@@ -1300,7 +1548,11 @@ window.QBANK = {
                                        "参数方程",
                                        "拆小问",
                                        "#7"
-                                   ]
+                                   ],
+                          "_cond":  3,
+                          "_simp":  4,
+                          "df_src":  "manual",
+                          "df":  62
                       },
                       {
                           "id":  "M1102-310",
@@ -1322,7 +1574,11 @@ window.QBANK = {
                                        "参数方程",
                                        "拆小问",
                                        "#7"
-                                   ]
+                                   ],
+                          "_cond":  2,
+                          "_simp":  4,
+                          "df_src":  "manual",
+                          "df":  50
                       },
                       {
                           "id":  "M1102-311",
@@ -1344,7 +1600,11 @@ window.QBANK = {
                                        "参数方程",
                                        "拆小问",
                                        "#7"
-                                   ]
+                                   ],
+                          "_cond":  2,
+                          "_simp":  4,
+                          "df_src":  "manual",
+                          "df":  78
                       },
                       {
                           "id":  "M1102-312",
@@ -1366,7 +1626,11 @@ window.QBANK = {
                                        "参数方程",
                                        "拆小问",
                                        "#7"
-                                   ]
+                                   ],
+                          "_cond":  3,
+                          "_simp":  4,
+                          "df_src":  "manual",
+                          "df":  68
                       },
                       {
                           "id":  "M1102-313",
@@ -1388,7 +1652,11 @@ window.QBANK = {
                                        "参数方程",
                                        "拆小问",
                                        "#7"
-                                   ]
+                                   ],
+                          "_cond":  2,
+                          "_simp":  4,
+                          "df_src":  "manual",
+                          "df":  82
                       },
                       {
                           "id":  "M1102-314",
@@ -1410,7 +1678,11 @@ window.QBANK = {
                                        "参数方程",
                                        "拆小问",
                                        "#7"
-                                   ]
+                                   ],
+                          "_cond":  2,
+                          "_simp":  4,
+                          "df_src":  "manual",
+                          "df":  85
                       },
                       {
                           "id":  "Z11",
@@ -1432,7 +1704,11 @@ window.QBANK = {
                                        "专业课",
                                        "机械设计",
                                        "齿轮"
-                                   ]
+                                   ],
+                          "_cond":  4,
+                          "_simp":  0,
+                          "df_src":  "manual",
+                          "df":  60
                       },
                       {
                           "id":  "Z12",
@@ -1454,7 +1730,11 @@ window.QBANK = {
                                        "专业课",
                                        "机械设计",
                                        "轴"
-                                   ]
+                                   ],
+                          "_cond":  2,
+                          "_simp":  0,
+                          "df_src":  "manual",
+                          "df":  75
                       },
                       {
                           "id":  "Z13",
@@ -1476,7 +1756,11 @@ window.QBANK = {
                                        "专业课",
                                        "机械设计",
                                        "轴承"
-                                   ]
+                                   ],
+                          "_cond":  2,
+                          "_simp":  0,
+                          "df_src":  "manual",
+                          "df":  65
                       },
                       {
                           "id":  "Z14",
@@ -1498,7 +1782,11 @@ window.QBANK = {
                                        "专业课",
                                        "机械设计",
                                        "螺栓"
-                                   ]
+                                   ],
+                          "_cond":  4,
+                          "_simp":  0,
+                          "df_src":  "manual",
+                          "df":  80
                       },
                       {
                           "id":  "Z15",
@@ -1520,7 +1808,11 @@ window.QBANK = {
                                        "专业课",
                                        "机械设计",
                                        "带传动"
-                                   ]
+                                   ],
+                          "_cond":  2,
+                          "_simp":  0,
+                          "df_src":  "manual",
+                          "df":  70
                       },
                       {
                           "id":  "E07",
@@ -1542,7 +1834,11 @@ window.QBANK = {
                                        "英语",
                                        "翻译",
                                        "长难句"
-                                   ]
+                                   ],
+                          "_cond":  1,
+                          "_simp":  0,
+                          "df_src":  "manual",
+                          "df":  78
                       },
                       {
                           "id":  "E08",
@@ -1563,7 +1859,11 @@ window.QBANK = {
                           "tags":  [
                                        "英语",
                                        "词汇"
-                                   ]
+                                   ],
+                          "_cond":  1,
+                          "_simp":  4,
+                          "df_src":  "manual",
+                          "df":  70
                       },
                       {
                           "id":  "E09",
@@ -1584,7 +1884,11 @@ window.QBANK = {
                           "tags":  [
                                        "英语",
                                        "语法"
-                                   ]
+                                   ],
+                          "_cond":  1,
+                          "_simp":  4,
+                          "df_src":  "manual",
+                          "df":  72
                       },
                       {
                           "id":  "E10",
@@ -1606,7 +1910,11 @@ window.QBANK = {
                                        "英语",
                                        "翻译",
                                        "被动"
-                                   ]
+                                   ],
+                          "_cond":  1,
+                          "_simp":  0,
+                          "df_src":  "manual",
+                          "df":  80
                       },
                       {
                           "id":  "P18",
@@ -1628,7 +1936,11 @@ window.QBANK = {
                                        "政治",
                                        "马原",
                                        "唯物论"
-                                   ]
+                                   ],
+                          "_cond":  2,
+                          "_simp":  0,
+                          "df_src":  "manual",
+                          "df":  62
                       },
                       {
                           "id":  "P19",
@@ -1650,7 +1962,11 @@ window.QBANK = {
                                        "政治",
                                        "马原",
                                        "辩证法"
-                                   ]
+                                   ],
+                          "_cond":  1,
+                          "_simp":  0,
+                          "df_src":  "manual",
+                          "df":  58
                       },
                       {
                           "id":  "P20",
@@ -1672,7 +1988,11 @@ window.QBANK = {
                                        "政治",
                                        "马原",
                                        "辩证法"
-                                   ]
+                                   ],
+                          "_cond":  2,
+                          "_simp":  0,
+                          "df_src":  "manual",
+                          "df":  60
                       },
                       {
                           "id":  "P21",
@@ -1694,7 +2014,11 @@ window.QBANK = {
                                        "政治",
                                        "马原",
                                        "辩证法"
-                                   ]
+                                   ],
+                          "_cond":  1,
+                          "_simp":  0,
+                          "df_src":  "manual",
+                          "df":  60
                       },
                       {
                           "id":  "P22",
@@ -1716,7 +2040,11 @@ window.QBANK = {
                                        "政治",
                                        "马原",
                                        "认识论"
-                                   ]
+                                   ],
+                          "_cond":  2,
+                          "_simp":  0,
+                          "df_src":  "manual",
+                          "df":  65
                       },
                       {
                           "id":  "P23",
@@ -1738,7 +2066,11 @@ window.QBANK = {
                                        "政治",
                                        "马原",
                                        "认识论"
-                                   ]
+                                   ],
+                          "_cond":  2,
+                          "_simp":  0,
+                          "df_src":  "manual",
+                          "df":  68
                       },
                       {
                           "id":  "P24",
@@ -1760,7 +2092,11 @@ window.QBANK = {
                                        "政治",
                                        "马原",
                                        "唯物史观"
-                                   ]
+                                   ],
+                          "_cond":  1,
+                          "_simp":  0,
+                          "df_src":  "manual",
+                          "df":  60
                       },
                       {
                           "id":  "P25",
@@ -1782,7 +2118,11 @@ window.QBANK = {
                                        "政治",
                                        "马原",
                                        "唯物史观"
-                                   ]
+                                   ],
+                          "_cond":  2,
+                          "_simp":  0,
+                          "df_src":  "manual",
+                          "df":  58
                       },
                       {
                           "id":  "P26",
@@ -1804,7 +2144,11 @@ window.QBANK = {
                                        "政治",
                                        "马原",
                                        "唯物史观"
-                                   ]
+                                   ],
+                          "_cond":  1,
+                          "_simp":  0,
+                          "df_src":  "manual",
+                          "df":  58
                       },
                       {
                           "id":  "P27",
@@ -1826,7 +2170,11 @@ window.QBANK = {
                                        "政治",
                                        "马原",
                                        "政治经济学"
-                                   ]
+                                   ],
+                          "_cond":  2,
+                          "_simp":  0,
+                          "df_src":  "manual",
+                          "df":  72
                       },
                       {
                           "id":  "P28",
@@ -1848,7 +2196,11 @@ window.QBANK = {
                                        "政治",
                                        "马原",
                                        "政治经济学"
-                                   ]
+                                   ],
+                          "_cond":  1,
+                          "_simp":  0,
+                          "df_src":  "manual",
+                          "df":  70
                       },
                       {
                           "id":  "P29",
@@ -1870,7 +2222,11 @@ window.QBANK = {
                                        "政治",
                                        "马原",
                                        "政治经济学"
-                                   ]
+                                   ],
+                          "_cond":  1,
+                          "_simp":  0,
+                          "df_src":  "manual",
+                          "df":  55
                       },
                       {
                           "id":  "P30",
@@ -1892,7 +2248,11 @@ window.QBANK = {
                                        "政治",
                                        "毛中特",
                                        "新民主主义革命"
-                                   ]
+                                   ],
+                          "_cond":  1,
+                          "_simp":  0,
+                          "df_src":  "manual",
+                          "df":  65
                       },
                       {
                           "id":  "P31",
@@ -1914,7 +2274,11 @@ window.QBANK = {
                                        "政治",
                                        "毛中特",
                                        "社会主义改造"
-                                   ]
+                                   ],
+                          "_cond":  2,
+                          "_simp":  0,
+                          "df_src":  "manual",
+                          "df":  68
                       },
                       {
                           "id":  "P32",
@@ -1936,7 +2300,11 @@ window.QBANK = {
                                        "政治",
                                        "毛中特",
                                        "新时代"
-                                   ]
+                                   ],
+                          "_cond":  2,
+                          "_simp":  0,
+                          "df_src":  "manual",
+                          "df":  62
                       },
                       {
                           "id":  "M1102-315",
@@ -1958,7 +2326,11 @@ window.QBANK = {
                                        "特征值",
                                        "反求A",
                                        "#48"
-                                   ]
+                                   ],
+                          "_cond":  3,
+                          "_simp":  0,
+                          "df_src":  "manual",
+                          "df":  92
                       },
                       {
                           "id":  "M1102-316",
@@ -1979,7 +2351,11 @@ window.QBANK = {
                           "tags":  [
                                        "特征值",
                                        "#48"
-                                   ]
+                                   ],
+                          "_cond":  2,
+                          "_simp":  0,
+                          "df_src":  "manual",
+                          "df":  40
                       },
                       {
                           "id":  "M1102-317",
@@ -2001,7 +2377,11 @@ window.QBANK = {
                                        "特征值",
                                        "多项式",
                                        "#48"
-                                   ]
+                                   ],
+                          "_cond":  2,
+                          "_simp":  4,
+                          "df_src":  "manual",
+                          "df":  78
                       },
                       {
                           "id":  "Q1029-14",
@@ -2021,7 +2401,11 @@ window.QBANK = {
                           "level":  "S",
                           "tags":  [
                                        "泰勒"
-                                   ]
+                                   ],
+                          "_cond":  1,
+                          "_simp":  4,
+                          "df_src":  "manual",
+                          "df":  45
                       },
                       {
                           "id":  "Q1029-17",
@@ -2042,7 +2426,11 @@ window.QBANK = {
                           "tags":  [
                                        "积分",
                                        "变限"
-                                   ]
+                                   ],
+                          "_cond":  1,
+                          "_simp":  2,
+                          "df_src":  "manual",
+                          "df":  65
                       },
                       {
                           "id":  "Q1029-20",
@@ -2062,7 +2450,11 @@ window.QBANK = {
                           "level":  "S",
                           "tags":  [
                                        "反常积分"
-                                   ]
+                                   ],
+                          "_cond":  1,
+                          "_simp":  0,
+                          "df_src":  "manual",
+                          "df":  45
                       },
                       {
                           "id":  "Q1029-49",
@@ -2084,7 +2476,280 @@ window.QBANK = {
                                        "趋势",
                                        "多元"
                                    ],
-                          "answer_text":  "0"
+                          "answer_text":  "0",
+                          "_cond":  2,
+                          "_simp":  4,
+                          "df_src":  "manual",
+                          "df":  55
+                      },
+                      {
+                          "id":  "M1102-401",
+                          "kp":  "#13",
+                          "sub":  "数学",
+                          "type":  "choice",
+                          "topic":  "泰勒·抽象函数",
+                          "stem":  "设 f(x) 在 x=0 的某邻域内二阶可导，且 f(0)=0、f′(0)=1、f″(0)=2，则 lim(x→0)[f(x)−x]/x² =（　）",
+                          "options":  [
+                                          "A. 1",
+                                          "B. 2",
+                                          "C. 1/2",
+                                          "D. 不存在"
+                                      ],
+                          "answer":  "A",
+                          "key":  "由泰勒展开 f(x)=f(0)+f′(0)x+½f″(0)x²+o(x²)=x+x²+o(x²)。代入：(f(x)−x)/x²=(x²+o(x²))/x²→1。错项：B 把 f″(0)=2 直接当答案，漏了公式里的½；C 只取了一半；D 误以为不能确定。",
+                          "fix":  "带 ½ 的泰勒项：f(x)=f(0)+f′(0)x+f″(0)x²/2+…。这题有三个条件，缺一个都推不动——先写出展开式再代，别急着算。",
+                          "df":  100,
+                          "df_src":  "manual",
+                          "tags":  [
+                                       "泰勒",
+                                       "抽象函数",
+                                       "难度校准"
+                                   ]
+                      },
+                      {
+                          "id":  "M1102-402",
+                          "kp":  "#48",
+                          "sub":  "数学",
+                          "type":  "choice",
+                          "topic":  "特征值·幂等矩阵",
+                          "stem":  "设 A 为 3 阶矩阵，满足 A²=A，且 r(A)=2，则 |A+2E|=（　）",
+                          "options":  [
+                                          "A. 18",
+                                          "B. 12",
+                                          "C. 27",
+                                          "D. 8"
+                                      ],
+                          "answer":  "A",
+                          "key":  "A²=A ⇒ 特征值只能取 0 或 1（λ²=λ）。r(A)=2 说明恰有两个特征值为 1、一个为 0。A+2E 的特征值是 λ+2，即 3、3、2，行列式等于特征值之积 3×3×2=18。错项：B 是 3×2×2（把重数当 1）；C 是 3³（漏了那个 0 变成 3）；D 是 2³。",
+                          "fix":  "两步卡点：①A²=A 只能推出「特征值 ∈{0,1}」，不能直接定个数，必须用秩补；②求的是 A+2E 不是 A，特征值要整体加 2。",
+                          "df":  105,
+                          "df_src":  "manual",
+                          "tags":  [
+                                       "特征值",
+                                       "幂等",
+                                       "秩",
+                                       "难度校准"
+                                   ]
+                      },
+                      {
+                          "id":  "M1102-403",
+                          "kp":  "#28",
+                          "sub":  "数学",
+                          "type":  "choice",
+                          "topic":  "最值·闭区域",
+                          "stem":  "设 f(x,y)=x²+2y²−2xy−4x，区域 D={x≥0, y≥0, x+y≤3}，则 f 在 D 上的最小值是（　）",
+                          "options":  [
+                                          "A. −31/5",
+                                          "B. −4",
+                                          "C. −3",
+                                          "D. 0"
+                                      ],
+                          "answer":  "A",
+                          "key":  "先求内部驻点：(4,2)，不在 D 内（4+2=6\u003e3），作废——这是本题第一个卡点。再查三条边界：①x+y=3 上 f=5x²−22x+18，驻点 x=11/5 给出 f=−31/5≈−6.2；②y=0 上 f=x²−4x，最小值 −4；③x=0 上 f=2y²，最小值 0。三个顶点 f 分别为 0、−3、18。比较得最小 −31/5。错项：B 只查了 y=0 一条边；C 只比了顶点；D 是顶点处的值。",
+                          "fix":  "闭区域最值三步都不能省：内部驻点（且要判断是否落在区域内）→ 每条边界上的极值 → 各顶点。这题的关键是内部驻点根本不在区域内，直接代它必错。",
+                          "df":  115,
+                          "df_src":  "manual",
+                          "tags":  [
+                                       "极值",
+                                       "闭区域",
+                                       "最值",
+                                       "难度校准"
+                                   ]
+                      },
+                      {
+                          "id":  "M1102-404",
+                          "kp":  "#32",
+                          "sub":  "数学",
+                          "type":  "choice",
+                          "topic":  "极坐标·两圆交",
+                          "stem":  "设 D 是圆 x²+y²≤2x 与 x²+y²≤2y 的公共部分，则 ∬_D x² dxdy =（　）",
+                          "options":  [
+                                          "A. 3π/8−1",
+                                          "B. π/2−1",
+                                          "C. 3π/8",
+                                          "D. 1−π/8"
+                                      ],
+                          "answer":  "A",
+                          "key":  "两圆极坐标方程 r=2cosθ 与 r=2sinθ，交于 θ=π/4。θ∈[0,π/4] 时上限 2sinθ，θ∈[π/4,π/2] 时上限 2cosθ，被积 x²=r²cos²θ 再乘雅可比 r，得 r³cos²θ。分段积分得 ∬x²=3π/8−1。错项：B 是这块区域的面积（把被积函数当成 1）；C 漏了 −1 那项；D 符号反了。",
+                          "fix":  "两圆交必须分两段，分界就是交点 θ=π/4。看到区域面积是 π/2−1，如果答案恰好等于它，说明被积函数整个丢了。",
+                          "df":  108,
+                          "df_src":  "manual",
+                          "tags":  [
+                                       "极坐标",
+                                       "定界",
+                                       "分段",
+                                       "难度校准"
+                                   ]
+                      },
+                      {
+                          "id":  "M1102-405",
+                          "kp":  "#16",
+                          "sub":  "数学",
+                          "type":  "choice",
+                          "topic":  "变限积分·复合上限",
+                          "stem":  "设 F(x)=∫₀^{x²} e^{−t} dt，则 F′(1)=（　）",
+                          "options":  [
+                                          "A. 2/e",
+                                          "B. 1/e",
+                                          "C. 2e",
+                                          "D. e^{−1}"
+                                      ],
+                          "answer":  "A",
+                          "key":  "F′(x)=e^{−x²}·(x²)′=2x·e^{−x²}。代 x=1 得 2/e。错项：B 漏了内层导数 2x；C 符号错（把 e^{−1} 写成 e）；D 同样漏内层。",
+                          "fix":  "变限积分求导两步：先代入上限、再乘上限的导数。漏掉后者是这一族的通病（历史错因第 8 条）。",
+                          "df":  95,
+                          "df_src":  "manual",
+                          "tags":  [
+                                       "变限积分",
+                                       "链式",
+                                       "难度校准"
+                                   ]
+                      },
+                      {
+                          "id":  "M1102-406",
+                          "kp":  "#48",
+                          "sub":  "数学",
+                          "type":  "choice",
+                          "topic":  "特征值·多项式",
+                          "stem":  "设 3 阶矩阵 A 的特征值为 1、−1、2，则 |A²−A+E|=（　）",
+                          "options":  [
+                                          "A. 9",
+                                          "B. 3",
+                                          "C. 6",
+                                          "D. 1"
+                                      ],
+                          "answer":  "A",
+                          "key":  "若 Aα=λα，则 (A²−A+E)α=(λ²−λ+1)α，所以新矩阵的特征值为 λ²−λ+1。三个 λ 代入分别得 1、3、3，行列式为乘积 9。错项：B 只代了 λ=−1；C 是 1×3×2（第三个代错）；D 只代了 λ=1。",
+                          "fix":  "三个特征值都要代，一个不能漏。这题第三个（λ=2）算出 3，与第二个相同，容易被误当成重复只算一次。",
+                          "df":  95,
+                          "df_src":  "manual",
+                          "tags":  [
+                                       "特征值",
+                                       "多项式",
+                                       "难度校准"
+                                   ]
+                      },
+                      {
+                          "id":  "M1102-407",
+                          "kp":  "#7",
+                          "sub":  "数学",
+                          "type":  "choice",
+                          "topic":  "参数方程·曲率",
+                          "stem":  "设 x=t−sin t，y=1−cos t，则在 t=π/2 处该曲线的曲率 K=（　）",
+                          "options":  [
+                                          "A. √2/4",
+                                          "B. 1/2",
+                                          "C. √2/2",
+                                          "D. 1"
+                                      ],
+                          "answer":  "A",
+                          "key":  "t=π/2 时：dy/dx=1、d²y/dx²=−1。曲率 K=|y″|/(1+y′²)^{3/2}=1/(1+1)^{3/2}=1/(2√2)=√2/4。错项：B 漏了 3/2 次幂（当成 (1+1)=2）；C 用了 1/√2；D 完全没用公式。",
+                          "fix":  "曲率公式分母是 (1+y′²)^{3/2}，这个 3/2 次幂最容易丢。先算出 y′ 和 y″ 两个数再代，不要边算边套。",
+                          "df":  100,
+                          "df_src":  "manual",
+                          "tags":  [
+                                       "参数方程",
+                                       "曲率",
+                                       "难度校准"
+                                   ]
+                      },
+                      {
+                          "id":  "M1102-408",
+                          "kp":  "#1",
+                          "sub":  "数学",
+                          "type":  "choice",
+                          "topic":  "无穷小·含参数",
+                          "stem":  "当 x→0 时，(1−cos x)·ln(1+ax) 与 2x³ 是等价无穷小，则 a=（　）",
+                          "options":  [
+                                          "A. 4",
+                                          "B. 2",
+                                          "C. 1/2",
+                                          "D. −4"
+                                      ],
+                          "answer":  "A",
+                          "key":  "(1−cos x)~x²/2，ln(1+ax)~ax，两者相乘 ~ (x²/2)(ax)=ax³/2。令 ax³/2 ~ 2x³ 得 a=4。错项：B 忘了 (1−cos x) 的 1/2；C 把方向弄反；D 丢符号以外还错在把 ln(1+ax) 当成 ax² 之外的问题。",
+                          "fix":  "两个无穷小相乘，等价替换可以各换各的，但系数都要带上：(1−cos x) 带 1/2，ln(1+ax) 带 a。",
+                          "df":  98,
+                          "df_src":  "manual",
+                          "tags":  [
+                                       "极限",
+                                       "等价无穷小",
+                                       "含参数",
+                                       "难度校准"
+                                   ]
+                      },
+                      {
+                          "id":  "M1102-409",
+                          "kp":  "#26",
+                          "sub":  "数学",
+                          "type":  "choice",
+                          "topic":  "隐函数·偏导",
+                          "stem":  "设 z=z(x,y) 由 x²+y²+z²=6z 确定，则 ∂z/∂x 在点 (1,2,1) 处等于（　）",
+                          "options":  [
+                                          "A. 1/2",
+                                          "B. −1/2",
+                                          "C. 1",
+                                          "D. 2"
+                                      ],
+                          "answer":  "A",
+                          "key":  "两边对 x 求偏导：2x+2z·z_x=6z_x ⇒ z_x=x/(3−z)。代 (1,2,1) 得 1/2。错项：B 符号错（移项方向反）；C 漏了分母；D 把 2x 直接当答案。",
+                          "fix":  "隐函数求偏导后要先解出 z_x 的表达式再代点，别把 (1,2,1) 直接代进含 z_x 的式子。另：答案里的 3 来自 6/2，不是 6。",
+                          "df":  96,
+                          "df_src":  "manual",
+                          "tags":  [
+                                       "偏导",
+                                       "隐函数",
+                                       "难度校准"
+                                   ]
+                      },
+                      {
+                          "id":  "M1102-410",
+                          "kp":  "#17",
+                          "sub":  "数学",
+                          "type":  "choice",
+                          "topic":  "微分方程·初值",
+                          "stem":  "微分方程 y″−3y′+2y=0 满足 y(0)=1、y′(0)=0 的特解是（　）",
+                          "options":  [
+                                          "A. 2eˣ−e^{2x}",
+                                          "B. eˣ+e^{2x}",
+                                          "C. 2e^{2x}−eˣ",
+                                          "D. e^{−x}+e^{−2x}"
+                                      ],
+                          "answer":  "A",
+                          "key":  "特征方程 r²−3r+2=0 ⇒ r=1,2，通解 y=C₁eˣ+C₂e^{2x}。由 y(0)=C₁+C₂=1、y′(0)=C₁+2C₂=0 解得 C₁=2、C₂=−1。错项：B 系数错（解方程时符号弄反）；C 把两个根对应的系数配反了；D 特征根求错。",
+                          "fix":  "两个初值给两个方程：y(0) 用原式、y′(0) 用导数式，别把 y′(0)=0 也代进原式。",
+                          "df":  95,
+                          "df_src":  "manual",
+                          "tags":  [
+                                       "微分方程",
+                                       "初值",
+                                       "难度校准"
+                                   ]
+                      },
+                      {
+                          "id":  "M1102-411",
+                          "kp":  "#32",
+                          "sub":  "数学",
+                          "type":  "choice",
+                          "topic":  "二重积分·对称性",
+                          "stem":  "设 D={x²+y²≤4}，则 ∬_D (x²+xy+y²) dxdy =（　）",
+                          "options":  [
+                                          "A. 8π",
+                                          "B. 4π",
+                                          "C. 2π",
+                                          "D. 8π/3"
+                                      ],
+                          "answer":  "A",
+                          "key":  "D 关于 x 轴、y 轴都对称，xy 关于 x 与 y 均为奇函数 ⇒ ∬xy=0。剩 ∬(x²+y²)=∫₀^{2π}∫₀² r²·r dr dθ=2π·4=8π。错项：B 漏了 θ 上的 2π；C 面积是 4π，把被积函数当 1；D 是错的 r 幂次（用了 r² 而非 r³）。",
+                          "fix":  "三步：先看对称性砍掉奇函数项（这步省一半计算）→ 剩下 x²+y² 化极坐标 → 记得雅可比 r，被积变成 r³。",
+                          "df":  105,
+                          "df_src":  "manual",
+                          "tags":  [
+                                       "二重积分",
+                                       "对称性",
+                                       "极坐标",
+                                       "难度校准"
+                                   ]
                       }
                   ]
 };
