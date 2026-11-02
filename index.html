@@ -44,7 +44,7 @@ input[type=text]{width:100%;background:#1d222c;border:1px solid var(--line);colo
 </header>
 <main id="app"></main>
 <div id="toast"></div>
-<script src="bank.js?v=1793625337" onerror="window.__noBank=1"></script>
+<script src="bank.js?v=1793628331" onerror="window.__noBank=1"></script>
 <script>
 'use strict';
 /* ---------- 工具 ---------- */
@@ -102,10 +102,30 @@ function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()
    用户每天做 20 题 ⇒ 政治/专业课永远轮不到（结构性饿死，非偶发）。
    新规则：四科按配额交错占最前 30 位，做到第 20 题时政治/专业课/英语都已出现。 */
 var QUOTA={'数学':20,'政治':5,'专业课':3,'英语':2};
+/* 【2026-11-02 改】纯 shuffle 会让失分最高的考点反而抽不到：
+   实测 #26 偏导 5 道、#7 参数方程 pin 5 道，连续两天一道都没进队。
+   改为按考点失分权重分层 → 层内打乱 → 层间轮转，高失分考点必然排在前面。 */
+var KPW={'#32':46,'#1':45,'#28':41,'#48':41,'#7':40,'#26':35,'#17':20,'#21':12};
+function ordW(list){
+  var g={};
+  list.forEach(function(q){var k=q.kp||'';(g[k]=g[k]||[]).push(q)});
+  Object.keys(g).forEach(function(k){g[k]=shuffle(g[k])});
+  var keys=Object.keys(g).sort(function(a,b){return (KPW[b]||0)-(KPW[a]||0)});
+  var out=[],more=true,i=0;
+  while(more){
+    more=false;
+    for(var j=0;j<keys.length;j++){
+      var arr=g[keys[j]];
+      if(i<arr.length){out.push(arr[i]);more=true}
+    }
+    i++;
+  }
+  return out;
+}
 function ord(list){
   var due=[],later=[];
   list.forEach(function(q){var h=H[q.id];if(!h||!h.due||h.due<=TD)due.push(q);else later.push(q)});
-  return shuffle(due).concat(shuffle(later));
+  return ordW(due).concat(shuffle(later));
 }
 function buildQueue(){
   /* 【2026-10-30 用户口径】数学选填**同一题只出现一次**（做过就不再推，除非点名的重点题）；
@@ -116,7 +136,11 @@ function buildQueue(){
   var P=ord(ALL.filter(function(q){return (q.sub||'')!=='数学'}));
   var PIN=ALL.filter(function(q){return q.pin}); /* 题组保序：不能过 ord()，ord 里面有 shuffle */
   /* 四科配额：数学取未做前 20 道，政治 5 / 专业课 3 / 英语 2 从各自的到期队列里取 */
-  var used={}, mathHead=M.slice(0, QUOTA['数学']||20);
+  var used={};
+  /* 【2026-11-02 改】pin 组前 4 道固定在最前，它们本身就是数学题，
+     所以数学配额要相应扣掉 4，否则前 30 位数学会超配（实测 22 道）、政治被挤到 3 道。 */
+  var PIN_HEAD_N=4;
+  var mathHead=M.slice(0, Math.max(0,(QUOTA['数学']||20)-PIN_HEAD_N));
   mathHead.forEach(function(q){used[q.id]=1});
   var others=[], pools={};
   ['政治','专业课','英语'].forEach(function(sub){
@@ -149,10 +173,22 @@ function buildQueue(){
      组顺序按 pin 值首次出现排，组内保持题库原序（M1102-101→105 这样） */
   var pg={}, pgOrder=[];
   PIN.forEach(function(q){var g=q.pin||'_';if(!pg[g]){pg[g]=[];pgOrder.push(g);}pg[g].push(q);});
-  var pinBlock=[];
-  pgOrder.forEach(function(g){pinBlock=pinBlock.concat(pg[g]);});
-  var tail=pinBlock.concat(shuffle(rest));
-  return head.concat(tail);
+  var pinAll=[];
+  pgOrder.forEach(function(g){pinAll=pinAll.concat(pg[g]);});
+  /* 【2026-11-02 改】pin 组原来整组排在 head 之后（第 31 位起）。用户每天做 20–30 题，
+     永远够不到 —— 实测 M1102-101~110 十道一道未做，白做实了。
+     现改为：① 前 4 道放在最前；② 余下 6 道每两天带 2 道轮转；③ 不再进 rest。 */
+  var pinHead=pinAll.slice(0,PIN_HEAD_N);
+  var pinRest=pinAll.slice(PIN_HEAD_N);
+  var _di=Math.floor(Date.now()/86400000);
+  var pinExtra=pinRest.slice((_di%3)*2,(_di%3)*2+2);
+  var rest2=[];
+  rest.forEach(function(q){if(!q.pin)rest2.push(q)});
+  /* 未被选中的 pin 题也要进队列，否则刷完一轮总数不足（实测少 4 道）
+     顺序：pin 前 4 → 主队（严格 20/5/3/2）→ 轮转 pin 2 → 其余 → 剩余 pin
+     pinExtra 必须放在 head 之后，否则它占掉数学配额、把政治挤到 3 道。 */
+  var pinLeft=pinRest.filter(function(q){return pinExtra.indexOf(q)<0});
+  return pinHead.concat(head).concat(pinExtra).concat(shuffle(rest2)).concat(pinLeft);
 }
 var S={set:buildQueue(),qi:0,judged:false,t0:Date.now(),mine:'',mult:[],res:[],done:false};
 
