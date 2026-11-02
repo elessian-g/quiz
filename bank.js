@@ -21,8 +21,8 @@ window.QBANK = {
                                    ],
                           "_cond":  2,
                           "_simp":  0,
-                          "df_src":  "baseline",
-                          "df":  60
+                          "df_src":  "relabel_5y",
+                          "df":  86
                       },
                       {
                           "id":  "P03",
@@ -43,8 +43,8 @@ window.QBANK = {
                                    ],
                           "_cond":  2,
                           "_simp":  0,
-                          "df_src":  "baseline",
-                          "df":  60
+                          "df_src":  "relabel_5y",
+                          "df":  92
                       },
                       {
                           "id":  "P04",
@@ -65,8 +65,8 @@ window.QBANK = {
                                    ],
                           "_cond":  1,
                           "_simp":  0,
-                          "df_src":  "baseline",
-                          "df":  60
+                          "df_src":  "relabel_5y",
+                          "df":  95
                       },
                       {
                           "id":  "P05",
@@ -87,8 +87,8 @@ window.QBANK = {
                                    ],
                           "_cond":  1,
                           "_simp":  0,
-                          "df_src":  "baseline",
-                          "df":  60
+                          "df_src":  "relabel_5y",
+                          "df":  90
                       },
                       {
                           "id":  "P06",
@@ -109,8 +109,8 @@ window.QBANK = {
                                    ],
                           "_cond":  1,
                           "_simp":  0,
-                          "df_src":  "baseline",
-                          "df":  60
+                          "df_src":  "relabel_5y",
+                          "df":  86
                       },
                       {
                           "id":  "P07",
@@ -131,8 +131,8 @@ window.QBANK = {
                                    ],
                           "_cond":  1,
                           "_simp":  0,
-                          "df_src":  "baseline",
-                          "df":  60
+                          "df_src":  "relabel_5y",
+                          "df":  88
                       },
                       {
                           "id":  "P08",
@@ -153,8 +153,8 @@ window.QBANK = {
                                    ],
                           "_cond":  1,
                           "_simp":  0,
-                          "df_src":  "baseline",
-                          "df":  60
+                          "df_src":  "relabel_5y",
+                          "df":  92
                       },
                       {
                           "id":  "P09",
@@ -175,8 +175,8 @@ window.QBANK = {
                                    ],
                           "_cond":  1,
                           "_simp":  0,
-                          "df_src":  "baseline",
-                          "df":  60
+                          "df_src":  "relabel_5y",
+                          "df":  86
                       },
                       {
                           "id":  "P11",
@@ -197,8 +197,8 @@ window.QBANK = {
                                    ],
                           "_cond":  2,
                           "_simp":  0,
-                          "df_src":  "baseline",
-                          "df":  60
+                          "df_src":  "relabel_5y",
+                          "df":  88
                       },
                       {
                           "id":  "P15",
@@ -219,8 +219,8 @@ window.QBANK = {
                                    ],
                           "_cond":  1,
                           "_simp":  0,
-                          "df_src":  "baseline",
-                          "df":  60
+                          "df_src":  "relabel_5y",
+                          "df":  87
                       },
                       {
                           "id":  "P16",
@@ -241,8 +241,8 @@ window.QBANK = {
                                    ],
                           "_cond":  1,
                           "_simp":  0,
-                          "df_src":  "baseline",
-                          "df":  60
+                          "df_src":  "relabel_5y",
+                          "df":  84
                       },
                       {
                           "id":  "P17",
@@ -263,8 +263,8 @@ window.QBANK = {
                                    ],
                           "_cond":  1,
                           "_simp":  0,
-                          "df_src":  "baseline",
-                          "df":  60
+                          "df_src":  "relabel_5y",
+                          "df":  92
                       },
                       {
                           "id":  "E01",
@@ -286,8 +286,8 @@ window.QBANK = {
                                    ],
                           "_cond":  1,
                           "_simp":  0,
-                          "df_src":  "baseline",
-                          "df":  72
+                          "df_src":  "relabel_5y",
+                          "df":  90
                       },
                       {
                           "id":  "Z01",
@@ -308,8 +308,8 @@ window.QBANK = {
                                    ],
                           "_cond":  1,
                           "_simp":  0,
-                          "df_src":  "baseline",
-                          "df":  62
+                          "df_src":  "relabel_5y",
+                          "df":  86
                       },
                       {
                           "id":  "Z02",
@@ -330,8 +330,8 @@ window.QBANK = {
                                    ],
                           "_cond":  1,
                           "_simp":  0,
-                          "df_src":  "baseline",
-                          "df":  62
+                          "df_src":  "relabel_5y",
+                          "df":  86
                       },
                       {
                           "id":  "Z03",
@@ -352,8 +352,8 @@ window.QBANK = {
                                    ],
                           "_cond":  1,
                           "_simp":  0,
-                          "df_src":  "baseline",
-                          "df":  62
+                          "df_src":  "relabel_5y",
+                          "df":  90
                       },
                       {
                           "id":  "Z06",
@@ -374,8 +374,8 @@ window.QBANK = {
                                    ],
                           "_cond":  1,
                           "_simp":  4,
-                          "df_src":  "baseline",
-                          "df":  62
+                          "df_src":  "relabel_5y",
+                          "df":  90
                       },
                       {
                           "id":  "Z07",
@@ -396,8 +396,8 @@ window.QBANK = {
                                    ],
                           "_cond":  2,
                           "_simp":  0,
-                          "df_src":  "baseline",
-                          "df":  62
+                          "df_src":  "relabel_5y",
+                          "df":  90
                       },
                       {
                           "id":  "Z08",
@@ -418,8 +418,8 @@ window.QBANK = {
                                    ],
                           "_cond":  1,
                           "_simp":  0,
-                          "df_src":  "baseline",
-                          "df":  62
+                          "df_src":  "relabel_5y",
+                          "df":  90
                       },
                       {
                           "id":  "Z10",
@@ -440,8 +440,8 @@ window.QBANK = {
                                    ],
                           "_cond":  2,
                           "_simp":  0,
-                          "df_src":  "baseline",
-                          "df":  62
+                          "df_src":  "relabel_5y",
+                          "df":  86
                       },
                       {
                           "id":  "M1102-06",
@@ -1707,8 +1707,8 @@ window.QBANK = {
                                    ],
                           "_cond":  4,
                           "_simp":  0,
-                          "df_src":  "manual",
-                          "df":  60
+                          "df_src":  "relabel_5y",
+                          "df":  90
                       },
                       {
                           "id":  "Z12",
@@ -1733,8 +1733,8 @@ window.QBANK = {
                                    ],
                           "_cond":  2,
                           "_simp":  0,
-                          "df_src":  "manual",
-                          "df":  75
+                          "df_src":  "relabel_5y",
+                          "df":  96
                       },
                       {
                           "id":  "Z13",
@@ -1759,8 +1759,8 @@ window.QBANK = {
                                    ],
                           "_cond":  2,
                           "_simp":  0,
-                          "df_src":  "manual",
-                          "df":  65
+                          "df_src":  "relabel_5y",
+                          "df":  92
                       },
                       {
                           "id":  "Z14",
@@ -1785,8 +1785,8 @@ window.QBANK = {
                                    ],
                           "_cond":  4,
                           "_simp":  0,
-                          "df_src":  "manual",
-                          "df":  80
+                          "df_src":  "relabel_5y",
+                          "df":  96
                       },
                       {
                           "id":  "Z15",
@@ -1811,8 +1811,8 @@ window.QBANK = {
                                    ],
                           "_cond":  2,
                           "_simp":  0,
-                          "df_src":  "manual",
-                          "df":  70
+                          "df_src":  "relabel_5y",
+                          "df":  92
                       },
                       {
                           "id":  "E07",
@@ -1837,8 +1837,8 @@ window.QBANK = {
                                    ],
                           "_cond":  1,
                           "_simp":  0,
-                          "df_src":  "manual",
-                          "df":  78
+                          "df_src":  "relabel_5y",
+                          "df":  98
                       },
                       {
                           "id":  "E08",
@@ -1862,8 +1862,8 @@ window.QBANK = {
                                    ],
                           "_cond":  1,
                           "_simp":  4,
-                          "df_src":  "manual",
-                          "df":  70
+                          "df_src":  "relabel_5y",
+                          "df":  92
                       },
                       {
                           "id":  "E09",
@@ -1887,8 +1887,8 @@ window.QBANK = {
                                    ],
                           "_cond":  1,
                           "_simp":  4,
-                          "df_src":  "manual",
-                          "df":  72
+                          "df_src":  "relabel_5y",
+                          "df":  95
                       },
                       {
                           "id":  "E10",
@@ -1913,8 +1913,8 @@ window.QBANK = {
                                    ],
                           "_cond":  1,
                           "_simp":  0,
-                          "df_src":  "manual",
-                          "df":  80
+                          "df_src":  "relabel_5y",
+                          "df":  98
                       },
                       {
                           "id":  "P18",
@@ -1939,8 +1939,8 @@ window.QBANK = {
                                    ],
                           "_cond":  2,
                           "_simp":  0,
-                          "df_src":  "manual",
-                          "df":  62
+                          "df_src":  "relabel_5y",
+                          "df":  88
                       },
                       {
                           "id":  "P19",
@@ -1965,8 +1965,8 @@ window.QBANK = {
                                    ],
                           "_cond":  1,
                           "_simp":  0,
-                          "df_src":  "manual",
-                          "df":  58
+                          "df_src":  "relabel_5y",
+                          "df":  96
                       },
                       {
                           "id":  "P20",
@@ -1991,8 +1991,8 @@ window.QBANK = {
                                    ],
                           "_cond":  2,
                           "_simp":  0,
-                          "df_src":  "manual",
-                          "df":  60
+                          "df_src":  "relabel_5y",
+                          "df":  95
                       },
                       {
                           "id":  "P21",
@@ -2017,8 +2017,8 @@ window.QBANK = {
                                    ],
                           "_cond":  1,
                           "_simp":  0,
-                          "df_src":  "manual",
-                          "df":  60
+                          "df_src":  "relabel_5y",
+                          "df":  92
                       },
                       {
                           "id":  "P22",
@@ -2043,8 +2043,8 @@ window.QBANK = {
                                    ],
                           "_cond":  2,
                           "_simp":  0,
-                          "df_src":  "manual",
-                          "df":  65
+                          "df_src":  "relabel_5y",
+                          "df":  95
                       },
                       {
                           "id":  "P23",
@@ -2069,8 +2069,8 @@ window.QBANK = {
                                    ],
                           "_cond":  2,
                           "_simp":  0,
-                          "df_src":  "manual",
-                          "df":  68
+                          "df_src":  "relabel_5y",
+                          "df":  96
                       },
                       {
                           "id":  "P24",
@@ -2095,8 +2095,8 @@ window.QBANK = {
                                    ],
                           "_cond":  1,
                           "_simp":  0,
-                          "df_src":  "manual",
-                          "df":  60
+                          "df_src":  "relabel_5y",
+                          "df":  90
                       },
                       {
                           "id":  "P25",
@@ -2121,8 +2121,8 @@ window.QBANK = {
                                    ],
                           "_cond":  2,
                           "_simp":  0,
-                          "df_src":  "manual",
-                          "df":  58
+                          "df_src":  "relabel_5y",
+                          "df":  92
                       },
                       {
                           "id":  "P26",
@@ -2147,8 +2147,8 @@ window.QBANK = {
                                    ],
                           "_cond":  1,
                           "_simp":  0,
-                          "df_src":  "manual",
-                          "df":  58
+                          "df_src":  "relabel_5y",
+                          "df":  90
                       },
                       {
                           "id":  "P27",
@@ -2173,8 +2173,8 @@ window.QBANK = {
                                    ],
                           "_cond":  2,
                           "_simp":  0,
-                          "df_src":  "manual",
-                          "df":  72
+                          "df_src":  "relabel_5y",
+                          "df":  98
                       },
                       {
                           "id":  "P28",
@@ -2199,8 +2199,8 @@ window.QBANK = {
                                    ],
                           "_cond":  1,
                           "_simp":  0,
-                          "df_src":  "manual",
-                          "df":  70
+                          "df_src":  "relabel_5y",
+                          "df":  96
                       },
                       {
                           "id":  "P29",
@@ -2225,8 +2225,8 @@ window.QBANK = {
                                    ],
                           "_cond":  1,
                           "_simp":  0,
-                          "df_src":  "manual",
-                          "df":  55
+                          "df_src":  "relabel_5y",
+                          "df":  85
                       },
                       {
                           "id":  "P30",
@@ -2251,8 +2251,8 @@ window.QBANK = {
                                    ],
                           "_cond":  1,
                           "_simp":  0,
-                          "df_src":  "manual",
-                          "df":  65
+                          "df_src":  "relabel_5y",
+                          "df":  96
                       },
                       {
                           "id":  "P31",
@@ -2277,8 +2277,8 @@ window.QBANK = {
                                    ],
                           "_cond":  2,
                           "_simp":  0,
-                          "df_src":  "manual",
-                          "df":  68
+                          "df_src":  "relabel_5y",
+                          "df":  92
                       },
                       {
                           "id":  "P32",
@@ -2303,8 +2303,8 @@ window.QBANK = {
                                    ],
                           "_cond":  2,
                           "_simp":  0,
-                          "df_src":  "manual",
-                          "df":  62
+                          "df_src":  "relabel_5y",
+                          "df":  90
                       },
                       {
                           "id":  "M1102-315",
@@ -2749,6 +2749,408 @@ window.QBANK = {
                                        "对称性",
                                        "极坐标",
                                        "难度校准"
+                                   ]
+                      },
+                      {
+                          "id":  "MB01-1",
+                          "kp":  "#32",
+                          "sub":  "数学",
+                          "type":  "choice",
+                          "topic":  "大题第一问·极坐标定界",
+                          "stem":  "【大题第一问】设区域 D 由曲线 y=x² 与直线 y=x 围成，则 D 在极坐标下的角 θ 的范围是（　）\n（做完本题，当晚做该大题第二问：求 ∬_D x²y dxdy）",
+                          "options":  [
+                                          "A. 0≤θ≤π/4",
+                                          "B. 0≤θ≤π/2",
+                                          "C. π/4≤θ≤π/2",
+                                          "D. −π/4≤θ≤π/4"
+                                      ],
+                          "answer":  "A",
+                          "key":  "两曲线交于 (0,0) 与 (1,1)。直线 y=x 对应 θ=π/4；曲线 y=x² 上 r sinθ=r²cos²θ ⇒ r=sinθ/cos²θ，θ→0 时 r→0，故 θ 从 0 到 π/4。错项：B 把直线当成了 θ=π/2；C 方向反了；D 多算了负角。",
+                          "fix":  "定界先求交点：两条曲线的极坐标方程都写出来，再看 θ 在两个交点之间怎么变。",
+                          "df":  null,
+                          "df_src":  "bigq",
+                          "from_big":  true,
+                          "big_id":  "B01",
+                          "seq":  1,
+                          "tags":  [
+                                       "被拆题",
+                                       "极坐标",
+                                       "定界"
+                                   ]
+                      },
+                      {
+                          "id":  "MB02-1",
+                          "kp":  "#28",
+                          "sub":  "数学",
+                          "type":  "choice",
+                          "topic":  "大题第一问·求驻点",
+                          "stem":  "【大题第一问】设 f(x,y)=x²+2y²−2xy−4x+6y，则 f 的驻点是（　）\n（做完本题，当晚做该大题第二问：判断该驻点是否为极值点并求极值）",
+                          "options":  [
+                                          "A. (1,−1)",
+                                          "B. (−1,1)",
+                                          "C. (2,−1)",
+                                          "D. (1,1)"
+                                      ],
+                          "answer":  "A",
+                          "key":  "f_x=2x−2y−4=0 ⇒ x−y=2；f_y=4y−2x+6=0 ⇒ 2y−x=−3。联立解得 x=1、y=−1。错项：B 两个方程都取反；C 只满足第一个方程；D 把 y 的符号弄反。",
+                          "fix":  "两个偏导联立时，先把一个方程化到最简（x−y=2）再代入另一个，比直接消元快。",
+                          "df":  null,
+                          "df_src":  "bigq",
+                          "from_big":  true,
+                          "big_id":  "B02",
+                          "seq":  1,
+                          "tags":  [
+                                       "被拆题",
+                                       "极值",
+                                       "驻点"
+                                   ]
+                      },
+                      {
+                          "id":  "MB03-1",
+                          "kp":  "#26",
+                          "sub":  "数学",
+                          "type":  "choice",
+                          "topic":  "大题第一问·幂函数偏导",
+                          "stem":  "【大题第一问】设 z=x^y（x\u003e0），则 ∂z/∂x 在点 (1,2) 处等于（　）\n（做完本题，当晚做该大题第二问：求全微分 dz 在 (1,2) 处的值）",
+                          "options":  [
+                                          "A. 2",
+                                          "B. 0",
+                                          "C. 1",
+                                          "D. e"
+                                      ],
+                          "answer":  "A",
+                          "key":  "z=x^y 对 x 求偏导时 y 视为常数，按幂函数求导：∂z/∂x=y·x^{y−1}。代 (1,2) 得 2·1=2。错项：B 误把 z 当常数；C 漏了系数 y；D 把 x^y 当成了 e^{xy}。",
+                          "fix":  "x^y 对 x 求导是幂函数法则（y 当常数），对 y 求导才是指数法则。两种别混。",
+                          "df":  null,
+                          "df_src":  "bigq",
+                          "from_big":  true,
+                          "big_id":  "B03",
+                          "seq":  1,
+                          "tags":  [
+                                       "被拆题",
+                                       "偏导",
+                                       "幂函数"
+                                   ]
+                      },
+                      {
+                          "id":  "MB04-1",
+                          "kp":  "#48",
+                          "sub":  "数学",
+                          "type":  "choice",
+                          "topic":  "大题第一问·求特征值",
+                          "stem":  "【大题第一问】设 A=(1,2;2,1)，则 A 的两个特征值是（　）\n（做完本题，当晚做该大题第二问：求 A 的属于每个特征值的特征向量，并写出 A 的相似对角形）",
+                          "options":  [
+                                          "A. 3 与 −1",
+                                          "B. 3 与 1",
+                                          "C. 2 与 −1",
+                                          "D. 1 与 −3"
+                                      ],
+                          "answer":  "A",
+                          "key":  "|λE−A|=(λ−1)²−4=0 ⇒ λ−1=±2 ⇒ λ=3 或 −1。也可用 tr=2=3+(−1)、|A|=1−4=−3=3×(−1) 校验。错项：B 把 |A| 当成 3；C 用错对角线；D 符号错。",
+                          "fix":  "二阶矩阵求特征值最快的写法：先用迹与行列式猜两个数，再代回验证。",
+                          "df":  null,
+                          "df_src":  "bigq",
+                          "from_big":  true,
+                          "big_id":  "B04",
+                          "seq":  1,
+                          "tags":  [
+                                       "被拆题",
+                                       "特征值"
+                                   ]
+                      },
+                      {
+                          "id":  "MB05-1",
+                          "kp":  "#7",
+                          "sub":  "数学",
+                          "type":  "choice",
+                          "topic":  "大题第一问·切线斜率",
+                          "stem":  "【大题第一问】设曲线由参数方程 x=t²、y=t³ 给出，则在 t=1 处该曲线的切线斜率 dy/dx=（　）\n（做完本题，当晚做该大题第二问：求该点处的曲率）",
+                          "options":  [
+                                          "A. 3/2",
+                                          "B. 2/3",
+                                          "C. 3",
+                                          "D. 1/2"
+                                      ],
+                          "answer":  "A",
+                          "key":  "dy/dt=3t²、dx/dt=2t，相除得 dy/dx=3t/2。代 t=1 得 3/2。错项：B 除反了；C 漏了分母的 2；D 把 t 也代错。",
+                          "fix":  "参数方程求斜率：(dy/dt)÷(dx/dt)，约分后再代点，别先代再约。",
+                          "df":  null,
+                          "df_src":  "bigq",
+                          "from_big":  true,
+                          "big_id":  "B05",
+                          "seq":  1,
+                          "tags":  [
+                                       "被拆题",
+                                       "参数方程",
+                                       "切线"
+                                   ]
+                      },
+                      {
+                          "id":  "MB06-1",
+                          "kp":  "#16",
+                          "sub":  "数学",
+                          "type":  "choice",
+                          "topic":  "大题第一问·变限积分求导",
+                          "stem":  "【大题第一问】设 F(x)=∫₀^x t·e^{−t} dt，则 F′(1)=（　）\n（做完本题，当晚做该大题第二问：求 F(x) 的极值）",
+                          "options":  [
+                                          "A. 1/e",
+                                          "B. e",
+                                          "C. 1",
+                                          "D. 0"
+                                      ],
+                          "answer":  "A",
+                          "key":  "被积函数上限是 x，直接代入：F′(x)=x·e^{−x}。代 x=1 得 1/e。错项：B 把 e^{−1} 写成 e；C 漏了 e^{−x}；D 以为 F′≡0。",
+                          "fix":  "变限积分求导，上限直接代进被积函数——这一步不需要积分出来。",
+                          "df":  null,
+                          "df_src":  "bigq",
+                          "from_big":  true,
+                          "big_id":  "B06",
+                          "seq":  1,
+                          "tags":  [
+                                       "被拆题",
+                                       "变限积分"
+                                   ]
+                      },
+                      {
+                          "id":  "MB07-1",
+                          "kp":  "#21",
+                          "sub":  "数学",
+                          "type":  "choice",
+                          "topic":  "大题第一问·旋转体被积式",
+                          "stem":  "【大题第一问】曲线 y=x²（0≤x≤1）绕 x 轴旋转所成旋转体，用圆盘法写出体积时，被积函数是（　）\n（做完本题，当晚做该大题第二问：算出该旋转体的体积）",
+                          "options":  [
+                                          "A. πx⁴",
+                                          "B. 2πx³",
+                                          "C. πx²",
+                                          "D. 2πx·x²"
+                                      ],
+                          "answer":  "A",
+                          "key":  "绕 x 轴用圆盘法：V=π∫y²dx=π∫(x²)²dx=π∫x⁴dx，被积函数是 πx⁴。错项：B、D 是柱壳法（绕 y 轴才用 2πx·y）；C 忘了平方。",
+                          "fix":  "绕 x 轴一定是 π∫y²dx；看到 2πx 就是绕 y 轴的柱壳法，两者别混（历史错因第 3 条）。",
+                          "df":  null,
+                          "df_src":  "bigq",
+                          "from_big":  true,
+                          "big_id":  "B07",
+                          "seq":  1,
+                          "tags":  [
+                                       "被拆题",
+                                       "旋转体",
+                                       "圆盘法"
+                                   ]
+                      },
+                      {
+                          "id":  "MB08-1",
+                          "kp":  "#18",
+                          "sub":  "数学",
+                          "type":  "choice",
+                          "topic":  "大题第一问·反常积分判敛",
+                          "stem":  "【大题第一问】反常积分 ∫₁^{+∞} x^{−p} dx 收敛时，p 应满足（　）\n（做完本题，当晚做该大题第二问：p=2 时算出该积分的值）",
+                          "options":  [
+                                          "A. p\u003e1",
+                                          "B. p≥1",
+                                          "C. p\u003c1",
+                                          "D. p\u003e0"
+                                      ],
+                          "answer":  "A",
+                          "key":  "原函数为 x^{1−p}/(1−p)（p≠1）。p\u003e1 时 1−p\u003c0，x→+∞ 时 x^{1−p}→0，积分收敛到 1/(p−1)；p≤1 时发散。错项：B 把 p=1 也算进去（此时是 ln x，发散）；C、D 方向错。",
+                          "fix":  "记住临界值就在 p=1：比 1 大收敛、小于等于 1 发散。p=1 要单独查（变成 ln）。",
+                          "df":  null,
+                          "df_src":  "bigq",
+                          "from_big":  true,
+                          "big_id":  "B08",
+                          "seq":  1,
+                          "tags":  [
+                                       "被拆题",
+                                       "反常积分"
+                                   ]
+                      },
+                      {
+                          "id":  "PB09-1",
+                          "kp":  "#S02",
+                          "sub":  "政治",
+                          "type":  "choice",
+                          "topic":  "大题第一问·矛盾特殊性",
+                          "stem":  "【大题第一问】「一把钥匙开一把锁」这一说法体现的哲学原理是（　）\n（做完本题，当晚做该大题第二问：结合材料说明具体问题具体分析的方法论要求）",
+                          "options":  [
+                                          "A. 矛盾的特殊性",
+                                          "B. 矛盾的普遍性",
+                                          "C. 矛盾的同一性",
+                                          "D. 矛盾的斗争性"
+                                      ],
+                          "answer":  "A",
+                          "key":  "「一把钥匙开一把锁」强调不同事物的矛盾各有特点、必须区别对待，对应矛盾的特殊性。普遍性讲「矛盾无处不在」，同一性讲矛盾双方的相互依存与转化，斗争性讲相互排斥，都与「区别对待」不对应。",
+                          "fix":  "这类题看关键词：出现「因……而异」「区别对待」「对症下药」一律对应特殊性。",
+                          "df":  null,
+                          "df_src":  "bigq",
+                          "from_big":  true,
+                          "big_id":  "B09",
+                          "seq":  1,
+                          "tags":  [
+                                       "被拆题",
+                                       "政治",
+                                       "马原"
+                                   ]
+                      },
+                      {
+                          "id":  "PB10-1",
+                          "kp":  "#S03",
+                          "sub":  "政治",
+                          "type":  "choice",
+                          "topic":  "大题第一问·量变质变",
+                          "stem":  "【大题第一问】「千里之堤，溃于蚁穴」体现的哲学道理是（　）\n（做完本题，当晚做该大题第二问：用量变质变原理说明为什么不能忽视小的错误）",
+                          "options":  [
+                                          "A. 量变积累到一定程度必然引起质变",
+                                          "B. 质变是量变的简单重复",
+                                          "C. 量变与质变没有界限",
+                                          "D. 质变不需要量变作准备"
+                                      ],
+                          "answer":  "A",
+                          "key":  "蚁穴属微小量变，积累到堤坝承受极限即引起崩溃（质变），正是量变引起质变。错项：B 否认质变是新质的产生；C 取消了度；D 颠倒了准备关系。",
+                          "fix":  "注意 B 这种「简单重复」的说法——量变质变里质变是新质，不是重复。",
+                          "df":  null,
+                          "df_src":  "bigq",
+                          "from_big":  true,
+                          "big_id":  "B10",
+                          "seq":  1,
+                          "tags":  [
+                                       "被拆题",
+                                       "政治",
+                                       "马原"
+                                   ]
+                      },
+                      {
+                          "id":  "PB11-1",
+                          "kp":  "#S05",
+                          "sub":  "政治",
+                          "type":  "choice",
+                          "topic":  "大题第一问·实践与认识",
+                          "stem":  "【大题第一问】「纸上得来终觉浅，绝知此事要躬行」强调的是（　）\n（做完本题，当晚做该大题第二问：结合材料说明实践对认识的决定作用表现在哪些方面）",
+                          "options":  [
+                                          "A. 实践是认识的来源和检验标准",
+                                          "B. 间接经验完全不可靠",
+                                          "C. 认识可以脱离实践独立发展",
+                                          "D. 理论对实践没有指导作用"
+                                      ],
+                          "answer":  "A",
+                          "key":  "「躬行」指亲身实践，强调认识来自实践并需在实践中检验。错项：B 把「浅」绝对化，间接经验仍是认识的来源之一；C、D 都否认了实践与认识的辩证关系。",
+                          "fix":  "这类题容易在 B 上出错——原话只说「终觉浅」，没说间接经验不可靠，别把话说绝对。",
+                          "df":  null,
+                          "df_src":  "bigq",
+                          "from_big":  true,
+                          "big_id":  "B11",
+                          "seq":  1,
+                          "tags":  [
+                                       "被拆题",
+                                       "政治",
+                                       "马原"
+                                   ]
+                      },
+                      {
+                          "id":  "PB12-1",
+                          "kp":  "#S07",
+                          "sub":  "政治",
+                          "type":  "choice",
+                          "topic":  "大题第一问·社会存在",
+                          "stem":  "【大题第一问】「仓廪实而知礼节，衣食足而知荣辱」这一说法，从唯物史观看主要说明（　）\n（做完本题，当晚做该大题第二问：说明社会意识的相对独立性表现在哪些方面）",
+                          "options":  [
+                                          "A. 社会存在决定社会意识",
+                                          "B. 社会意识决定社会存在",
+                                          "C. 社会意识与社会存在完全同步",
+                                          "D. 社会意识没有任何反作用"
+                                      ],
+                          "answer":  "A",
+                          "key":  "仓廪、衣食属社会存在（物质生活条件），礼节、荣辱属社会意识，前者决定后者。错项：B 是历史唯心主义；C 否认相对独立性；D 否认反作用。",
+                          "fix":  "注意这题只问「说明什么」，B、C、D 都过头了。答 A 即可，别把相对独立性扯进来。",
+                          "df":  null,
+                          "df_src":  "bigq",
+                          "from_big":  true,
+                          "big_id":  "B12",
+                          "seq":  1,
+                          "tags":  [
+                                       "被拆题",
+                                       "政治",
+                                       "唯物史观"
+                                   ]
+                      },
+                      {
+                          "id":  "ZB13-1",
+                          "kp":  "#M01",
+                          "sub":  "专业课",
+                          "type":  "choice",
+                          "topic":  "大题第一问·齿轮传动比",
+                          "stem":  "【大题第一问】一对标准直齿圆柱齿轮，m=3 mm，z₁=20，z₂=60，标准安装。传动比 i₁₂ 与中心距 a 为（　）\n（做完本题，当晚做该大题第二问：已知 P=5 kW、n₁=1450 r/min，求小齿轮转矩与圆周力）",
+                          "options":  [
+                                          "A. i=3，a=120 mm",
+                                          "B. i=3，a=240 mm",
+                                          "C. i=1/3，a=120 mm",
+                                          "D. i=3，a=60 mm"
+                                      ],
+                          "answer":  "A",
+                          "key":  "i₁₂=z₂/z₁=60/20=3；d₁=mz₁=60、d₂=mz₂=180，a=(d₁+d₂)/2=120 mm。错项：B 忘除 2；C 传动比写反；D 只算了 d₁。",
+                          "fix":  "a=(d₁+d₂)/2，那个 2 不能漏；i₁₂ 一定是大数比小数（减速传动）。",
+                          "df":  null,
+                          "df_src":  "bigq",
+                          "from_big":  true,
+                          "big_id":  "B13",
+                          "seq":  1,
+                          "tags":  [
+                                       "被拆题",
+                                       "专业课",
+                                       "齿轮"
+                                   ]
+                      },
+                      {
+                          "id":  "ZB14-1",
+                          "kp":  "#M02",
+                          "sub":  "专业课",
+                          "type":  "choice",
+                          "topic":  "大题第一问·轴径估算",
+                          "stem":  "【大题第一问】按扭转强度初估转轴最小直径，用 d≥A₀·(P/n)^{1/3}（A₀=112）。已知 P=5 kW、n=960 r/min，则 d 约为（　）\n（做完本题，当晚做该大题第二问：按弯扭合成强度校核该轴的危险截面）",
+                          "options":  [
+                                          "A. 19.4 mm",
+                                          "B. 8.7 mm",
+                                          "C. 42.6 mm",
+                                          "D. 112 mm"
+                                      ],
+                          "answer":  "A",
+                          "key":  "(P/n)^{1/3}=(5/960)^{1/3}=(0.005208)^{1/3}≈0.1734，乘 112 得约 19.4 mm。错项：B 把开三次方算成除以 3；C 把 P/n 取反；D 直接用 A₀。",
+                          "fix":  "A₀ 的数量级要记住：45 钢取 103–112，算出来一般在 15–40 mm 之间，落到这个区间基本没错。",
+                          "df":  null,
+                          "df_src":  "bigq",
+                          "from_big":  true,
+                          "big_id":  "B14",
+                          "seq":  1,
+                          "tags":  [
+                                       "被拆题",
+                                       "专业课",
+                                       "轴"
+                                   ]
+                      },
+                      {
+                          "id":  "EB15-1",
+                          "kp":  "",
+                          "sub":  "英语",
+                          "type":  "choice",
+                          "topic":  "大题第一问·长难句翻译",
+                          "stem":  "【大题第一问】翻译：It is not so much the amount of time spent on a task as the degree of concentration it demands that determines the outcome.\n（做完本题，当晚做该大题第二问：把该句改写为用 although 引导的让步结构）",
+                          "options":  [
+                                          "A. 决定结果的与其说是在一项任务上花的时间，不如说是它要求的专注程度。",
+                                          "B. 花在任务上的时间多少，比它要求的专注程度更能决定结果。",
+                                          "C. 结果由任务要求的专注程度决定，与花的时间无关。",
+                                          "D. 任务要求的时间越长，需要的专注程度就越高，结果也越好。"
+                                      ],
+                          "answer":  "A",
+                          "key":  "主干是强调句 It is ... that determines the outcome，被强调部分是 not so much A as B（与其说 A 不如说 B）。A=the amount of time spent，B=the degree of concentration it demands。错项：B 把 not so much...as 译成了「比……更」，方向反；C 把「不如说」译成「无关」；D 完全重造句义。",
+                          "fix":  "not so much A as B 固定译作「与其说 A，不如说 B」，这是英语二翻译的高频结构，方向不能反。",
+                          "df":  null,
+                          "df_src":  "bigq",
+                          "from_big":  true,
+                          "big_id":  "B15",
+                          "seq":  1,
+                          "tags":  [
+                                       "被拆题",
+                                       "英语",
+                                       "翻译"
                                    ]
                       }
                   ]
