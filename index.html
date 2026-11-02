@@ -44,7 +44,7 @@ input[type=text]{width:100%;background:#1d222c;border:1px solid var(--line);colo
 </header>
 <main id="app"></main>
 <div id="toast"></div>
-<script src="bank.js?v=1793629951" onerror="window.__noBank=1"></script>
+<script src="bank.js?v=1793630555" onerror="window.__noBank=1"></script>
 <script>
 'use strict';
 /* ---------- 工具 ---------- */
@@ -95,8 +95,10 @@ var BANK=(window.QBANK&&window.QBANK.questions&&window.QBANK.questions.length)?w
    库存不足时页面顶部会明确提示「可用 N 题」，不偷偷塞简单题。 */
 var DF_MIN = 95;
 var ALL_RAW = BANK.questions.slice();
-var ALL = ALL_RAW.filter(function(q){ return (q.df||0) >= DF_MIN; });
-var ALL_LOW = ALL_RAW.length - ALL.length;
+/* 被拆题（大题第一问）不受难度门槛限制 —— 它本来就是大题的简单第一问。
+   其余题必须 df>=95。 */
+var ALL = ALL_RAW.filter(function(q){ return q.from_big || (q.df||0) >= DF_MIN; });
+var ALL_LOW = ALL_RAW.filter(function(q){ return !q.from_big && (q.df||0) < DF_MIN; }).length;
 var TD=ymd(new Date());
 var H=histRaw();
 
@@ -139,9 +141,16 @@ function buildQueue(){
      英语/政治/专业课仍按到期重复。数学新题不足时，尾部自动让位给其他三科。 */
   var answered={};
   try{recsRaw().forEach(function(r){if(r.qid)answered[r.qid]=1})}catch(e){}
-  var M=ord(ALL.filter(function(q){return (q.sub||'')==='数学' && !answered[q.id] && !q.pin}));
-  var P=ord(ALL.filter(function(q){return (q.sub||'')!=='数学'}));
-  var PIN=ALL.filter(function(q){return q.pin}); /* 题组保序：不能过 ord()，ord 里面有 shuffle */
+  /* 【2026-11-02 23:0x 用户口径】被拆题（大题第一问）单独一条线：
+     占题量 15%、不受难度门槛、不参与轮换。做完当天晚上接着做该大题第二问，
+     所以必须排在队列前半段，不能沉底。 */
+  var BIG=ALL.filter(function(q){return q.from_big && !answered[q.id]});
+  var NORM=ALL.filter(function(q){return !q.from_big});
+  var BIG_N=4;                      /* 30 题 × 15% ≈ 4.5，取 4 */
+  var bigPick=BIG.slice(0,BIG_N);
+  var M=ord(NORM.filter(function(q){return (q.sub||'')==='数学' && !answered[q.id] && !q.pin}));
+  var P=ord(NORM.filter(function(q){return (q.sub||'')!=='数学'}));
+  var PIN=NORM.filter(function(q){return q.pin}); /* 题组保序：不能过 ord()，ord 里面有 shuffle */
   /* 四科配额：数学取未做前 20 道，政治 5 / 专业课 3 / 英语 2 从各自的到期队列里取 */
   var used={};
   /* 【2026-11-02 改】pin 组前 4 道固定在最前，它们本身就是数学题，
@@ -195,7 +204,10 @@ function buildQueue(){
      顺序：pin 前 4 → 主队（严格 20/5/3/2）→ 轮转 pin 2 → 其余 → 剩余 pin
      pinExtra 必须放在 head 之后，否则它占掉数学配额、把政治挤到 3 道。 */
   var pinLeft=pinRest.filter(function(q){return pinExtra.indexOf(q)<0});
-  return pinHead.concat(head).concat(pinExtra).concat(shuffle(rest2)).concat(pinLeft);
+  var bigLeft=BIG.filter(function(q){return bigPick.indexOf(q)<0});
+  /* 顺序：pin 前 4 → 被拆题 4（做完当晚接第二问）→ 主队（配额）→ 轮转 pin 2 → 其余 → 剩余 pin → 其余被拆题 */
+  return pinHead.concat(bigPick).concat(head).concat(pinExtra)
+         .concat(shuffle(rest2)).concat(pinLeft).concat(bigLeft);
 }
 var S={set:buildQueue(),qi:0,judged:false,t0:Date.now(),mine:'',mult:[],res:[],done:false};
 
