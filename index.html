@@ -44,7 +44,7 @@ input[type=text]{width:100%;background:#1d222c;border:1px solid var(--line);colo
 </header>
 <main id="app"></main>
 <div id="toast"></div>
-<script src="bank.js?v=1793628331" onerror="window.__noBank=1"></script>
+<script src="bank.js?v=1793629646" onerror="window.__noBank=1"></script>
 <script>
 'use strict';
 /* ---------- 工具 ---------- */
@@ -89,7 +89,14 @@ function judgeChoice(q,mine){
 var DEMO={id:'demo',title:'题库未加载',questions:[{id:'demo-1',sub:'数学',topic:'极限',type:'choice',stem:'占位题：请把 题库.js 放到同目录。',options:['A. 好','B. 收到'],answer:'A'}]};
 var WB_BUILD='2026-11-02';   /* 与 bank_src.json 的 id 对齐；不一致即判定为旧缓存 */
 var BANK=(window.QBANK&&window.QBANK.questions&&window.QBANK.questions.length)?window.QBANK:DEMO;
-var ALL=BANK.questions.slice();
+/* 【2026-11-02 23:0x 用户口径】难度标尺：近十年真题平均 = 100，出题必须 95–130。
+   题库里大部分题当年是按「手机能算」出的，实测中位只有 65 分，全部低于门槛。
+   故加硬门槛：只有 df>=95 的题进队列，其余留在库里改造，不删也不出。
+   库存不足时页面顶部会明确提示「可用 N 题」，不偷偷塞简单题。 */
+var DF_MIN = 95;
+var ALL_RAW = BANK.questions.slice();
+var ALL = ALL_RAW.filter(function(q){ return (q.df||0) >= DF_MIN; });
+var ALL_LOW = ALL_RAW.length - ALL.length;
 var TD=ymd(new Date());
 var H=histRaw();
 
@@ -196,7 +203,10 @@ var S={set:buildQueue(),qi:0,judged:false,t0:Date.now(),mine:'',mult:[],res:[],d
 function refreshBar(){
   $('bk').textContent=BANK.title||'题库';
   var due=0;ALL.forEach(function(q){var h=H[q.id];if(!h||!h.due||h.due<=TD)due++});
-  $('bd').textContent=BANK.id+' · 题库 '+ALL.length+' 题 · 到期 '+due;
+  /* 【2026-11-02】难度门槛生效：显示可用题数与被门槛挡掉的题数，库存不足要看得见 */
+  var dfTip = ' · 可用 '+ALL.length+' 题（难度≥'+DF_MIN+'）';
+  if(ALL_LOW>0) dfTip += ' · <span style="color:var(--warn)">'+ALL_LOW+' 题未达门槛暂不出</span>';
+  $('bd').innerHTML=BANK.id+' · 题库 '+ALL.length+' 题 · 到期 '+due+dfTip;
   var okn=0,ch=0;
   for(var i=0;i<S.res.length;i++){var r=S.res[i];if(r.type!=='fill'){ch++;if(r.ok)okn++}}
   var pd=pending();
