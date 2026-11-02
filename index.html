@@ -44,7 +44,7 @@ input[type=text]{width:100%;background:#1d222c;border:1px solid var(--line);colo
 </header>
 <main id="app"></main>
 <div id="toast"></div>
-<script src="bank.js?v=1793548017" onerror="window.__noBank=1"></script>
+<script src="bank.js?v=1793625337" onerror="window.__noBank=1"></script>
 <script>
 'use strict';
 /* ---------- 工具 ---------- */
@@ -222,7 +222,10 @@ function renderQ(){
     html+='<input id="fill" type="text" autocomplete="off" spellcheck="false" placeholder="填答案；符号打不出就写文字（如「二分之根号三」）" oninput="S.mine=this.value">';
     html+='<button class="btn wide" style="margin-top:6px" onclick="submitFill()">提交</button>';
   }
-  html+='<button class="link" onclick="skipQ()">不会，直接看答案</button>';
+  html+='<button class="link" onclick="skipQ()">不会，看答案</button>';
+  // 2026-11-02 21:13 用户要求：工位上算不了、又不许空着下一题，只能点「不会」，
+  // 导致 blank=true 里混了大量「客观算不了」被误判成「不会」。加一个跳过口。
+  html+='<button class="link" style="color:var(--dim);margin-left:14px" onclick="nextOnly()">现在做不了，跳过</button>';
   html+='</div></div>';
   $('app').innerHTML=html;
   refreshBar();
@@ -258,7 +261,7 @@ function saveRecord(q,skip){
   var h=H[q.id]||{n:0,streak:0};
   var attempt=(h.n||0)+1;
   var rec={id:uid(),ts:nowIso(),bank:BANK.id,qid:q.id,type:type,sub:q.sub||'',topic:q.topic||'',
-           mine:mine,ans:q.answer,ok:ok,judged:judged,ms:ms,blank:!!skip,attempt:attempt,ve:1};
+           mine:mine,ans:q.answer,ok:ok,judged:judged,ms:ms,blank:!!skip,skipped:false,attempt:attempt,ve:1};
   var arr=recsRaw();arr.push(rec);recsSet(arr);
   var nd=new Date();
   if(judged&&ok===false){h.streak=0;nd.setDate(nd.getDate()+1)}
@@ -292,6 +295,22 @@ function skipQ(){
   var r=saveRecord(q,true);
   maybeAutoExport();
   renderResult(q,r.rec,r.h);
+}
+/* 2026-11-02 21:13 新增：跳过 ≠ 不会。
+   只留痕，不动复习调度（due/streak 保持原样），下次还会出现；
+   记录里写 skipped:true，与 blank:true 分开，供统计区分「算不了」和「真不会」。 */
+function nextOnly(){
+  if(S.judged)return;
+  var q=S.set[S.qi];
+  var ms=Date.now()-S.t0;
+  var rec={id:uid(),ts:nowIso(),bank:BANK.id,qid:q.id,type:q.type||'choice',
+           sub:q.sub||'',topic:q.topic||'',mine:'',ans:q.answer,
+           ok:null,judged:false,ms:ms,blank:false,skipped:true,
+           attempt:((H[q.id]||{}).n||0)+1,ve:1};
+  var arr=recsRaw();arr.push(rec);recsSet(arr);
+  S.res.push(rec);
+  maybeAutoExport();
+  nextQ();
 }
 
 function renderResult(q,rec,h){
