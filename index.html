@@ -44,7 +44,7 @@ input[type=text]{width:100%;background:#1d222c;border:1px solid var(--line);colo
 </header>
 <main id="app"></main>
 <div id="toast"></div>
-<script src="bank.js?v=1793631937" onerror="window.__noBank=1"></script>
+<script src="bank.js?v=1793721288" onerror="window.__noBank=1"></script>
 <script>
 'use strict';
 /* ---------- 工具 ---------- */
@@ -84,6 +84,10 @@ function judgeChoice(q,mine){
   var B=norm(mine).split('').sort().join('');
   return A.length>0&&A===B;
 }
+/* 2026-11-03 修（司南复核补）：选项已按显示位重标 A/B/C/D，内部仍用原字母；
+   这两函数把「原字母」映射成「当前显示字母」，仅供结果页显示，不影响判分/记录。 */
+function dispLetter(ch){var oi='ABCDEFGH'.indexOf(ch);var p=(S.optOrder||[]).indexOf(oi);return p>=0?'ABCDEFGH'[p]:ch}
+function dispAns(s){return String(s||'').split('').map(dispLetter).join('')}
 
 /* ---------- 题库 ---------- */
 var DEMO={id:'demo',title:'题库未加载',questions:[{id:'demo-1',sub:'数学',topic:'极限',type:'choice',stem:'占位题：请把 题库.js 放到同目录。',options:['A. 好','B. 收到'],answer:'A'}]};
@@ -264,6 +268,12 @@ function renderQ(){
   var h=H[q.id]||{};
   var type=q.type||'choice';
   var opts=q.options||['A','B','C','D'];
+  /* 2026-11-03 修：题库答案偏 A（A=61/78），而原实现按存储顺序渲染、判分按位置→字母，
+     等于「蒙 A 就对 78%」。此处每题洗一次显示顺序（同题重渲染不变），pick() 里映射回原字母。 */
+  if(!S.optOrder||S.optOrderQ!==q.id){
+    var _idx=[];for(var _i=0;_i<opts.length;_i++)_idx.push(_i);
+    S.optOrder=shuffle(_idx);S.optOrderQ=q.id;
+  }
   var html='<div class="card">';
   html+='<div class="tags"><span>'+esc(q.sub||'')+' · '+(type==='fill'?'填空':(type==='multi'?'多选':'单选'))+
         '</span><span>'+esc(q.id)+' · 第 '+(S.qi+1)+'/'+S.set.length+'</span></div>';
@@ -271,7 +281,7 @@ function renderQ(){
   html+='<div id="ansbox" style="margin-top:10px">';
   if(type==='choice'||type==='multi'){
     for(var i=0;i<opts.length;i++){
-      html+='<button class="opt" data-i="'+i+'" onclick="pick('+i+')">'+esc(opts[i])+'</button>';
+      html+='<button class="opt" data-i="'+i+'" onclick="pick('+i+')">'+esc('ABCDEFGH'[i]+'. '+String(opts[S.optOrder[i]]).replace(/^[A-Ha-h][.．、)）]\s*/,''))+'</button>';
     }
     if(type==='multi')html+='<div class="sub" style="margin:4px 0 0">多选：选完点提交</div>';
     html+='<button class="btn wide" style="margin-top:12px" onclick="submitChoice()">提交</button>';
@@ -294,13 +304,14 @@ function renderQ(){
 function pick(i){
   if(S.judged)return;
   var q=S.set[S.qi],type=q.type||'choice';
-  var L='ABCDEFGH'[i];
+  /* 2026-11-03 修：选项按渲染顺序洗牌，选择/判分一律映射回原字母，防「答案偏 A 被蒙中」 */
+  var L='ABCDEFGH'[((S.optOrder&&i<S.optOrder.length)?S.optOrder[i]:i)];
   if(type==='multi'){
     var k=S.mult.indexOf(L);
     if(k<0)S.mult.push(L);else S.mult.splice(k,1);
     S.mult.sort();S.mine=S.mult.join('');
     var bs=document.querySelectorAll('.opt');
-    for(var j=0;j<bs.length;j++)bs[j].classList.toggle('sel',S.mult.indexOf('ABCDEFGH'[j])>=0);
+    for(var j=0;j<bs.length;j++)bs[j].classList.toggle('sel',S.mult.indexOf('ABCDEFGH'[((S.optOrder&&j<S.optOrder.length)?S.optOrder[j]:j)])>=0);
   }else{
     S.mine=L;
     var b2=document.querySelectorAll('.opt');
@@ -381,7 +392,8 @@ function renderResult(q,rec,h){
   }else{
     html+='<div class="dim">已交（用时 '+mmss(rec.ms)+'）· 填空对错由电脑上的 agent 判</div>';
   }
-  html+='<div>正确答案：<b class="ok">'+esc(q.answer)+'</b></div>';
+  var _da=dispAns(q.answer);
+  html+='<div>正确答案：<b class="ok">'+esc(_da||q.answer)+'</b></div>';
   if(!rec.blank&&!rec.judged)html+='<div class="dim">你写的：'+(esc(rec.mine)||'（空）')+'</div>';
   if(q.key)html+='<div style="margin-top:6px">'+esc(q.key)+'</div>';
   if(rec.blank&&q.hook)html+='<div style="margin-top:8px;border-left:3px solid #4c8dff;padding-left:10px">起手句：'+esc(q.hook)+'</div>';
@@ -393,7 +405,7 @@ function renderResult(q,rec,h){
   var f=$('fill');if(f){f.disabled=true}
   var bs=document.querySelectorAll('.opt');
   for(var i=0;i<bs.length;i++){
-    var L='ABCDEFGH'[i];
+    var L='ABCDEFGH'[((S.optOrder&&i<S.optOrder.length)?S.optOrder[i]:i)];
     bs[i].disabled=true;
     if(norm(rec.ans).indexOf(L)>=0)bs[i].classList.add('right');
     else if((rec.mine||'').indexOf(L)>=0)bs[i].classList.add('wrong');
