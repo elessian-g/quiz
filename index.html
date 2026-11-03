@@ -44,7 +44,7 @@ input[type=text]{width:100%;background:#1d222c;border:1px solid var(--line);colo
 </header>
 <main id="app"></main>
 <div id="toast"></div>
-<script src="bank.js?v=1793721288" onerror="window.__noBank=1"></script>
+<script src="bank.js?v=1793745936" onerror="window.__noBank=1"></script>
 <script>
 'use strict';
 /* ---------- 工具 ---------- */
@@ -141,19 +141,28 @@ function ord(list){
   return ordW(due).concat(shuffle(later));
 }
 function buildQueue(){
-  /* 【2026-10-30 用户口径】数学选填**同一题只出现一次**（做过就不再推，除非点名的重点题）；
-     英语/政治/专业课仍按到期重复。数学新题不足时，尾部自动让位给其他三科。 */
+  /* 【2026-10-30 用户口径】数学选填同一题只出现一次（做过不再推，重点题除外）；
+     英语/政治/专业课按到期重复。 */
   var answered={};
   try{recsRaw().forEach(function(r){if(r.qid)answered[r.qid]=1})}catch(e){}
-  /* 【2026-11-02 23:0x 用户口径】被拆题（大题第一问）单独一条线：
-     占题量 15%、不受难度门槛、不参与轮换。做完当天晚上接着做该大题第二问，
-     所以必须排在队列前半段，不能沉底。 */
+  /* 【2026-11-02 23:0x 用户口径】被拆题（大题第一问）单独一条线：占题量 15%、不受难度门槛、不参与轮换；
+     做完当天晚上接着做该大题第二问，所以必须排在前半段，不能沉底。 */
   var BIG=ALL.filter(function(q){return q.from_big && !answered[q.id]});
   var NORM=ALL.filter(function(q){return !q.from_big});
   var BIG_N=4;                      /* 30 题 × 15% ≈ 4.5，取 4 */
   var bigPick=BIG.slice(0,BIG_N);
-  var M=ord(NORM.filter(function(q){return (q.sub||'')==='数学' && !answered[q.id] && !q.pin}));
-  var P=ord(NORM.filter(function(q){return (q.sub||'')!=='数学'}));
+  /* 【2026-11-04 用户口径·分轨】按「失分形态」分池：本题形态 == 考点失分形态 → 主池；
+     交叉形态 → 辅池（只测掌握、不参与主池轮转）。禁止拿大题补选填失分、拿选填补大题失分。
+     KP_LOSTIN 由 05 台账 + 11-03 错题初灌；未列出的按本题形态兜底。 */
+  var KP_LOSTIN={'#32':'两者','#7':'大题','#48':'选填','#21':'选填','#33':'选填','#39':'选填',
+                 '#S02':'选填','#S11':'选填','#S13':'选填','#M04':'选填','#M01':'选填'};
+  function _lf(q){return q.lost_in || KP_LOSTIN[q.kp||q.topic] || (q.from_big?'大题':'选填')}
+  function _form(q){return q.from_big?'大题':'选填'}
+  function _main(q){var l=_lf(q);return l==='两者'||l===_form(q)}
+  var Mn=ord(NORM.filter(function(q){return (q.sub||'')==='数学' && !answered[q.id] && !q.pin}));
+  var Pn=ord(NORM.filter(function(q){return (q.sub||'')!=='数学'}));
+  var M=Mn.filter(_main), M_aux=Mn.filter(function(q){return !_main(q)});
+  var P=Pn.filter(_main), P_aux=Pn.filter(function(q){return !_main(q)});
   var PIN=NORM.filter(function(q){return q.pin}); /* 题组保序：不能过 ord()，ord 里面有 shuffle */
   /* 四科配额：数学取未做前 20 道，政治 5 / 专业课 3 / 英语 2 从各自的到期队列里取 */
   var used={};
@@ -186,10 +195,27 @@ function buildQueue(){
     if(oi<others.length && (mi>=mathHead.length || head.length+1>=nextAt)){ head.push(others[oi++]); nextAt+=step; }
     else head.push(mathHead[mi++]);
   }
+  /* 【2026-11-04 哈尼审改·辅池】辅池＝另一种失分形态的题，只测掌握、不参与主池轮转，占主队 10–20%（取 15%）。
+     关键在位置：原稿排在 head 之后（第 39 位起），主人每天只做 20–30 题，永远够不到＝等于没排
+     （与 11-02「pin 组排第 31 位后 M1102-101~110 十道一道未做」同型错误）。
+     现改为替换 head 第 21 位起；被顶出的主池题自然回 rest，不丢题。
+     辅池内部数学/其它交替取，避免整段都是数学（原稿 M_aux.concat(P_aux) 会让辅池全是数学）。 */
+  var auxAll=[], _ap=P_aux.slice(), _am=M_aux.slice();
+  while(_ap.length || _am.length){
+    if(_am.length){ auxAll.push(_am.shift()); }
+    if(_ap.length){ auxAll.push(_ap.shift()); }
+  }
+  auxAll=auxAll.filter(function(q){return !used[q.id]});
+  var aux=auxAll.slice(0, Math.max(1, Math.round(head.length*0.15)));
+  aux.forEach(function(q){used[q.id]=1});
+  for(var ai=0; ai<aux.length; ai++){
+    var _pos=Math.min(20, head.length)+ai;
+    if(_pos<head.length){ head[_pos]=aux[ai]; } else { head.push(aux[ai]); }
+  }
   var rest=[];
-  M.forEach(function(q){if(!used[q.id])rest.push(q)});
-  P.forEach(function(q){if(!used[q.id])rest.push(q)});
-  /* 【2026-11-01 用户口径】带 pin 的「计算题组」必须**整组连着出**，不许被洗散：
+  M.concat(M_aux).forEach(function(q){if(!used[q.id])rest.push(q)});
+  P.concat(P_aux).forEach(function(q){if(!used[q.id])rest.push(q)});
+  /* 【2026-11-01 用户口径】带 pin 的「计算题组」必须整组连着出，不许被洗散：
      组顺序按 pin 值首次出现排，组内保持题库原序（M1102-101→105 这样） */
   var pg={}, pgOrder=[];
   PIN.forEach(function(q){var g=q.pin||'_';if(!pg[g]){pg[g]=[];pgOrder.push(g);}pg[g].push(q);});
@@ -205,14 +231,15 @@ function buildQueue(){
   var rest2=[];
   rest.forEach(function(q){if(!q.pin)rest2.push(q)});
   /* 未被选中的 pin 题也要进队列，否则刷完一轮总数不足（实测少 4 道）
-     顺序：pin 前 4 → 主队（严格 20/5/3/2）→ 轮转 pin 2 → 其余 → 剩余 pin
+     顺序：pin 前 4 → 主队（严格 20/5/3/2，含辅池占位）→ 轮转 pin 2 → 其余 → 剩余 pin
      pinExtra 必须放在 head 之后，否则它占掉数学配额、把政治挤到 3 道。 */
   var pinLeft=pinRest.filter(function(q){return pinExtra.indexOf(q)<0});
   var bigLeft=BIG.filter(function(q){return bigPick.indexOf(q)<0});
-  /* 顺序：pin 前 4 → 被拆题 4（做完当晚接第二问）→ 主队（配额）→ 轮转 pin 2 → 其余 → 剩余 pin → 其余被拆题 */
+  /* 顺序：pin 前 4 → 被拆题 4（做完当晚接第二问）→ 主队（配额，辅池已并入其中）→ 轮转 pin 2 → 其余 → 剩余 pin → 其余被拆题 */
   return pinHead.concat(bigPick).concat(head).concat(pinExtra)
          .concat(shuffle(rest2)).concat(pinLeft).concat(bigLeft);
 }
+
 var S={set:buildQueue(),qi:0,judged:false,t0:Date.now(),mine:'',mult:[],res:[],done:false};
 
 /* ---------- 顶部 ---------- */
