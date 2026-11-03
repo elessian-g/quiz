@@ -1,6 +1,6 @@
 window.QBANK = {
     "id":  "2026-11-04",
-    "title":  "备用机题库（144 题）",
+    "title":  "备用机题库（152 题）",
     "questions":  [
                       {
                           "id":  "P04",
@@ -3278,6 +3278,150 @@ window.QBANK = {
                                    ],
                           "df":  100,
                           "df_src":  "zhenti"
+                      },
+                      {
+                          "id":  "M1104-01",
+                          "sub":  "数学",
+                          "kp":  "#1 极限",
+                          "type":  "choice",
+                          "stem":  "$\\lim_{x\\to0}\\dfrac{\\int_0^x\\sin t^2dt}{x^3}=$",
+                          "options":  [
+                                          "$\\dfrac{1}{3}$",
+                                          "$0$",
+                                          "$1$",
+                                          "$-\\dfrac{1}{3}$"
+                                      ],
+                          "answer":  "A",
+                          "explain":  "洛必达一次：lim sin(x²)/(3x²)=x²/(3x²)=1/3。干扰项：0（误判阶）、1（漏除3）、−1/3（符号）。",
+                          "df":  100,
+                          "df_src":  "zhenti",
+                          "from_big":  false
+                      },
+                      {
+                          "id":  "M1104-02",
+                          "sub":  "数学",
+                          "kp":  "#1 极限",
+                          "type":  "choice",
+                          "stem":  "$\\lim_{x\\to0}\\dfrac{x-\\sin x}{x^3}=$",
+                          "options":  [
+                                          "$\\dfrac{1}{3}$",
+                                          "$\\dfrac{1}{6}$",
+                                          "$\\dfrac{1}{2}$",
+                                          "$1$"
+                                      ],
+                          "answer":  "B",
+                          "explain":  "泰勒：sin x=x−x³/6+o(x³) ⇒ x−sin x=x³/6+… ⇒ 1/6。干扰项：1/3（展开系数写成1/3）、1/2、1（系数取1）。",
+                          "df":  100,
+                          "df_src":  "zhenti",
+                          "from_big":  false
+                      },
+                      {
+                          "id":  "M1104-03",
+                          "sub":  "数学",
+                          "kp":  "#32 极坐标",
+                          "type":  "choice",
+                          "stem":  "$\\iint_D(x^2+y^2)dxdy,\\ D:x^2+y^2\\le 2x$",
+                          "options":  [
+                                          "$\\pi$",
+                                          "$\\dfrac{\\pi}{2}$",
+                                          "$\\dfrac{3\\pi}{2}$",
+                                          "$2\\pi$"
+                                      ],
+                          "answer":  "C",
+                          "explain":  "r=2cosθ，θ∈[−π/2,π/2]，被积 r³：∫(2cosθ)⁴/4=4∫cos⁴θ=4·3π/8=3π/2。干扰项：π（漏雅可比）、π/2、2π（cos⁴积分错）。",
+                          "df":  100,
+                          "df_src":  "zhenti",
+                          "from_big":  false
+                      },
+                      {
+                          "id":  "M1104-04",
+                          "sub":  "数学",
+                          "kp":  "#32 极坐标",
+                          "type":  "choice",
+                          "stem":  "曲线 $r=2\\sin\\theta$ 所围圆域的面积",
+                          "options":  [
+                                          "$\\dfrac{\\pi}{4}$",
+                                          "$\\dfrac{\\pi}{2}$",
+                                          "$2\\pi$",
+                                          "$\\pi$"
+                                      ],
+                          "answer":  "D",
+                          "explain":  "r=2sinθ 即 x²+(y−1)²=1，半径1，面积π；极坐标 S=½∫₀^π(2sinθ)²dθ=2·π/2=π。干扰项：π/2（漏系数2）、2π（当r=2整圆）、π/4。",
+                          "df":  100,
+                          "df_src":  "zhenti",
+                          "from_big":  false
+                      },
+                      {
+                          "id":  "M1104-05",
+                          "sub":  "数学",
+                          "kp":  "#8 极值",
+                          "type":  "choice",
+                          "stem":  "$f=x^2+xy+y^2-3x-6y$ 在 $x+y=2$ 下的最小值",
+                          "options":  [
+                                          "$-\\dfrac{33}{4}$",
+                                          "$-9$",
+                                          "$-8$",
+                                          "$-\\dfrac{35}{4}$"
+                                      ],
+                          "answer":  "A",
+                          "explain":  "代入 y=2−x 得 f=x²+x−8，min 在 x=−1/2、y=5/2，值 −33/4。拉格朗日同解。干扰项：−9（无约束驻点(0,3)，不满足约束）、−8（漏x²项）、−35/4（配方错）。",
+                          "df":  100,
+                          "df_src":  "zhenti",
+                          "from_big":  false
+                      },
+                      {
+                          "id":  "M1104-06",
+                          "sub":  "数学",
+                          "kp":  "#48 特征值",
+                          "type":  "choice",
+                          "stem":  "$A$ 的特征值 $1,2,3$，求 $|A^2-4A+E|$",
+                          "options":  [
+                                          "$0$",
+                                          "$-12$",
+                                          "$12$",
+                                          "$-6$"
+                                      ],
+                          "answer":  "B",
+                          "explain":  "特征值 λ²−4λ+1：(−2)(−3)(−2)=−12。注意 λ²−4λ+1=0 的根 2±√3 不在{1,2,3}，与11-03那题(λ=2,3使因子为0)相反。",
+                          "df":  100,
+                          "df_src":  "zhenti",
+                          "from_big":  false
+                      },
+                      {
+                          "id":  "M1104-07",
+                          "sub":  "数学",
+                          "kp":  "#7 参数方程",
+                          "type":  "choice",
+                          "stem":  "$x=2\\cos t,\\ y=3\\sin t$，求 $\\left.\\dfrac{d^2y}{dx^2}\\right|_{t=\\pi/4}$",
+                          "options":  [
+                                          "$-\\dfrac{3}{2}$",
+                                          "$-\\dfrac{3\\sqrt2}{4}$",
+                                          "$-\\dfrac{3\\sqrt2}{2}$",
+                                          "$\\dfrac{3\\sqrt2}{2}$"
+                                      ],
+                          "answer":  "C",
+                          "explain":  "dy/dx=−(3/2)cot t，d²y/dx²=−3/(4sin³t)；t=π/4 ⇒ −3/(4·√2/4)=−3/√2=−3√2/2。干扰项：−3/2（只算一阶，最大坑）、−3√2/4（漏分母2）、+（符号）。",
+                          "df":  100,
+                          "df_src":  "zhenti",
+                          "from_big":  false
+                      },
+                      {
+                          "id":  "M1104-08",
+                          "sub":  "数学",
+                          "kp":  "#26 偏导",
+                          "type":  "choice",
+                          "stem":  "$z=f(xy,x+y)$，求 $\\partial z/\\partial x$",
+                          "options":  [
+                                          "$x f_1\u0027+f_2\u0027$",
+                                          "$f_1\u0027+f_2\u0027$",
+                                          "$y f_1\u0027+x f_2\u0027$",
+                                          "$y f_1\u0027+f_2\u0027$"
+                                      ],
+                          "answer":  "D",
+                          "explain":  "∂z/∂x=f₁\u0027·(xy)\u0027_x+f₂\u0027·(x+y)\u0027_x=y f₁\u0027+f₂\u0027。干扰项：x f₁\u0027+f₂\u0027（混淆u对x/y偏导）、f₁\u0027+f₂\u0027（漏内层）、y f₁\u0027+x f₂\u0027。",
+                          "df":  100,
+                          "df_src":  "zhenti",
+                          "from_big":  false
                       }
                   ]
 };
