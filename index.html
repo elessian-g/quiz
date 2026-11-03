@@ -34,6 +34,10 @@ input[type=text]{width:100%;background:#1d222c;border:1px solid var(--line);colo
 .stalebar b{color:#ffb26b}
 #toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%);background:#2a3242;color:#fff;padding:10px 16px;border-radius:999px;font-size:14px;opacity:0;transition:opacity .25s;pointer-events:none;z-index:99}
 #toast.on{opacity:1}
+.subjbar{display:flex;flex-wrap:wrap;gap:6px;margin:9px 0 4px}
+.subjb{flex:0 0 auto;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--dim);font-size:13px;font-family:inherit}
+.subjb.on{border-color:var(--acc);background:#1b2740;color:var(--fg);font-weight:600}
+.subjb .n{opacity:.7;font-size:12px;margin-left:2px}
 </style>
 </head>
 <body>
@@ -41,10 +45,11 @@ input[type=text]{width:100%;background:#1d222c;border:1px solid var(--line);colo
   <div class="h1"><span id="bk">题库</span><span class="sub" id="bd"></span></div>
   <div class="sub" id="st">载入中…</div>
   <div class="stalebar" id="wbf"></div>
+  <div class="subjbar" id="subjbar"></div>
 </header>
 <main id="app"></main>
 <div id="toast"></div>
-<script src="bank.js?v=1793746975" onerror="window.__noBank=1"></script>
+<script src="bank.js?v=1793747132" onerror="window.__noBank=1"></script>
 <script>
 'use strict';
 /* ---------- 工具 ---------- */
@@ -141,6 +146,14 @@ function ord(list){
   return ordW(due).concat(shuffle(later));
 }
 function buildQueue(){
+  /* 【2026-11-04 用户需求】科目自选：选单科时不套配额，按到期 + KPW 分层全出 */
+  if(typeof SUBJ!=='undefined' && SUBJ && SUBJ!=='全部'){
+    var _ans={}; try{recsRaw().forEach(function(r){if(r.qid)_ans[r.qid]=1})}catch(e){}
+    var _pool=ALL.filter(function(q){return (q.sub||'')===SUBJ});
+    var _pin=_pool.filter(function(q){return q.pin});
+    var _rest=_pool.filter(function(q){return !q.pin && !(SUBJ==='数学' && _ans[q.id])});
+    return _pin.concat(ord(_rest));
+  }
   /* 【2026-10-30 用户口径】数学选填同一题只出现一次（做过不再推，重点题除外）；
      英语/政治/专业课按到期重复。 */
   var answered={};
@@ -240,10 +253,28 @@ function buildQueue(){
          .concat(shuffle(rest2)).concat(pinLeft).concat(bigLeft);
 }
 
+var SUBJ=(function(){try{return localStorage.getItem('qz_subj')||'全部'}catch(e){return '全部'}})();
 var S={set:buildQueue(),qi:0,judged:false,t0:Date.now(),mine:'',mult:[],res:[],done:false};
 
 /* ---------- 顶部 ---------- */
+function renderSubjBar(){
+  var bar=$('subjbar'); if(!bar)return;
+  var subs=['全部','数学','政治','专业课','英语'];
+  var cnt={}; ALL.forEach(function(q){cnt[q.sub]=(cnt[q.sub]||0)+1});
+  var h='';
+  for(var i=0;i<subs.length;i++){
+    var s=subs[i], n=(s==='全部'?ALL.length:(cnt[s]||0));
+    h+='<button class="subjb'+(SUBJ===s?' on':'')+'" onclick="setSubj(\''+s+'\')">'+s+' <span class="n">'+n+'</span></button>';
+  }
+  bar.innerHTML=h;
+}
+function setSubj(s){
+  SUBJ=s; try{localStorage.setItem('qz_subj',s)}catch(e){}
+  S.qi=0; S.set=buildQueue();
+  renderQ(); refreshBar();
+}
 function refreshBar(){
+  renderSubjBar();
   $('bk').textContent=BANK.title||'题库';
   var due=0;ALL.forEach(function(q){var h=H[q.id];if(!h||!h.due||h.due<=TD)due++});
   /* 【2026-11-02】难度门槛生效：显示可用题数与被门槛挡掉的题数，库存不足要看得见 */
