@@ -49,7 +49,7 @@ input[type=text]{width:100%;background:#1d222c;border:1px solid var(--line);colo
 </header>
 <main id="app"></main>
 <div id="toast"></div>
-<script src="bank.js?v=1793796516" onerror="window.__noBank=1"></script>
+<script src="bank.js?v=1793798228" onerror="window.__noBank=1"></script>
 <script>
 'use strict';
 /* ---------- 工具 ---------- */
@@ -146,10 +146,15 @@ function ord(list){
   return ordW(due).concat(shuffle(later));
 }
 function buildQueue(){
+  /* 【2026-11-04 用户需求】数学大题独立成线：只出 type==='text'，按原顺序（不 shuffle，
+     方便按考点连续攻克），已做过的仍保留可复做（大题值得重做）。 */
+  if(typeof SUBJ!=='undefined' && SUBJ==='数学大题'){
+    return ALL.filter(function(q){return q.type==='text'}).slice();
+  }
   /* 【2026-11-04 用户需求】科目自选：选单科时不套配额，按到期 + KPW 分层全出 */
   if(typeof SUBJ!=='undefined' && SUBJ && SUBJ!=='全部'){
     var _ans={}; try{recsRaw().forEach(function(r){if(r.qid)_ans[r.qid]=1})}catch(e){}
-    var _pool=ALL.filter(function(q){return (q.sub||'')===SUBJ});
+    var _pool=ALL.filter(function(q){return (q.sub||'')===SUBJ && q.type!=='text'});
     var _pin=_pool.filter(function(q){return q.pin});
     var _rest=_pool.filter(function(q){return !q.pin && !(SUBJ==='数学' && _ans[q.id])});
     return _pin.concat(ord(_rest));
@@ -161,7 +166,8 @@ function buildQueue(){
   /* 【2026-11-02 23:0x 用户口径】被拆题（大题第一问）单独一条线：占题量 15%、不受难度门槛、不参与轮换；
      做完当天晚上接着做该大题第二问，所以必须排在前半段，不能沉底。 */
   var BIG=ALL.filter(function(q){return q.from_big && !answered[q.id]});
-  var NORM=ALL.filter(function(q){return !q.from_big});
+  /* 2026-11-04：大题（type=text）不进「全部」混刷队列，只走「数学大题」专线 */
+  var NORM=ALL.filter(function(q){return !q.from_big && q.type!=='text'});
   var BIG_N=4;                      /* 30 题 × 15% ≈ 4.5，取 4 */
   var bigPick=BIG.slice(0,BIG_N);
   /* 【2026-11-04 用户口径·分轨】按「失分形态」分池：本题形态 == 考点失分形态 → 主池；
@@ -259,11 +265,18 @@ var S={set:buildQueue(),qi:0,judged:false,t0:Date.now(),mine:'',mult:[],res:[],d
 /* ---------- 顶部 ---------- */
 function renderSubjBar(){
   var bar=$('subjbar'); if(!bar)return;
-  var subs=['全部','数学','政治','专业课','英语'];
+  /* 【2026-11-04 用户需求】新增「数学大题」分类：大题走文本作答，不进选择题队列 */
+  var subs=['全部','数学','政治','专业课','英语','数学大题'];
   var cnt={}; ALL.forEach(function(q){cnt[q.sub]=(cnt[q.sub]||0)+1});
+  var ntext=ALL.filter(function(q){return q.type==='text'}).length;
+  var nchoice=ALL.filter(function(q){return q.type!=='text'}).length;
   var h='';
   for(var i=0;i<subs.length;i++){
-    var s=subs[i], n=(s==='全部'?ALL.length:(cnt[s]||0));
+    var s=subs[i], n;
+    if(s==='全部') n=nchoice;
+    else if(s==='数学大题') n=ntext;
+    else n=(cnt[s]||0)-(s==='数学'?ntext:0);
+    if(s==='数学大题'&&n===0) continue;
     h+='<button class="subjb'+(SUBJ===s?' on':'')+'" onclick="setSubj(\''+s+'\')">'+s+' <span class="n">'+n+'</span></button>';
   }
   bar.innerHTML=h;
@@ -333,7 +346,7 @@ function renderQ(){
     S.optOrder=shuffle(_idx);S.optOrderQ=q.id;
   }
   var html='<div class="card">';
-  html+='<div class="tags"><span>'+esc(q.sub||'')+' · '+(type==='fill'?'填空':(type==='multi'?'多选':'单选'))+
+  html+='<div class="tags"><span>'+esc(q.sub||'')+' · '+(type==='text'?'大题':(type==='fill'?'填空':(type==='multi'?'多选':'单选')))+
         '</span><span>'+esc(q.id)+' · 第 '+(S.qi+1)+'/'+S.set.length+'</span></div>';
   html+='<div class="stem">'+esc(q.stem)+'</div>';
   html+='<div id="ansbox" style="margin-top:10px">';
@@ -343,6 +356,11 @@ function renderQ(){
     }
     if(type==='multi')html+='<div class="sub" style="margin:4px 0 0">多选：选完点提交</div>';
     html+='<button class="btn wide" style="margin-top:12px" onclick="submitChoice()">提交</button>';
+  }else if(type==='text'){
+    /* 【2026-11-04 用户需求】数学大题：文本作答，不自动判分，提交后待电脑端批改 */
+    html+='<div class="sub" style="margin:2px 0 6px;color:var(--warn)">大题 · 写关键步骤与最终答案；提交后待电脑端批改，不计入正确率</div>';
+    html+='<textarea id="fill" rows="7" style="width:100%;box-sizing:border-box;background:#161616;color:#e8e8e8;border:1px solid #3a3a3a;border-radius:12px;padding:12px;font-size:15px;line-height:1.6;font-family:inherit;resize:vertical" placeholder="在此写解答步骤…&#10;如：极坐标 r=2cosθ，θ∈[−π/2,π/2]，被积 r³…" oninput="S.mine=this.value"></textarea>';
+    html+='<button class="btn wide" style="margin-top:8px" onclick="submitFill()">提交</button>';
   }else{
     html+='<div class="sub" style="margin:2px 0 4px;color:var(--warn)">⚠ 填空不计分，只作练习 · 对错由电脑端另行判</div>';
     html+='<input id="fill" type="text" autocomplete="off" spellcheck="false" placeholder="填答案；符号打不出就写文字（如「二分之根号三」）" oninput="S.mine=this.value">';
@@ -355,7 +373,7 @@ function renderQ(){
   html+='</div></div>';
   $('app').innerHTML=html;
   refreshBar();
-  var f=$('fill');if(f)f.focus();
+  var f=$('fill');if(f&&f.tagName==='INPUT')f.focus();  /* 大题用 textarea，不自动聚焦，免得键盘挡住题干 */
   window.scrollTo(0,0);
 }
 
