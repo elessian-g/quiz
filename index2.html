@@ -49,7 +49,7 @@ input[type=text]{width:100%;background:#1d222c;border:1px solid var(--line);colo
 </header>
 <main id="app"></main>
 <div id="toast"></div>
-<script src="bank.js?v=1793799485" onerror="window.__noBank=1"></script>
+<script src="bank.js?v=1793799735" onerror="window.__noBank=1"></script>
 <script>
 'use strict';
 /* ---------- 工具 ---------- */
@@ -641,6 +641,8 @@ if("serviceWorker" in navigator){
 /* ---------- 启动 ---------- */
 renderQ();
 if(/[?&]export=1/.test(location.search)){setTimeout(function(){doExport(true,true)},900)}
+/* 【2026-11-04】?rec=1 直接打开记录页，便于电脑端用 adb 定点操作（不必猜 URL 里的点击坐标） */
+if(/[?&]rec=1/.test(location.search)){setTimeout(function(){renderRecords()},600)}
 </script>
 </body>
 </html>
