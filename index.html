@@ -49,7 +49,7 @@ input[type=text]{width:100%;background:#1d222c;border:1px solid var(--line);colo
 </header>
 <main id="app"></main>
 <div id="toast"></div>
-<script src="bank.js?v=1793798375" onerror="window.__noBank=1"></script>
+<script src="bank.js?v=1793799125" onerror="window.__noBank=1"></script>
 <script>
 'use strict';
 /* ---------- 工具 ---------- */
@@ -580,8 +580,23 @@ function renderRecords(){
   var arr=recsRaw();
   var un=arr.filter(function(r){return !lastExp()||r.ts>lastExp()});
   var html='<div class="card"><div class="stem">本机记录 '+arr.length+' 条 · 待导出 '+un.length+' 条</div>';
-  html+='<div class="dim" style="margin-top:6px">导出后文件在 Download，手机连电脑时自动并进答题台账。</div>';
   var tn=todayRecs().length;
+  html+='<div class="dim" style="margin-top:6px">导出后文件在 Download，手机连电脑时自动并进答题台账。</div>';
+  /* 【2026-11-04 用户需求】支持删单条：测试/误记的记录可精确删除，
+     不必用「清空本机记录」连真实数据一起清掉。 */
+  var recent=arr.slice(-8).reverse();
+  if(recent.length){
+    html+='<div style="margin-top:12px;border-top:1px solid #333;padding-top:8px"><div class="dim">最近 8 条（可单条删除）</div>';
+    recent.forEach(function(r){
+      var t=(r.ts||'').replace('T',' ').slice(5,16);
+      var m=String(r.mine||'').slice(0,18)||'（空）';
+      html+='<div style="display:flex;align-items:center;gap:8px;margin-top:6px;font-size:12px">'+
+            '<span class="dim" style="flex:0 0 auto">'+esc(t)+'</span>'+
+            '<span style="flex:1 1 auto;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+esc(r.qid)+' → '+esc(m)+'</span>'+
+            '<button class="link" style="margin:0;color:var(--bad);flex:0 0 auto" onclick="delRec(\''+esc(r.id)+'\')">删</button></div>';
+    });
+    html+='</div>';
+  }
   html+='<button class="btn wide" style="margin-top:12px" onclick="doExport(false)">导出待导出（'+un.length+'）</button>';
   html+='<button class="btn wide" style="margin-top:8px" onclick="exportToday()">导出今日（'+tn+' 条）</button>';
   html+='<button class="btn ghost wide" onclick="exportTodayClear()">导出今日并清零（'+tn+' 条）</button>';
@@ -591,6 +606,14 @@ function renderRecords(){
   html+='<button class="btn ghost wide" style="margin-top:20px" onclick="clearRecs()">清空本机记录</button>';
   html+='<button class="btn ghost wide" onclick="S.qi=0;S.set=buildQueue();renderQ()">回到刷题</button></div>';
   $('app').innerHTML=html;refreshBar();
+}
+
+/* 删除单条记录：按 id 精确删除，不影响其它记录与复习进度 */
+function delRec(id){
+  if(!confirm('删除这一条记录？其它记录不受影响。'))return;
+  var arr=recsRaw().filter(function(r){return r.id!==id});
+  recsSet(arr);renderRecords();
+  toast('已删除 1 条');
 }
 function showText(){
   $('txt').innerHTML='<textarea id="cp" class="mono" style="height:200px;margin-top:10px">'+esc(jsonl(recsRaw()))+'</textarea>'+
