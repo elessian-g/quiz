@@ -49,7 +49,7 @@ input[type=text]{width:100%;background:#1d222c;border:1px solid var(--line);colo
 </header>
 <main id="app"></main>
 <div id="toast"></div>
-<script src="bank.js?v=1793803925" onerror="window.__noBank=1"></script>
+<script src="bank.js?v=1793830643" onerror="window.__noBank=1"></script>
 <script>
 'use strict';
 /* ---------- 工具 ---------- */
@@ -147,9 +147,13 @@ function ord(list){
 }
 function buildQueue(){
   /* 【2026-11-04 用户需求】数学大题独立成线：只出 type==='text'，按原顺序（不 shuffle，
-     方便按考点连续攻克），已做过的仍保留可复做（大题值得重做）。 */
+     方便按考点连续攻克），已做过的仍保留可复做（大题值得重做）。
+     【2026-11-05】按科目分线：数学大题 / 专业课大题 各自独立，不再混在一起。 */
   if(typeof SUBJ!=='undefined' && SUBJ==='数学大题'){
-    return ALL.filter(function(q){return q.type==='text'}).slice();
+    return ALL.filter(function(q){return q.type==='text' && (q.sub||'')==='数学'}).slice();
+  }
+  if(typeof SUBJ!=='undefined' && SUBJ==='专业课大题'){
+    return ALL.filter(function(q){return q.type==='text' && (q.sub||'')==='专业课'}).slice();
   }
   /* 【2026-11-04 用户需求】科目自选：选单科时不套配额，按到期 + KPW 分层全出 */
   if(typeof SUBJ!=='undefined' && SUBJ && SUBJ!=='全部'){
@@ -265,19 +269,24 @@ var S={set:buildQueue(),qi:0,judged:false,t0:Date.now(),mine:'',mult:[],res:[],d
 /* ---------- 顶部 ---------- */
 function renderSubjBar(){
   var bar=$('subjbar'); if(!bar)return;
-  /* 【2026-11-04 用户需求】新增「数学大题」分类：大题走文本作答，不进选择题队列 */
-  var subs=['全部','数学','政治','专业课','英语','数学大题'];
+  /* 【2026-11-04 用户需求】新增「数学大题」分类：大题走文本作答，不进选择题队列
+     【2026-11-05】再拆「专业课大题」，两类按科目分线，计数各算各的 */
+  var subs=['全部','数学','政治','专业课','英语','数学大题','专业课大题'];
   var cnt={}; ALL.forEach(function(q){cnt[q.sub]=(cnt[q.sub]||0)+1});
-  var ntext=ALL.filter(function(q){return q.type==='text'}).length;
+  var ntx=function(sub){return ALL.filter(function(q){return q.type==='text'&&(q.sub||'')===sub}).length};
+  var ntext=ntx('数学'), ntextZy=ntx('专业课');
   var nchoice=ALL.filter(function(q){return q.type!=='text'}).length;
   var h='';
   for(var i=0;i<subs.length;i++){
     var s=subs[i], n;
     if(s==='全部') n=nchoice;
     else if(s==='数学大题') n=ntext;
-    else n=(cnt[s]||0)-(s==='数学'?ntext:0);
-    if(s==='数学大题'&&n===0) continue;
-    h+='<button class="subjb'+(SUBJ===s?' on':'')+'" onclick="setSubj(\''+s+'\')">'+s+' <span class="n">'+n+'</span></button>';
+    else if(s==='专业课大题') n=ntextZy;
+    else if(s==='数学') n=(cnt[s]||0)-ntext;
+    else if(s==='专业课') n=(cnt[s]||0)-ntextZy;
+    else n=(cnt[s]||0);
+    if((s==='数学大题'||s==='专业课大题')&&n===0) continue;
+    h+='<button class="subjb'+(SUBJ===s?' on':'')+'\" onclick="setSubj(\''+s+'\')">'+s+' <span class="n">'+n+'</span></button>';
   }
   bar.innerHTML=h;
 }
