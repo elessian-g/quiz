@@ -1,6 +1,6 @@
 window.QBANK = {
     "id":  "2026-11-04",
-    "title":  "备用机题库（149 题）",
+    "title":  "备用机题库（195 题）",
     "questions":  [
                       {
                           "id":  "Z12",
@@ -3335,6 +3335,972 @@ window.QBANK = {
                           "from_big":  false,
                           "tags":  [
                                        "大题-每日"
+                                   ]
+                      },
+                      {
+                          "id":  "M1106-01",
+                          "sub":  "数学",
+                          "kp":  "#2 渐近线",
+                          "type":  "choice",
+                          "stem":  "曲线 y = (x²+1)/(x−1) 的斜渐近线是（　）",
+                          "options":  [
+                                          "A. y = x + 1",
+                                          "B. y = x − 1",
+                                          "C. y = x",
+                                          "D. 不存在斜渐近线"
+                                      ],
+                          "answer":  "A",
+                          "explain":  "y−x = (x²+1−x²+x)/(x−1) = (x+1)/(x−1) → 1（x→∞）⇒ 斜渐近线 y=x+1。另 x=1 是垂直渐近线。",
+                          "df":  98,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "选填-1105"
+                                   ]
+                      },
+                      {
+                          "id":  "M1106-02",
+                          "sub":  "数学",
+                          "kp":  "#3 拐点",
+                          "type":  "choice",
+                          "stem":  "曲线 y = x³ − 3x² + 1 的拐点是（　）",
+                          "options":  [
+                                          "A. (0, 1)",
+                                          "B. (1, −1)",
+                                          "C. (1, 1)",
+                                          "D. (−1, −3)"
+                                      ],
+                          "answer":  "B",
+                          "explain":  "y′=3x²−6x，y″=6x−6；y″=0 ⇒ x=1，此时 y=1−3+1=−1。y″ 在 x=1 两侧变号 ⇒ 拐点 (1,−1)。",
+                          "df":  98,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "选填-1105"
+                                   ]
+                      },
+                      {
+                          "id":  "M1106-03",
+                          "sub":  "数学",
+                          "kp":  "#1 无穷小比较",
+                          "type":  "choice",
+                          "stem":  "当 x→0 时，√(1+x²) − 1 与 sin²x 相比是（　）",
+                          "options":  [
+                                          "A. 高阶无穷小",
+                                          "B. 等价无穷小",
+                                          "C. 同阶但不等价",
+                                          "D. 低阶无穷小"
+                                      ],
+                          "answer":  "C",
+                          "explain":  "√(1+x²)−1 ~ x²/2，sin²x ~ x²，比值 → 1/2（常数≠1）⇒ 同阶但不等价。",
+                          "df":  100,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "选填-1105"
+                                   ]
+                      },
+                      {
+                          "id":  "M1106-04",
+                          "sub":  "数学",
+                          "kp":  "#1 定积分定义",
+                          "type":  "choice",
+                          "stem":  "极限 lim(n→∞) (1/n)·[sin(π/n) + sin(2π/n) + … + sin(nπ/n)] =（　）",
+                          "options":  [
+                                          "A. 0",
+                                          "B. 1",
+                                          "C. 1/2",
+                                          "D. 2/π"
+                                      ],
+                          "answer":  "D",
+                          "explain":  "这是 ∫₀¹ sin(πx)dx 的定义式 = [−cos(πx)/π]₀¹ = (1+1)/π = 2/π。",
+                          "df":  105,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "选填-1105"
+                                   ]
+                      },
+                      {
+                          "id":  "M1106-05",
+                          "sub":  "数学",
+                          "kp":  "#26 隐函数",
+                          "type":  "choice",
+                          "stem":  "设 z=z(x,y) 由 xyz = x + y + z 确定，则 ∂z/∂x =（　）",
+                          "options":  [
+                                          "A. (1 − yz)/(xy − 1)",
+                                          "B. (yz − 1)/(xy − 1)",
+                                          "C. (1 − xy)/(yz − 1)",
+                                          "D. (xy − 1)/(1 − yz)"
+                                      ],
+                          "answer":  "A",
+                          "explain":  "F=xyz−x−y−z，F_x=yz−1，F_z=xy−1 ⇒ z_x = −(yz−1)/(xy−1) = (1−yz)/(xy−1)。",
+                          "df":  108,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "选填-1105"
+                                   ]
+                      },
+                      {
+                          "id":  "M1106-06",
+                          "sub":  "数学",
+                          "kp":  "#26 全微分",
+                          "type":  "choice",
+                          "stem":  "函数 z = x^y 在点 (1,1) 处的全微分 dz =（　）",
+                          "options":  [
+                                          "A. dy",
+                                          "B. dx",
+                                          "C. dx + dy",
+                                          "D. dx − dy"
+                                      ],
+                          "answer":  "B",
+                          "explain":  "z_x = y·x^(y−1) = 1，z_y = x^y·ln x = 0（在 (1,1)）⇒ dz = 1·dx + 0·dy = dx。",
+                          "df":  100,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "选填-1105"
+                                   ]
+                      },
+                      {
+                          "id":  "M1106-07",
+                          "sub":  "数学",
+                          "kp":  "#33 二重积分对称性",
+                          "type":  "choice",
+                          "stem":  "设 D 是圆域 x²+y² ≤ 1，则 ∬_D (x² + y² + xy) dxdy =（　）",
+                          "options":  [
+                                          "A. π",
+                                          "B. 3π/4",
+                                          "C. π/2",
+                                          "D. 0"
+                                      ],
+                          "answer":  "C",
+                          "explain":  "xy 关于 y 轴（及 x 轴）为奇函数 ⇒ 积分为 0。剩 ∬(x²+y²) = ∫₀^{2π}∫₀¹ r³drdθ = 2π·(1/4) = π/2。",
+                          "df":  102,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "选填-1105"
+                                   ]
+                      },
+                      {
+                          "id":  "M1106-08",
+                          "sub":  "数学",
+                          "kp":  "#20 弧长",
+                          "type":  "choice",
+                          "stem":  "曲线 y = (2/3)x^(3/2) 自 x=0 到 x=3 的弧长为（　）",
+                          "options":  [
+                                          "A. 4",
+                                          "B. 16/3",
+                                          "C. 13/3",
+                                          "D. 14/3"
+                                      ],
+                          "answer":  "D",
+                          "explain":  "y′=x^(1/2)，√(1+y′²)=√(1+x)；∫₀³√(1+x)dx = (2/3)[4^(3/2) − 1] = (2/3)(8−1) = 14/3。",
+                          "df":  108,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "选填-1105"
+                                   ]
+                      },
+                      {
+                          "id":  "M1106-09",
+                          "sub":  "数学",
+                          "kp":  "#18 定积分平均值",
+                          "type":  "choice",
+                          "stem":  "函数 f(x)=x² 在区间 [0,3] 上的平均值是（　）",
+                          "options":  [
+                                          "A. 3",
+                                          "B. 9",
+                                          "C. 4",
+                                          "D. 27"
+                                      ],
+                          "answer":  "A",
+                          "explain":  "平均值 = (1/(3−0))∫₀³x²dx = (1/3)·9 = 3。注意不是 f(1.5)=2.25。",
+                          "df":  95,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "选填-1105"
+                                   ]
+                      },
+                      {
+                          "id":  "M1106-10",
+                          "sub":  "数学",
+                          "kp":  "#37 一阶线性方程",
+                          "type":  "choice",
+                          "stem":  "微分方程 y′ + y/x = x 满足 y(1)=1 的特解是（　）",
+                          "options":  [
+                                          "A. y = x²/3 + 1/(3x)",
+                                          "B. y = x²/3 + 2/(3x)",
+                                          "C. y = x² + 1/x",
+                                          "D. y = x³/3 + 2/(3x)"
+                                      ],
+                          "answer":  "B",
+                          "explain":  "积分因子 x：(xy)′ = x² ⇒ xy = x³/3 + C ⇒ y = x²/3 + C/x。y(1)=1 ⇒ 1/3+C=1 ⇒ C=2/3。",
+                          "df":  110,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "选填-1105"
+                                   ]
+                      },
+                      {
+                          "id":  "M1106-11",
+                          "sub":  "数学",
+                          "kp":  "#37 可分离方程",
+                          "type":  "choice",
+                          "stem":  "微分方程 y′ = y·cos x 满足 y(0)=1 的特解是（　）",
+                          "options":  [
+                                          "A. y = cos x",
+                                          "B. y = 1 + sin x",
+                                          "C. y = e^(sin x)",
+                                          "D. y = e^(cos x)"
+                                      ],
+                          "answer":  "C",
+                          "explain":  "dy/y = cos x dx ⇒ ln y = sin x + C ⇒ y = C·e^(sin x)；y(0)=1 ⇒ C=1。",
+                          "df":  100,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "选填-1105"
+                                   ]
+                      },
+                      {
+                          "id":  "M1106-12",
+                          "sub":  "数学",
+                          "kp":  "#8 一元最值",
+                          "type":  "choice",
+                          "stem":  "函数 f(x) = x³ − 3x 在闭区间 [−2, 2] 上的最大值是（　）",
+                          "options":  [
+                                          "A. −2",
+                                          "B. 0",
+                                          "C. 1",
+                                          "D. 2"
+                                      ],
+                          "answer":  "D",
+                          "explain":  "f′=3x²−3=0 ⇒ x=±1。f(−2)=−2，f(−1)=2，f(1)=−2，f(2)=2 ⇒ 最大值 2。",
+                          "df":  98,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "选填-1105"
+                                   ]
+                      },
+                      {
+                          "id":  "M1106-13",
+                          "sub":  "数学",
+                          "kp":  "#16 变限积分",
+                          "type":  "choice",
+                          "stem":  "设 F(x) = ∫₀ˣ (t−1)e^(−t) dt，则 F 的极小值点是（　）",
+                          "options":  [
+                                          "A. x = 1",
+                                          "B. x = 0",
+                                          "C. x = −1",
+                                          "D. x = 2"
+                                      ],
+                          "answer":  "A",
+                          "explain":  "F′(x)=(x−1)e^(−x)，e^(−x)\u003e0 ⇒ F′ 的符号只由 x−1 决定：x\u003c1 时 F′\u003c0、x\u003e1 时 F′\u003e0 ⇒ x=1 为极小值点。",
+                          "df":  105,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "选填-1105"
+                                   ]
+                      },
+                      {
+                          "id":  "M1106-14",
+                          "sub":  "数学",
+                          "kp":  "#26 可微性",
+                          "type":  "choice",
+                          "stem":  "函数 f(x,y) = √|xy| 在点 (0,0) 处（　）",
+                          "options":  [
+                                          "A. 连续且可微",
+                                          "B. 连续但不可微",
+                                          "C. 不连续",
+                                          "D. 偏导数不存在"
+                                      ],
+                          "answer":  "B",
+                          "explain":  "|f|≤√(|x||y|)→0 ⇒ 连续。f_x(0,0)=0、f_y(0,0)=0，但 [f(Δx,Δy)−0]/√(Δx²+Δy²) 沿 Δy=Δx 时为 |Δx|/(√2|Δx|)=1/√2 ↛ 0 ⇒ 不可微。",
+                          "df":  115,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "选填-1105"
+                                   ]
+                      },
+                      {
+                          "id":  "M1106-15",
+                          "sub":  "数学",
+                          "kp":  "#1 泰勒极限",
+                          "type":  "choice",
+                          "stem":  "极限 lim(x→0) (tan x − sin x)/x³ =（　）",
+                          "options":  [
+                                          "A. 0",
+                                          "B. 1/3",
+                                          "C. 1/2",
+                                          "D. 1"
+                                      ],
+                          "answer":  "C",
+                          "explain":  "tan x − sin x = sin x(1−cos x)/cos x ~ x·(x²/2) = x³/2 ⇒ 1/2。",
+                          "df":  105,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "选填-1105"
+                                   ]
+                      },
+                      {
+                          "id":  "M1106-16",
+                          "sub":  "数学",
+                          "kp":  "#32 极坐标",
+                          "type":  "choice",
+                          "stem":  "设 D = {(x,y) : x²+y² ≤ 1}，则 ∬_D |x| dxdy =（　）",
+                          "options":  [
+                                          "A. 2/3",
+                                          "B. π/2",
+                                          "C. 2π/3",
+                                          "D. 4/3"
+                                      ],
+                          "answer":  "D",
+                          "explain":  "利用关于两坐标轴的对称性 = 4·∬_{第一象限} x dA = 4∫₀^{π/2}cosθ dθ·∫₀¹r²dr = 4·1·(1/3) = 4/3。",
+                          "df":  112,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "选填-1105"
+                                   ]
+                      },
+                      {
+                          "id":  "M1106-17",
+                          "sub":  "数学",
+                          "kp":  "#19 反常积分",
+                          "type":  "choice",
+                          "stem":  "反常积分 ∫₁^{+∞} x^(−p) dx 收敛的充要条件是（　）",
+                          "options":  [
+                                          "A. p \u003e 1",
+                                          "B. p ≥ 1",
+                                          "C. p \u003c 1",
+                                          "D. p \u003e 0"
+                                      ],
+                          "answer":  "A",
+                          "explain":  "p≠1 时原函数 x^(1−p)/(1−p)，要 x→+∞ 时趋于 0 须 1−p\u003c0 即 p\u003e1；p=1 时为 ln x 发散。故 p\u003e1。",
+                          "df":  96,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "选填-1105"
+                                   ]
+                      },
+                      {
+                          "id":  "M1106-18",
+                          "sub":  "数学",
+                          "kp":  "#21 旋转体",
+                          "type":  "choice",
+                          "stem":  "曲线 y=√x（0≤x≤1）与 x 轴、直线 x=1 围成的区域绕 x 轴旋转所得旋转体体积为（　）",
+                          "options":  [
+                                          "A. π/4",
+                                          "B. π/2",
+                                          "C. π",
+                                          "D. 2π"
+                                      ],
+                          "answer":  "B",
+                          "explain":  "圆盘法：V = π∫₀¹(√x)²dx = π∫₀¹x dx = π/2。",
+                          "df":  100,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "选填-1105"
+                                   ]
+                      },
+                      {
+                          "id":  "M1106-19",
+                          "sub":  "数学",
+                          "kp":  "#40 行列式",
+                          "type":  "choice",
+                          "stem":  "行列式 |1 1 1; 1 2 3; 1 4 9| =（　）",
+                          "options":  [
+                                          "A. 0",
+                                          "B. 1",
+                                          "C. 2",
+                                          "D. 6"
+                                      ],
+                          "answer":  "C",
+                          "explain":  "这是范德蒙德行列式（取 1,2,3 的幂）：(2−1)(3−1)(3−2) = 2。",
+                          "df":  98,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "选填-1105"
+                                   ]
+                      },
+                      {
+                          "id":  "M1106-20",
+                          "sub":  "数学",
+                          "kp":  "#43 矩阵的秩",
+                          "type":  "choice",
+                          "stem":  "矩阵 A = (1 2 3; 2 4 6; 1 1 1) 的秩 r(A) =（　）",
+                          "options":  [
+                                          "A. 1",
+                                          "B. 3",
+                                          "C. 0",
+                                          "D. 2"
+                                      ],
+                          "answer":  "D",
+                          "explain":  "第二行 = 2×第一行 ⇒ 线性相关；第一、三行不成比例 ⇒ 秩为 2。",
+                          "df":  100,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "选填-1105"
+                                   ]
+                      },
+                      {
+                          "id":  "M1106-21",
+                          "sub":  "数学",
+                          "kp":  "#41 逆矩阵",
+                          "type":  "choice",
+                          "stem":  "设 A = (2 1; 1 1)，则 A⁻¹ =（　）",
+                          "options":  [
+                                          "A. (1 −1; −1 2)",
+                                          "B. (1 1; 1 2)",
+                                          "C. (−1 1; 1 −2)",
+                                          "D. (2 −1; −1 1)"
+                                      ],
+                          "answer":  "A",
+                          "explain":  "|A| = 2·1−1·1 = 1；A⁻¹ = (1/1)(1 −1; −1 2) = (1 −1; −1 2)。验：A·A⁻¹ = (1 0; 0 1)。",
+                          "df":  95,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "选填-1105"
+                                   ]
+                      },
+                      {
+                          "id":  "M1106-22",
+                          "sub":  "数学",
+                          "kp":  "#44 向量组相关性",
+                          "type":  "choice",
+                          "stem":  "设 α₁=(1,1,0)ᵀ、α₂=(0,1,1)ᵀ、α₃=(1,2,1)ᵀ，则（　）",
+                          "options":  [
+                                          "A. 线性无关",
+                                          "B. 线性相关，且 α₃ = α₁ + α₂",
+                                          "C. 线性相关，且 α₁ = α₂ + α₃",
+                                          "D. 无法判断"
+                                      ],
+                          "answer":  "B",
+                          "explain":  "α₁+α₂ = (1,2,1) = α₃ ⇒ 存在不全为零的系数使组合为 0 ⇒ 线性相关。",
+                          "df":  102,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "选填-1105"
+                                   ]
+                      },
+                      {
+                          "id":  "M1106-23",
+                          "sub":  "数学",
+                          "kp":  "#45 方程组解结构",
+                          "type":  "choice",
+                          "stem":  "设 A 是 4×5 矩阵，r(A)=3，则齐次方程组 Ax=0 的基础解系所含向量个数为（　）",
+                          "options":  [
+                                          "A. 3",
+                                          "B. 5",
+                                          "C. 2",
+                                          "D. 1"
+                                      ],
+                          "answer":  "C",
+                          "explain":  "基础解系个数 = n − r(A) = 5 − 3 = 2（n 是未知数个数＝列数）。",
+                          "df":  100,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "选填-1105"
+                                   ]
+                      },
+                      {
+                          "id":  "M1106-24",
+                          "sub":  "数学",
+                          "kp":  "#48 特征值性质",
+                          "type":  "choice",
+                          "stem":  "设 3 阶矩阵 A 的特征值为 1、2、3，则 tr(A²) =（　）",
+                          "options":  [
+                                          "A. 6",
+                                          "B. 36",
+                                          "C. 12",
+                                          "D. 14"
+                                      ],
+                          "answer":  "D",
+                          "explain":  "A² 的特征值是 λ²：1、4、9；迹 = 特征值之和 = 1+4+9 = 14。注意不是 (1+2+3)²。",
+                          "df":  102,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "选填-1105"
+                                   ]
+                      },
+                      {
+                          "id":  "M1106-25",
+                          "sub":  "数学",
+                          "kp":  "#50 二次型正定",
+                          "type":  "choice",
+                          "stem":  "二次型 f = x₁² + 2x₂² + 3x₃² + 2x₁x₂ 的正定性为（　）",
+                          "options":  [
+                                          "A. 正定",
+                                          "B. 负定",
+                                          "C. 不定",
+                                          "D. 半正定"
+                                      ],
+                          "answer":  "A",
+                          "explain":  "对称阵 A=(1 1 0; 1 2 0; 0 0 3)。顺序主子式：Δ₁=1\u003e0，Δ₂=2−1=1\u003e0，Δ₃=3\u003e0 ⇒ 正定。",
+                          "df":  108,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "选填-1105"
+                                   ]
+                      },
+                      {
+                          "id":  "M1106-26",
+                          "sub":  "数学",
+                          "kp":  "#42 伴随矩阵",
+                          "type":  "choice",
+                          "stem":  "设 A 为 3 阶矩阵，|A| = 3，则 |A*| =（　）",
+                          "options":  [
+                                          "A. 3",
+                                          "B. 9",
+                                          "C. 27",
+                                          "D. 1/3"
+                                      ],
+                          "answer":  "B",
+                          "explain":  "|A*| = |A|^(n−1) = 3² = 9（n=3）。易错：误记成 |A|^(n)=27 或 |A| 本身。",
+                          "df":  102,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "选填-1105"
+                                   ]
+                      },
+                      {
+                          "id":  "M1106-27",
+                          "sub":  "数学",
+                          "kp":  "#46 矩阵方程",
+                          "type":  "choice",
+                          "stem":  "设 A 为 3 阶可逆矩阵，B 为 3×2 矩阵，则矩阵方程 AX = B 的解为（　）",
+                          "options":  [
+                                          "A. X = BA⁻¹",
+                                          "B. X = B⁻¹A",
+                                          "C. X = A⁻¹B",
+                                          "D. X = AB⁻¹"
+                                      ],
+                          "answer":  "C",
+                          "explain":  "两边左乘 A⁻¹：A⁻¹AX = A⁻¹B ⇒ X = A⁻¹B。注意 B 不是方阵，B⁻¹ 无意义。",
+                          "df":  100,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "选填-1105"
+                                   ]
+                      },
+                      {
+                          "id":  "M1106-28",
+                          "sub":  "数学",
+                          "kp":  "#48 特征向量",
+                          "type":  "choice",
+                          "stem":  "设 λ₁≠λ₂ 是矩阵 A 的两个不同特征值，α₁、α₂ 是分别对应的特征向量，则（　）",
+                          "options":  [
+                                          "A. α₁ 与 α₂ 可能线性相关",
+                                          "B. α₁ + α₂ 仍是特征向量",
+                                          "C. α₁ 与 α₂ 必正交",
+                                          "D. α₁ 与 α₂ 线性无关"
+                                      ],
+                          "answer":  "D",
+                          "explain":  "对应不同特征值的特征向量必线性无关（这是「不同特征值 ⇒ 可对角化」的依据）。正交只在 A 为实对称阵时才成立。",
+                          "df":  100,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "选填-1105"
+                                   ]
+                      },
+                      {
+                          "id":  "M1106-29",
+                          "sub":  "数学",
+                          "kp":  "#47 相似矩阵",
+                          "type":  "choice",
+                          "stem":  "设 A 与 B 相似，则下列结论错误的是（　）",
+                          "options":  [
+                                          "A. A 与 B 的迹相等",
+                                          "B. A 与 B 有相同的特征值",
+                                          "C. A 与 B 的行列式相等",
+                                          "D. A 与 B 一定相等"
+                                      ],
+                          "answer":  "D",
+                          "explain":  "相似只保证特征多项式相同（从而特征值、迹、行列式、秩相同），不保证矩阵相等。D 错误。",
+                          "df":  100,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "选填-1105"
+                                   ]
+                      },
+                      {
+                          "id":  "M1106-30",
+                          "sub":  "数学",
+                          "kp":  "#47 正交矩阵",
+                          "type":  "choice",
+                          "stem":  "设 A 是 n 阶正交矩阵，则 |A| =（　）",
+                          "options":  [
+                                          "A. 1",
+                                          "B. ±1",
+                                          "C. 0",
+                                          "D. −1"
+                                      ],
+                          "answer":  "B",
+                          "explain":  "AAᵀ=E ⇒ |A|²=1 ⇒ |A|=±1。旋转阵取 +1，反射类取 −1。",
+                          "df":  96,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "选填-1105"
+                                   ]
+                      },
+                      {
+                          "id":  "M1106-31",
+                          "sub":  "数学",
+                          "kp":  "#50 二次型惯性指数",
+                          "type":  "choice",
+                          "stem":  "二次型 f = x₁x₂ + x₂x₃ 的秩与正、负惯性指数分别为（　）",
+                          "options":  [
+                                          "A. 秩 2，p=2，q=0",
+                                          "B. 秩 3，p=1，q=2",
+                                          "C. 秩 2，p=1，q=1",
+                                          "D. 秩 1，p=1，q=0"
+                                      ],
+                          "answer":  "C",
+                          "explain":  "对称阵 A=(0 ½ 0; ½ 0 ½; 0 ½ 0)，特征值 ±√2/2 和 0 ⇒ 秩 2，正惯性 1、负惯性 1。易错：把秩当成 3。",
+                          "df":  118,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "选填-1105"
+                                   ]
+                      },
+                      {
+                          "id":  "M1107-01",
+                          "sub":  "数学",
+                          "kp":  "#3 单调性",
+                          "type":  "choice",
+                          "stem":  "函数 f(x) = x³ − 3x² + 1 的单调递减区间是（　）",
+                          "options":  [
+                                          "A. (0, 2)",
+                                          "B. (−∞, 0)",
+                                          "C. (2, +∞)",
+                                          "D. (0, +∞)"
+                                      ],
+                          "answer":  "A",
+                          "explain":  "f′(x)=3x²−6x=3x(x−2)，f′\u003c0 ⇔ 0\u003cx\u003c2。易错：把 f′\u003e0 的区间当递减。",
+                          "df":  95,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "选填-1107"
+                                   ]
+                      },
+                      {
+                          "id":  "M1107-02",
+                          "sub":  "数学",
+                          "kp":  "#4 中值定理",
+                          "type":  "choice",
+                          "stem":  "函数 f(x)=x² 在区间 [0,2] 上满足拉格朗日中值定理结论的 ξ 是（　）",
+                          "options":  [
+                                          "A. 1/2",
+                                          "B. 1",
+                                          "C. 3/2",
+                                          "D. 2"
+                                      ],
+                          "answer":  "B",
+                          "explain":  "f(b)−f(a)=4−0=4，b−a=2，f′(ξ)=2ξ=4/2=2 ⇒ ξ=1。注意 ξ 必须在 (0,2) 内，四个选项都满足，靠等式定。",
+                          "df":  100,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "选填-1107"
+                                   ]
+                      },
+                      {
+                          "id":  "M1107-03",
+                          "sub":  "数学",
+                          "kp":  "#18 分部积分",
+                          "type":  "choice",
+                          "stem":  "定积分 ∫₀¹ x·eˣ dx =（　）",
+                          "options":  [
+                                          "A. e − 1",
+                                          "B. e",
+                                          "C. 1",
+                                          "D. e − 2"
+                                      ],
+                          "answer":  "C",
+                          "explain":  "分部：∫x eˣdx = x eˣ − eˣ，代 0→1 得 (e−e)−(0−1)=1。易错：得 e−1（漏了减 eˣ 那项）。",
+                          "df":  98,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "选填-1107"
+                                   ]
+                      },
+                      {
+                          "id":  "M1107-04",
+                          "sub":  "数学",
+                          "kp":  "#18 定积分换元",
+                          "type":  "choice",
+                          "stem":  "定积分 ∫₀¹ x·√(1−x²) dx =（　）",
+                          "options":  [
+                                          "A. 1/2",
+                                          "B. 2/3",
+                                          "C. 1/4",
+                                          "D. 1/3"
+                                      ],
+                          "answer":  "D",
+                          "explain":  "令 u=1−x²，du=−2x dx ⇒ 原式 = (1/2)∫₀¹√u du = (1/2)·(2/3) = 1/3。易错：忘乘 1/2。",
+                          "df":  100,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "选填-1107"
+                                   ]
+                      },
+                      {
+                          "id":  "M1107-05",
+                          "sub":  "数学",
+                          "kp":  "#37 二阶非齐次",
+                          "type":  "choice",
+                          "stem":  "微分方程 y″ − y = eˣ 的一个特解应设为（　）",
+                          "options":  [
+                                          "A. y* = A·eˣ",
+                                          "B. y* = A·x·eˣ",
+                                          "C. y* = A·x²·eˣ",
+                                          "D. y* = A·cos x + B·sin x"
+                                      ],
+                          "answer":  "B",
+                          "explain":  "特征方程 r²−1=0 ⇒ r=±1；右端 eˣ 对应 α=1 是**单根** ⇒ 乘 x，设 y*=A x eˣ。若设 Aeˣ 会代入得 0=eˣ，定不出 A。",
+                          "df":  105,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "选填-1107"
+                                   ]
+                      },
+                      {
+                          "id":  "M1107-06",
+                          "sub":  "数学",
+                          "kp":  "#33 二重积分",
+                          "type":  "choice",
+                          "stem":  "设 D = {(x,y) : 0≤x≤1，0≤y≤x}，则 ∬_D xy dxdy =（　）",
+                          "options":  [
+                                          "A. 1/8",
+                                          "B. 1/4",
+                                          "C. 1/6",
+                                          "D. 1/2"
+                                      ],
+                          "answer":  "A",
+                          "explain":  "∫₀¹x dx∫₀ˣ y dy = ∫₀¹ x·(x²/2)dx = (1/2)·(1/4) = 1/8。易错：把区域当成正方形（得 1/4）。",
+                          "df":  100,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "选填-1107"
+                                   ]
+                      },
+                      {
+                          "id":  "M1107-07",
+                          "sub":  "数学",
+                          "kp":  "#18 定积分性质",
+                          "type":  "choice",
+                          "stem":  "定积分 ∫₋₁¹ (x³cos x + x²) dx =（　）",
+                          "options":  [
+                                          "A. 0",
+                                          "B. 1/3",
+                                          "C. 2/3",
+                                          "D. 1"
+                                      ],
+                          "answer":  "C",
+                          "explain":  "x³cos x 是奇函数，在对称区间上积分为 0；剩 ∫₋₁¹x²dx = 2/3。易错：整体当奇函数答 0。",
+                          "df":  102,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "选填-1107"
+                                   ]
+                      },
+                      {
+                          "id":  "M1107-08",
+                          "sub":  "数学",
+                          "kp":  "#1 极限",
+                          "type":  "choice",
+                          "stem":  "极限 lim(x→0) (arctan x − x)/x³ =（　）",
+                          "options":  [
+                                          "A. 1/3",
+                                          "B. −1",
+                                          "C. 1",
+                                          "D. −1/3"
+                                      ],
+                          "answer":  "D",
+                          "explain":  "arctan x = x − x³/3 + o(x³) ⇒ 分子 = −x³/3 ⇒ 极限 −1/3。易错：把 arctan 展开系数记成 +1/3。",
+                          "df":  108,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "选填-1107"
+                                   ]
+                      },
+                      {
+                          "id":  "M1107-09",
+                          "sub":  "数学",
+                          "kp":  "#40 行列式性质",
+                          "type":  "choice",
+                          "stem":  "设 A 为 3 阶矩阵，|A| = 2，则 |2A| =（　）",
+                          "options":  [
+                                          "A. 16",
+                                          "B. 8",
+                                          "C. 4",
+                                          "D. 32"
+                                      ],
+                          "answer":  "A",
+                          "explain":  "|kA| = kⁿ|A|，n=3 ⇒ 2³×2 = 16。易错：只乘一次得 4，或记成 2×2=4。",
+                          "df":  98,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "选填-1107"
+                                   ]
+                      },
+                      {
+                          "id":  "M1107-10",
+                          "sub":  "数学",
+                          "kp":  "#43 矩阵方程",
+                          "type":  "choice",
+                          "stem":  "设 A 为 n 阶矩阵，满足 A² = E 且 A ≠ E，则 |A + E| =（　）",
+                          "options":  [
+                                          "A. 1",
+                                          "B. 0",
+                                          "C. −1",
+                                          "D. 2"
+                                      ],
+                          "answer":  "B",
+                          "explain":  "A²−E=0 ⇒ (A+E)(A−E)=0。若 |A+E|≠0 则 A+E 可逆，左乘其逆得 A−E=0 即 A=E，与题设矛盾 ⇒ |A+E|=0。",
+                          "df":  115,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "选填-1107"
+                                   ]
+                      },
+                      {
+                          "id":  "M1107-11",
+                          "sub":  "数学",
+                          "kp":  "#48 特征值",
+                          "type":  "choice",
+                          "stem":  "设 3 阶矩阵 A 满足 A² − 3A + 2E = 0，则 A 的特征值只能是（　）",
+                          "options":  [
+                                          "A. −1 或 −2",
+                                          "B. 0 或 1",
+                                          "C. 1 或 2",
+                                          "D. 2 或 3"
+                                      ],
+                          "answer":  "C",
+                          "explain":  "若 λ 是特征值则 λ²−3λ+2=0 ⇒ (λ−1)(λ−2)=0 ⇒ λ=1 或 2。易错：直接解方程不说明「特征值必满足该方程」。",
+                          "df":  110,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "选填-1107"
+                                   ]
+                      },
+                      {
+                          "id":  "M1107-12",
+                          "sub":  "数学",
+                          "kp":  "#44 秩",
+                          "type":  "choice",
+                          "stem":  "向量组 α₁=(1,0,0)ᵀ、α₂=(0,1,0)ᵀ、α₃=(1,1,0)ᵀ 的秩为（　）",
+                          "options":  [
+                                          "A. 1",
+                                          "B. 3",
+                                          "C. 0",
+                                          "D. 2"
+                                      ],
+                          "answer":  "D",
+                          "explain":  "α₃ = α₁ + α₂，三者共面（z 分量全为 0）⇒ 极大无关组含 2 个 ⇒ 秩 2。",
+                          "df":  100,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "选填-1107"
+                                   ]
+                      },
+                      {
+                          "id":  "M1107-13",
+                          "sub":  "数学",
+                          "kp":  "#45 方程组",
+                          "type":  "choice",
+                          "stem":  "设 A 为 m×n 矩阵，则非齐次线性方程组 Ax = b 有解的充要条件是（　）",
+                          "options":  [
+                                          "A. r(A) = r(A|b)",
+                                          "B. r(A) = n",
+                                          "C. |A| ≠ 0",
+                                          "D. b ≠ 0"
+                                      ],
+                          "answer":  "A",
+                          "explain":  "有解 ⇔ 系数矩阵与增广矩阵秩相等（Rouché–Capelli）。r(A)=n 只是唯一解的条件，不是有解的条件。",
+                          "df":  100,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "选填-1107"
+                                   ]
+                      },
+                      {
+                          "id":  "M1107-14",
+                          "sub":  "数学",
+                          "kp":  "#19 反常积分",
+                          "type":  "choice",
+                          "stem":  "反常积分 ∫₁^{+∞} (1/x²) dx =（　）",
+                          "options":  [
+                                          "A. 2",
+                                          "B. 1",
+                                          "C. 1/2",
+                                          "D. 发散"
+                                      ],
+                          "answer":  "B",
+                          "explain":  "原函数 −1/x，代 1→+∞ 得 0−(−1)=1。对照：p=2\u003e1 收敛。",
+                          "df":  95,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "选填-1107"
+                                   ]
+                      },
+                      {
+                          "id":  "M1107-15",
+                          "sub":  "数学",
+                          "kp":  "#8 极值判定",
+                          "type":  "choice",
+                          "stem":  "设 f′(x₀)=0，f″(x₀)\u003c0，则 f 在 x₀ 处（　）",
+                          "options":  [
+                                          "A. 取得极小值",
+                                          "B. 不取得极值",
+                                          "C. 取得极大值",
+                                          "D. 无法判断"
+                                      ],
+                          "answer":  "C",
+                          "explain":  "第二充分条件：一阶导为 0、二阶导小于 0 ⇒ 极大值（开口向下）。若 f″(x₀)=0 才需进一步判断。",
+                          "df":  96,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "选填-1107"
                                    ]
                       }
                   ]
