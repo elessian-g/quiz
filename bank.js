@@ -1,6 +1,6 @@
 window.QBANK = {
     "id":  "2026-11-04",
-    "title":  "备用机题库（152 题）",
+    "title":  "备用机题库（162 题）",
     "questions":  [
                       {
                           "id":  "P04",
@@ -3493,6 +3493,216 @@ window.QBANK = {
                                        "补题-1104",
                                        "偏导",
                                        "链式法则"
+                                   ]
+                      },
+                      {
+                          "id":  "M1105-01",
+                          "sub":  "数学",
+                          "kp":  "#1 极限",
+                          "type":  "choice",
+                          "stem":  "lim(x→0) [∫₀ˣ (e^t − 1 − t) dt] / x³ =（　）",
+                          "options":  [
+                                          "A. 1/6",
+                                          "B. 1/2",
+                                          "C. 1/3",
+                                          "D. 0"
+                                      ],
+                          "answer":  "A",
+                          "explain":  "洛必达一次：(e^x−1−x)/(3x²)，又 e^x−1−x ~ x²/2 ⇒ 1/6。干扰项：1/2（忘分母3）、1/3（只展开一次）、0（误判高阶）。",
+                          "df":  100,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "补题-1104晚"
+                                   ]
+                      },
+                      {
+                          "id":  "M1105-02",
+                          "sub":  "数学",
+                          "kp":  "#1 极限",
+                          "type":  "choice",
+                          "stem":  "lim(x→0) [x − ln(1+x)] / x² =（　）",
+                          "options":  [
+                                          "A. 1",
+                                          "B. 1/2",
+                                          "C. 1/3",
+                                          "D. 0"
+                                      ],
+                          "answer":  "B",
+                          "explain":  "ln(1+x)=x−x²/2+o(x²) ⇒ x−ln(1+x)=x²/2 ⇒ 1/2。干扰项：1（漏展开的1/2）、1/3（分母当x³）、0。",
+                          "df":  98,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "补题-1104晚"
+                                   ]
+                      },
+                      {
+                          "id":  "M1105-03",
+                          "sub":  "数学",
+                          "kp":  "#16 变限积分",
+                          "type":  "choice",
+                          "stem":  "设 F(x) = ∫₀^(x²) sin t dt，则 F′(x) =（　）",
+                          "options":  [
+                                          "A. sin(x²)",
+                                          "B. 2x² sin(x²)",
+                                          "C. 2x sin(x²)",
+                                          "D. 2x cos(x²)"
+                                      ],
+                          "answer":  "C",
+                          "explain":  "上限 g=x²，F′=sin(g)·g′=2x sin(x²)。干扰项：sin(x²)（漏链式，最典型）、2x²sin(x²)（g′记成2x²）、2x cos(x²)（被积误当cos）。",
+                          "df":  100,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "补题-1104晚"
+                                   ]
+                      },
+                      {
+                          "id":  "M1105-04",
+                          "sub":  "数学",
+                          "kp":  "#16 变限积分",
+                          "type":  "choice",
+                          "stem":  "设 F(x) = ∫_x^(x²) e^(−t) dt，则 F′(x) =（　）",
+                          "options":  [
+                                          "A. −2x e^(−x²) − e^(−x)",
+                                          "B. −2x e^(−x²) + e^(−x)",
+                                          "C. 2x e^(−x²)",
+                                          "D. 2x e^(−x²) − e^(−x)"
+                                      ],
+                          "answer":  "D",
+                          "explain":  "F=[−e^(−t)]_x^(x²)=−e^(−x²)+e^(−x)，求导 = 2x e^(−x²) − e^(−x)。干扰项：A（两项符号全错）、B（上限项符号错）、C（漏下限贡献）。",
+                          "df":  102,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "补题-1104晚"
+                                   ]
+                      },
+                      {
+                          "id":  "M1105-05",
+                          "sub":  "数学",
+                          "kp":  "#30 最值",
+                          "type":  "choice",
+                          "stem":  "f(x,y) = x² + y² 在闭区域 D: x² + y² ≤ 2x 上的最大值为（　）",
+                          "options":  [
+                                          "A. 4",
+                                          "B. 2",
+                                          "C. 1",
+                                          "D. 0"
+                                      ],
+                          "answer":  "A",
+                          "explain":  "D 即 (x−1)²+y²≤1，参数化后 x²+y²=2+2cosθ，最大 4（在 (2,0)）。干扰项：2（拿直径当最大值）、1（误当圆心在原点的单位圆）、0（只找驻点，那是最小值）。",
+                          "df":  100,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "补题-1104晚"
+                                   ]
+                      },
+                      {
+                          "id":  "M1105-06",
+                          "sub":  "数学",
+                          "kp":  "#34 换序",
+                          "type":  "choice",
+                          "stem":  "二次积分 ∫₀¹ dx ∫_x^(√x) f(x,y) dy 交换积分次序后为（　）",
+                          "options":  [
+                                          "A. ∫₀¹ dy ∫_y^(y²) f dx",
+                                          "B. ∫₀¹ dy ∫_(y²)^(y) f dx",
+                                          "C. ∫₀¹ dy ∫_0^(y) f dx",
+                                          "D. ∫₀¹ dy ∫_(y²)^(1) f dx"
+                                      ],
+                          "answer":  "B",
+                          "explain":  "区域 0≤x≤1、x≤y≤√x；反解得 0≤y≤1、y²≤x≤y（y\u003c1 时 y²\u003cy）。干扰项：A（上下限写反）、C（漏上边界y²）、D（x上界当1）。",
+                          "df":  102,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "补题-1104晚"
+                                   ]
+                      },
+                      {
+                          "id":  "M1105-07",
+                          "sub":  "数学",
+                          "kp":  "#32 极坐标",
+                          "type":  "choice",
+                          "stem":  "∬_D (x²+y²)^(3/2) dxdy，D: x² + y² ≤ 2x，则其值为（　）",
+                          "options":  [
+                                          "A. 64/15",
+                                          "B. 128/25",
+                                          "C. 512/75",
+                                          "D. 256/75"
+                                      ],
+                          "answer":  "C",
+                          "explain":  "被积=r³，dA=r dr dθ ⇒ ∬r⁴ = ∫(2cosθ)^5/5 dθ = (32/5)∫cos⁵θ = (32/5)(16/15) = 512/75。干扰项：64/15（按 r³ 积分漏雅可比）、128/25（cos⁵当cos⁴）、256/75（少算一半）。",
+                          "df":  105,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "补题-1104晚"
+                                   ]
+                      },
+                      {
+                          "id":  "M1105-08",
+                          "sub":  "数学",
+                          "kp":  "#7 参数方程",
+                          "type":  "choice",
+                          "stem":  "设 x = t − sin t，y = 1 − cos t（摆线），则 d²y/dx² 在 t = π/2 处 =（　）",
+                          "options":  [
+                                          "A. 1",
+                                          "B. 1/2",
+                                          "C. −1/2",
+                                          "D. −1"
+                                      ],
+                          "answer":  "D",
+                          "explain":  "dy/dx=sin t/(1−cos t)=cot(t/2)；d²y/dx²=−1/(1−cos t)²；t=π/2 时 1−cos=1 ⇒ −1。干扰项：1（只算一阶）、1/2（漏平方）、−1/2（符号与系数混）。",
+                          "df":  105,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "补题-1104晚"
+                                   ]
+                      },
+                      {
+                          "id":  "M1105-09",
+                          "sub":  "数学",
+                          "kp":  "#48 特征值",
+                          "type":  "choice",
+                          "stem":  "设 3 阶矩阵 A 的特征值为 1, −2, 3，则 |A² − A − 2E| =（　）",
+                          "options":  [
+                                          "A. −32",
+                                          "B. 32",
+                                          "C. −16",
+                                          "D. 0"
+                                      ],
+                          "answer":  "A",
+                          "explain":  "λ²−λ−2=(λ−2)(λ+1)：λ=1→−2、λ=−2→4、λ=3→4，积 = −32。干扰项：32（符号）、−16（漏因子）、0（误以为有零因子；使之为0的λ=2或−1不在特征值里）。",
+                          "df":  102,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "补题-1104晚"
+                                   ]
+                      },
+                      {
+                          "id":  "M1105-10",
+                          "sub":  "数学",
+                          "kp":  "#26 偏导",
+                          "type":  "choice",
+                          "stem":  "设 z = f(x+y, xy)，f 具有连续偏导数，记 u=x+y、v=xy、f₁′=∂f/∂u、f₂′=∂f/∂v，则 ∂z/∂x =（　）",
+                          "options":  [
+                                          "A. f₁′ + x·f₂′",
+                                          "B. f₁′ + y·f₂′",
+                                          "C. x·f₁′ + y·f₂′",
+                                          "D. f₁′ + f₂′"
+                                      ],
+                          "answer":  "B",
+                          "explain":  "∂z/∂x = f₁′·∂u/∂x + f₂′·∂v/∂x = f₁′·1 + f₂′·y。干扰项：A（把 ∂v/∂x 记成 x）、C（两个内层导都错）、D（漏内层导）。",
+                          "df":  100,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "补题-1104晚"
                                    ]
                       }
                   ]
