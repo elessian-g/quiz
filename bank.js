@@ -1,6 +1,6 @@
 window.QBANK = {
     "id":  "2026-11-04",
-    "title":  "备用机题库（154 题）",
+    "title":  "备用机题库（164 题）",
     "questions":  [
                       {
                           "id":  "P04",
@@ -3513,6 +3513,186 @@ window.QBANK = {
                           "from_big":  false,
                           "tags":  [
                                        "补题-1104晚"
+                                   ]
+                      },
+                      {
+                          "id":  "B01",
+                          "sub":  "数学",
+                          "kp":  "#32 极坐标",
+                          "type":  "text",
+                          "stem":  "计算二重积分 ∬_D (x²+y²) dxdy，其中 D 是由圆 x²+y²=2x 与 x²+y²=4x 所围成的区域。",
+                          "options":  [
+
+                                      ],
+                          "answer":  "45π/2",
+                          "explain":  "极坐标：内边界 r=2cosθ，外边界 r=4cosθ，θ∈[−π/2,π/2]。被积 r²·r=r³，∫r³dr=[(4c)⁴−(2c)⁴]/4=60c⁴，∫cos⁴θ=3π/8 ⇒ 60·3π/8=45π/2。易错：只写 r 从 0 到 2cosθ（当成实心圆，漏内边界）。",
+                          "df":  118,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "大题-每日"
+                                   ]
+                      },
+                      {
+                          "id":  "B02",
+                          "sub":  "数学",
+                          "kp":  "#32 极坐标",
+                          "type":  "text",
+                          "stem":  "计算二重积分 ∬_D √(x²+y²) dxdy，其中 D={(x,y): x²+y²≤2y，且 y≥x}。",
+                          "options":  [
+
+                                      ],
+                          "answer":  "20√2/9",
+                          "explain":  "x²+y²≤2y ⇒ r≤2sinθ；y≥x ⇒ θ∈[π/4,3π/4]。被积 r·r=r²，∫r²dr=8sin³θ/3。∫sin³θ=−cosθ+cos³θ/3，上下限差 5√2/6，乘 8/3 ⇒ 20√2/9。易错：θ 区间漏掉 y≥x 条件。",
+                          "df":  120,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "大题-每日"
+                                   ]
+                      },
+                      {
+                          "id":  "B03",
+                          "sub":  "数学",
+                          "kp":  "#1 极限",
+                          "type":  "text",
+                          "stem":  "求极限 lim(x→0) [ 1/x² − 1/(x·tan x) ]。",
+                          "options":  [
+
+                                      ],
+                          "answer":  "1/3",
+                          "explain":  "通分=(tan x−x)/(x²·tan x)。tan x=x+x³/3+o(x³) ⇒ 分子=x³/3，分母~x³ ⇒ 1/3。易错：直接洛必达越做越乱。",
+                          "df":  115,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "大题-每日"
+                                   ]
+                      },
+                      {
+                          "id":  "B04",
+                          "sub":  "数学",
+                          "kp":  "#30 闭区域最值",
+                          "type":  "text",
+                          "stem":  "求 f(x,y)=x²+y²−4x−2y+1 在闭区域 D={(x,y): x²+y²≤9} 上的最大值与最小值。",
+                          "options":  [
+
+                                      ],
+                          "answer":  "最小值 −4，最大值 10+6√5",
+                          "explain":  "内部驻点(2,1)，4+1=5\u003c9 在圆内，f=−4。边界令 x=3cosθ,y=3sinθ ⇒ f=10−12cosθ−6sinθ，值域[10−6√5, 10+6√5]≈[−3.42,23.42]。比较：−4 \u003c −3.42 ⇒ 最小值−4（内部），最大值 10+6√5（边界）。关键：内部值比边界最小值还小。",
+                          "df":  120,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "大题-每日"
+                                   ]
+                      },
+                      {
+                          "id":  "B05",
+                          "sub":  "数学",
+                          "kp":  "#48 特征值",
+                          "type":  "text",
+                          "stem":  "设 A 为 3 阶矩阵，其特征值为 1、2、−1。(1) 求 |A²+2A−3E|；(2) 判断 A²+2A−3E 是否可逆并说明理由。",
+                          "options":  [
+
+                                      ],
+                          "answer":  "(1) 0；(2) 不可逆",
+                          "explain":  "λ²+2λ−3 在 λ=1,2,−1 处取 0、5、−4，乘积=0。行列式为 0 ⇒ 存在特征值 0 ⇒ 不可逆。易错：以为要先求出 A。",
+                          "df":  118,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "大题-每日"
+                                   ]
+                      },
+                      {
+                          "id":  "B06",
+                          "sub":  "数学",
+                          "kp":  "#7 参数方程",
+                          "type":  "text",
+                          "stem":  "设曲线由摆线参数方程给出 x=t−sin t，y=1−cos t。求 t=π/3 处的切线方程，以及该点处的 d²y/dx²。",
+                          "options":  [
+
+                                      ],
+                          "answer":  "切线：y−1/2=√3(x−π/3+√3/2)；d²y/dx²=−4",
+                          "explain":  "dy/dx=sin t/(1−cos t)=cot(t/2)，t=π/3 时为 √3。切点 x₀=π/3−√3/2，y₀=1/2。d²y/dx²=−1/(1−cos t)²，t=π/3 时 1−cos=1/2 ⇒ −4。易错：只算一阶；二阶忘再除 dx/dt。",
+                          "df":  115,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "大题-每日"
+                                   ]
+                      },
+                      {
+                          "id":  "B07",
+                          "sub":  "数学",
+                          "kp":  "#26 偏导数",
+                          "type":  "text",
+                          "stem":  "设 z=z(x,y) 由方程 x²+y²+z²=2z 确定（取 z\u003e1 那一支）。求 ∂z/∂x 与 ∂²z/∂x²。",
+                          "options":  [
+
+                                      ],
+                          "answer":  "∂z/∂x=−x/(z−1)；∂²z/∂x²=(y²−1)/(z−1)³",
+                          "explain":  "F=x²+y²+z²−2z=0，F_x=2x、F_z=2(z−1) ⇒ z_x=−x/(z−1)。再对 x 求导：−[(z−1)+x²/(z−1)]/(z−1)²=−[(z−1)²+x²]/(z−1)³。由原方程配方 (z−1)²+x²=1−y² ⇒ =(y²−1)/(z−1)³。易错：求二阶时把 z 当常数。",
+                          "df":  115,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "大题-每日"
+                                   ]
+                      },
+                      {
+                          "id":  "B08",
+                          "sub":  "数学",
+                          "kp":  "#16 变限积分",
+                          "type":  "text",
+                          "stem":  "设 F(x)=∫₀ˣ (x−t)·sin t dt，求 F′(x) 与 F″(x)。",
+                          "options":  [
+
+                                      ],
+                          "answer":  "F′(x)=1−cos x；F″(x)=sin x",
+                          "explain":  "拆开：F=x∫₀ˣsin t dt−∫₀ˣ t sin t dt=x(1−cos x)−(−x cos x+sin x)=x−sin x。故 F′=1−cos x，F″=sin x。易错：直接对 x∫₀ˣ… 求导忘记乘积法则。",
+                          "df":  118,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "大题-每日"
+                                   ]
+                      },
+                      {
+                          "id":  "B09",
+                          "sub":  "数学",
+                          "kp":  "#34 交换积分次序",
+                          "type":  "text",
+                          "stem":  "计算 I=∫₀¹ dx ∫ₓ¹ e^(y²) dy（提示：先交换积分次序）。",
+                          "options":  [
+
+                                      ],
+                          "answer":  "(e−1)/2",
+                          "explain":  "区域 0≤x≤1、x≤y≤1 ⇒ 0≤y≤1、0≤x≤y。I=∫₀¹ e^(y²)dy∫₀ʸdx=∫₀¹ y e^(y²)dy=(e−1)/2。易错：不换序直接积 e^(y²)（积不出）；换序后忘乘 y。",
+                          "df":  115,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "大题-每日"
+                                   ]
+                      },
+                      {
+                          "id":  "B10",
+                          "sub":  "数学",
+                          "kp":  "#21 旋转体",
+                          "type":  "text",
+                          "stem":  "设平面区域 D 由曲线 y=x² 与直线 y=2x 围成。(1) 求 D 绕 y 轴旋转的体积 V₁；(2) 求 D 绕直线 x=2 旋转的体积 V₂。",
+                          "options":  [
+
+                                      ],
+                          "answer":  "V₁=V₂=8π/3",
+                          "explain":  "交点 x=0,2，区域 0≤x≤2、x²≤y≤2x。(1) 柱壳 r=x,h=2x−x²：V₁=2π∫₀²x(2x−x²)dx=2π(16/3−4)=8π/3。(2) r=2−x：V₂=2π∫₀²(2−x)(2x−x²)dx=2π·4/3=8π/3。两值相等是本题数值巧合（区域不关于 x=1 对称）。易错：绕 x=2 半径写成 x。",
+                          "df":  128,
+                          "df_src":  "manual",
+                          "from_big":  false,
+                          "tags":  [
+                                       "大题-每日"
                                    ]
                       }
                   ]
