@@ -3664,7 +3664,7 @@ window.QBANK = {
                           "sub":  "数学",
                           "kp":  "#34 交换积分次序",
                           "type":  "text",
-                          "stem":  "计算 I=∫₀¹ dx ∫ₓ¹ e^(y²) dy（提示：先交换积分次序）。",
+                          "stem":  "计算 I=∫₀¹ dx ∫ₓ¹ e^(y²) dy。",
                           "options":  [
 
                                       ],
