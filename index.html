@@ -49,7 +49,7 @@ input[type=text]{width:100%;background:#1d222c;border:1px solid var(--line);colo
 </header>
 <main id="app"></main>
 <div id="toast"></div>
-<script src="bank.js?v=1794232713" onerror="window.__noBank=1"></script>
+<script src="bank.js?v=1794495697" onerror="window.__noBank=1"></script>
 <script>
 'use strict';
 /* ---------- 工具 ---------- */
@@ -96,7 +96,7 @@ function dispAns(s){return String(s||'').split('').map(dispLetter).join('')}
 
 /* ---------- 题库 ---------- */
 var DEMO={id:'demo',title:'题库未加载',questions:[{id:'demo-1',sub:'数学',topic:'极限',type:'choice',stem:'占位题：请把 题库.js 放到同目录。',options:['A. 好','B. 收到'],answer:'A'}]};
-var WB_BUILD='2026-11-09';   /* 与 bank_src.json 的 id 对齐；不一致即判定为旧缓存 */
+var WB_BUILD='2026-11-13-v77';   /* 与 bank_src.json 的 id 对齐；不一致即判定为旧缓存 */
 var BANK=(window.QBANK&&window.QBANK.questions&&window.QBANK.questions.length)?window.QBANK:DEMO;
 /* 【2026-11-02 23:0x 用户口径】难度标尺：近十年真题平均 = 100，出题必须 95–130。
    题库里大部分题当年是按「手机能算」出的，实测中位只有 65 分，全部低于门槛。
