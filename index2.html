@@ -178,7 +178,9 @@ function buildQueue(){
   try{recsRaw().forEach(function(r){if(r.qid)answered[r.qid]=1})}catch(e){}
   /* 【2026-11-02 23:0x 用户口径】被拆题（大题第一问）单独一条线：占题量 15%、不受难度门槛、不参与轮换；
      做完当天晚上接着做该大题第二问，所以必须排在前半段，不能沉底。 */
-  var BIG=ALL.filter(function(q){return q.from_big && !answered[q.id]});
+  /* 【2026-11-15 主人指令】选填区不许出现大题：BIG 必须排除 type==='text'
+     （5 道完整解答题标了 from_big，原会混入选填混刷队列，占 15% 配额） */
+  var BIG=ALL.filter(function(q){return q.from_big && q.type!=='text' && !answered[q.id]});
   /* 2026-11-04：大题（type=text）不进「全部」混刷队列，只走「数学大题」专线 */
   var NORM=ALL.filter(function(q){return !q.from_big && q.type!=='text'});
   var BIG_N=4;                      /* 30 题 × 15% ≈ 4.5，取 4 */
