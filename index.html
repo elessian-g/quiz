@@ -73,10 +73,20 @@ function lastExp(){try{return localStorage.getItem('qz_last_exp')||''}catch(e){r
 function pending(){var a=recsRaw(),w=lastExp(),n=0;for(var i=0;i<a.length;i++)if(!w||a[i].ts>w)n++;return n}
 /* 【2026-10-30 新增】今日统计：今日已答 / 今日正确率（只算已判的题） */
 function todayStat(){
-  var a=recsRaw(),n=0,judged=0,ok=0;
+  /* 【2026-11-16 07:0x 主人令·HK-2253①】今日正确率必须单列回炉题：
+     回炉＝变体题或带 regrind_count 的题。验收只看「新题正确率」，
+     因为回炉题必涨，混在一起等于看不见真数据。 */
+  var a=recsRaw(),n=0,judged=0,ok=0,rJ=0,rOk=0;
+  var _byId={};
+  try{ for(var k=0;k<ALL_RAW.length;k++) _byId[ALL_RAW[k].id]=ALL_RAW[k]; }catch(e){}
   for(var i=0;i<a.length;i++){var r=a[i];if(String(r.ts||'').slice(0,10)!==TD)continue;
-    n++; if(r.judged){judged++; if(r.ok)ok++}}
-  return {n:n,judged:judged,ok:ok};
+    n++;
+    var _q=_byId[r.qid], _isR=!!(_q && (_q.variant_of || _q.regrind_count));
+    if(r.judged){judged++; if(r.ok)ok++;
+      if(_isR){rJ++; if(r.ok)rOk++;}
+    }
+  }
+  return {n:n,judged:judged,ok:ok,rJ:rJ,rOk:rOk};
 }
 function todayRecs(){
   return recsRaw().filter(function(r){return String(r.ts||'').slice(0,10)===TD});
@@ -96,7 +106,7 @@ function dispAns(s){return String(s||'').split('').map(dispLetter).join('')}
 
 /* ---------- 题库 ---------- */
 var DEMO={id:'demo',title:'题库未加载',questions:[{id:'demo-1',sub:'数学',topic:'极限',type:'choice',stem:'占位题：请把 题库.js 放到同目录。',options:['A. 好','B. 收到'],answer:'A'}]};
-var WB_BUILD='2026-11-16-v85';   /* 与 bank_src.json 的 id 对齐；不一致即判定为旧缓存 */
+var WB_BUILD='2026-11-16-v86';   /* 与 bank_src.json 的 id 对齐；不一致即判定为旧缓存 */
 var BANK=(window.QBANK&&window.QBANK.questions&&window.QBANK.questions.length)?window.QBANK:DEMO;
 /* 【2026-11-02 23:0x 用户口径】难度标尺：近十年真题平均 = 100，出题必须 95–130。
    题库里大部分题当年是按「手机能算」出的，实测中位只有 65 分，全部低于门槛。
@@ -230,19 +240,27 @@ function buildQueue(){
   _fresh=_fresh.slice(0,MIX.fresh);
   /* ③ 未练考点 4：按日期轮转起点，每考点取 1 道（优先取没做过的） */
   var _dn=Math.floor(Date.now()/86400000);
-  var _uo=UNTRIED_KP.slice(_dn%UNTRIED_KP.length).concat(UNTRIED_KP.slice(0,_dn%UNTRIED_KP.length));
+  /* 【2026-11-16 07:0x 主人令·HK-2253②】「五轮全覆盖」撤回（#24 池内 0 道、#53 仅 1 道，凑不出）。
+     过渡期：未练 4 题从现有 #52/#30/#37/#53 里出，允许同考点出 2 道，
+     不硬凑五个考点、不把同一道题五轮重复四次。
+     取法：候选池按「最久没做」排序（从没做过的排最前），取前 4 道；做过一次就排到后面，自然不连出。 */
   var _wpick={}; _wrong.forEach(function(q){_wpick[q.id]=1});
-  var _untried=[];
-  _uo.forEach(function(k){
-    var _a=ALL.filter(function(q){return _isMX(q) && q.kp===k});
-    if(!_a.length) return;
-    /* 排除已进错题池的题，否则去重后 20 道会少 1（实测 kp#37 两道都做过且一道已进错题池） */
-    var _p=_a.filter(function(q){return !_lt[q.id] && !_wpick[q.id]});
-    if(!_p.length) _p=_a.filter(function(q){return !_wpick[q.id]});
-    if(!_p.length) _p=_a;
-    _untried.push(_p[_dn%_p.length]);
+  var _uPool=ALL.filter(function(q){return _isMX(q) && q.kp && UNTRIED_KP.indexOf(q.kp)>=0 && !_wpick[q.id]});
+  _uPool.sort(function(a,b){
+    var ta=_lt[a.id]?String(_lt[a.id].ts||''):'';
+    var tb=_lt[b.id]?String(_lt[b.id].ts||''):'';
+    if(!ta && tb) return -1;
+    if(ta && !tb) return 1;
+    return ta.localeCompare(tb);
   });
-  _untried=_untried.slice(0,MIX.untried);
+  /* 同考点最多出 2 道（主人 07:0x 口径），避免一轮里同一个考点刷 3 道 */
+  var _untried=[], _kc={};
+  for(var _ui=0;_ui<_uPool.length && _untried.length<MIX.untried;_ui++){
+    var _uk=_uPool[_ui].kp||'';
+    if((_kc[_uk]||0)>=2) continue;
+    _kc[_uk]=(_kc[_uk]||0)+1;
+    _untried.push(_uPool[_ui]);
+  }
   /* 拼队顺序：错题5 → 未练4 → 错题5 → 新题6（未练排在前段，保证落在前 20 题内做得完） */
   var _seenMix={}, _mix=[];
   _wrong.slice(0,5).concat(_untried, _wrong.slice(5), _fresh).forEach(function(q){
@@ -375,9 +393,17 @@ function refreshBar(){
   for(var i=0;i<S.res.length;i++){var r=S.res[i];if(r.type!=='fill'){ch++;if(r.ok)okn++}}
   var pd=pending();
   var t=todayStat();
+  /* 【2026-11-16 07:0x 主人令】回炉题正确率单列，验收只看新题那一个数 */
+  var _rLine='';
+  if(t.judged>0){
+    var _nJ=t.judged-t.rJ, _nOk=t.ok-t.rOk;
+    _rLine='<br><span style="color:var(--dim);font-size:13px">其中回炉 '+t.rJ+' 题，正确率 '+
+      (t.rJ?(Math.round(100*t.rOk/t.rJ)+'%'):'—')+'；<b style="color:var(--ok)">新题正确率 '+
+      (_nJ?(Math.round(100*_nOk/_nJ)+'%'):'—')+'</b>（'+_nJ+' 题，验收只看这个）</span>';
+  }
   $('st').innerHTML='本次已刷 '+S.res.length+' / 目标 '+DAILY_MIN+'–'+DAILY_MAX+' 题 · 选择 '+okn+'/'+ch+
     '<br><b>今日已答 '+t.n+' 题 · 正确率 '+(t.judged? (Math.round(100*t.ok/t.judged)+'%') : '—')+
-    '</b>（判过 '+t.judged+' 题，对 '+t.ok+'）'+
+    '</b>（判过 '+t.judged+' 题，对 '+t.ok+'）'+_rLine+
     ' · <b class="'+(pd?'warn':'ok')+'" id="pend" onclick="renderRecords()">待导出 '+pd+'</b>'+
     (storeOK?'':' · <span class="bad">本地存储不可用</span>');
   wbFresh();
