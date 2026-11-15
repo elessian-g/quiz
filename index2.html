@@ -96,7 +96,7 @@ function dispAns(s){return String(s||'').split('').map(dispLetter).join('')}
 
 /* ---------- 题库 ---------- */
 var DEMO={id:'demo',title:'题库未加载',questions:[{id:'demo-1',sub:'数学',topic:'极限',type:'choice',stem:'占位题：请把 题库.js 放到同目录。',options:['A. 好','B. 收到'],answer:'A'}]};
-var WB_BUILD='2026-11-14-v81';   /* 与 bank_src.json 的 id 对齐；不一致即判定为旧缓存 */
+var WB_BUILD='2026-11-15-v83';   /* 与 bank_src.json 的 id 对齐；不一致即判定为旧缓存 */
 var BANK=(window.QBANK&&window.QBANK.questions&&window.QBANK.questions.length)?window.QBANK:DEMO;
 /* 【2026-11-02 23:0x 用户口径】难度标尺：近十年真题平均 = 100，出题必须 95–130。
    题库里大部分题当年是按「手机能算」出的，实测中位只有 65 分，全部低于门槛。
@@ -106,7 +106,13 @@ var DF_MIN = 95;
 var ALL_RAW = BANK.questions.slice();
 /* 被拆题（大题第一问）不受难度门槛限制 —— 它本来就是大题的简单第一问。
    其余题必须 df>=95。 */
-var ALL = ALL_RAW.filter(function(q){ return q.from_big || (q.df||0) >= DF_MIN; });
+/* 【2026-11-15 主人令·错题回炉】原题做完后三天内不再出（三天以上才轮换）。
+   hold_until 为 'YYYY-MM-DD'，字典序可比。变体题不带该字段，次日即出。 */
+var _TODAY_S=ymd(new Date());
+var ALL = ALL_RAW.filter(function(q){
+  if(q.hold_until && String(q.hold_until) > _TODAY_S) return false;
+  return q.from_big || (q.df||0) >= DF_MIN;
+});
 var ALL_LOW = ALL_RAW.filter(function(q){ return !q.from_big && (q.df||0) < DF_MIN; }).length;
 var TD=ymd(new Date());
 var H=histRaw();
@@ -366,6 +372,26 @@ function renderQ(){
     S.optOrder=shuffle(_idx);S.optOrderQ=q.id;
   }
   var html='<div class="card">';
+  /* 【2026-11-15 主人令】变体题题头标明不是原题，并回显原题作答与天数 */
+  if(q.variant_of){
+    var _days='',_ansTxt='';
+    try{
+      var _rs=recsRaw(), _last=null;
+      for(var _i=0;_i<_rs.length;_i++){
+        if(_rs[_i].qid===q.variant_of && (!_last || String(_rs[_i].ts)>String(_last.ts))) _last=_rs[_i];
+      }
+      if(_last && _last.ts){
+        var _g=Math.floor((Date.now()-new Date(_last.ts).getTime())/86400000);
+        if(_g>=0) _days='｜'+(_g===0?'今天':_g+' 天前');
+      }
+      for(var _j=_rs.length-1;_j>=0;_j--){ if(_rs[_j].qid===q.variant_of){ _ansTxt=String(_rs[_j].mine||'（空）'); break; } }
+    }catch(e){}
+    html+='<div class="sub" style="margin:0 0 8px;padding:8px 10px;border-left:3px solid var(--warn);background:#1d1a12;color:#e8d9b0;border-radius:6px">'+
+          '<b>变体题</b>（改数／改式，不是原题）'+esc(_days)+
+          (q.note_orig?('<br>'+esc(q.note_orig)):'')+
+          (_ansTxt?('<br>你当时在原题上答：<b>'+esc(_ansTxt)+'</b>'):'')+
+          '</div>';
+  }
   html+='<div class="tags"><span>'+esc(q.sub||'')+' · '+(type==='text'?'大题':(type==='fill'?'填空':(type==='multi'?'多选':'单选')))+
         '</span><span>'+esc(q.id)+' · 第 '+(S.qi+1)+'/'+S.set.length+'</span></div>';
   html+='<div class="stem">'+esc(q.stem)+'</div>';
