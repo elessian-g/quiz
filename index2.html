@@ -347,6 +347,21 @@ function buildQueue(){
 }
 
 var SUBJ=(function(){try{return localStorage.getItem('qz_subj')||'全部'}catch(e){return '全部'}})();
+/* 【2026-11-17 主人令】题数显示改「未完成/剩余」；与出题队列共用分科池口径。
+   未完成 = 从未作答(H里无此qid) + 最新仍错或点不会(ok!==true)。冷却题不在ALL，不计入。
+   只报欠账，不把保底阈值混进显示。 */
+function poolFor(s){
+  if(s==='数学大题') return ALL.filter(function(q){return q.type==='text'&&(q.sub||'')==='数学'});
+  if(s==='专业课大题') return ALL.filter(function(q){return q.type==='text'&&(q.sub||'')==='专业课'});
+  if(s==='全部') return ALL.filter(function(q){return q.type!=='text'});
+  return ALL.filter(function(q){return (q.sub||'')===s && q.type!=='text'});
+}
+function subPool(){return poolFor(SUBJ)}
+function undoneStat(pool){
+  var untried=0,regrind=0,done=0;
+  pool.forEach(function(q){var h=H[q.id];if(!h)untried++;else if(h.ok===true)done++;else regrind++});
+  return {total:pool.length,untried:untried,regrind:regrind,done:done,undone:untried+regrind};
+}
 var S={set:buildQueue(),qi:0,judged:false,t0:Date.now(),mine:'',mult:[],res:[],done:false};
 
 /* ---------- 顶部 ---------- */
@@ -355,20 +370,11 @@ function renderSubjBar(){
   /* 【2026-11-04 用户需求】新增「数学大题」分类：大题走文本作答，不进选择题队列
      【2026-11-05】再拆「专业课大题」，两类按科目分线，计数各算各的 */
   var subs=['全部','数学','政治','专业课','英语','数学大题','专业课大题'];
-  var cnt={}; ALL.forEach(function(q){cnt[q.sub]=(cnt[q.sub]||0)+1});
-  var ntx=function(sub){return ALL.filter(function(q){return q.type==='text'&&(q.sub||'')===sub}).length};
-  var ntext=ntx('数学'), ntextZy=ntx('专业课');
-  var nchoice=ALL.filter(function(q){return q.type!=='text'}).length;
   var h='';
   for(var i=0;i<subs.length;i++){
-    var s=subs[i], n;
-    if(s==='全部') n=nchoice;
-    else if(s==='数学大题') n=ntext;
-    else if(s==='专业课大题') n=ntextZy;
-    else if(s==='数学') n=(cnt[s]||0)-ntext;
-    else if(s==='专业课') n=(cnt[s]||0)-ntextZy;
-    else n=(cnt[s]||0);
-    if((s==='数学大题'||s==='专业课大题')&&n===0) continue;
+    var s=subs[i], p=poolFor(s);
+    if((s==='数学大题'||s==='专业课大题')&&p.length===0) continue;
+    var n=undoneStat(p).undone;   /* 【2026-11-17】标签数=该科未完成数 */
     h+='<button class="subjb'+(SUBJ===s?' on':'')+'\" onclick="setSubj(\''+s+'\')">'+s+' <span class="n">'+n+'</span></button>';
   }
   bar.innerHTML=h;
@@ -381,11 +387,13 @@ function setSubj(s){
 function refreshBar(){
   renderSubjBar();
   $('bk').textContent=BANK.title||'题库';
-  var due=0;ALL.forEach(function(q){var h=H[q.id];if(!h||!h.due||h.due<=TD)due++});
-  /* 【2026-11-02】难度门槛生效：显示可用题数与被门槛挡掉的题数，库存不足要看得见 */
-  var dfTip = ' · 可用 '+ALL.length+' 题（难度≥'+DF_MIN+'）';
+  var pool=subPool(), u=undoneStat(pool);
+  var due=0;pool.forEach(function(q){var h=H[q.id];if(!h||!h.due||h.due<=TD)due++});
+  /* 【2026-11-17 主人令】报「未完成/剩余」，不报题库总数；分母写清 */
+  var dfTip = ' · 池共 '+pool.length+' 题（难度≥'+DF_MIN+'）';
   if(ALL_LOW>0) dfTip += ' · <span style="color:var(--warn)">'+ALL_LOW+' 题未达门槛暂不出</span>';
-  $('bd').innerHTML=BANK.id+' · 题库 '+ALL.length+' 题 · 到期 '+due+dfTip;
+  $('bd').innerHTML=BANK.id+' · <b>未完成 '+u.undone+' 题</b>（未做 '+u.untried+' ＋ 回炉 '+u.regrind+'）'+
+    ' · 已做 '+u.done+'／池共 '+u.total+' · 到期 '+due+dfTip;
   var okn=0,ch=0;
   for(var i=0;i<S.res.length;i++){var r=S.res[i];if(r.type!=='fill'){ch++;if(r.ok)okn++}}
   var pd=pending();
@@ -627,7 +635,8 @@ function nextQ(){
 
 /* ---------- 刷完 ---------- */
 function renderDone(){
-  $('app').innerHTML='<div class="card"><div class="stem">今天的题库过完了（'+ALL.length+' 题）</div>'+
+  var _u=undoneStat(subPool());
+  $('app').innerHTML='<div class="card"><div class="stem">本轮过完了：还剩未完成 '+_u.undone+' 题（未做 '+_u.untried+' ＋ 回炉 '+_u.regrind+'）</div>'+
    '<div class="dim" style="margin-top:8px">本次已刷 '+S.res.length+' 题，答题记录已在本机，等同步。</div>'+
    '<button class="btn wide" style="margin-top:14px" onclick="restart()">再从头刷一遍</button>'+
    '<button class="btn ghost wide" onclick="renderRecords()">看记录 / 导出</button></div>';
